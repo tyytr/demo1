@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<!DOCTYPE mapper-->
+<!--PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+<!--"http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace对应接口地址 -->
+<mapper namespace="com.change.demo002.dao.UserDao">
+		
+	<select id="findUser" parameterType="User" resultType="User">
+		select * from register where username={username}
+	</select>
+	
+	
+</mapper> 
