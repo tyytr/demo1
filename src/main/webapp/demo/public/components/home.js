@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import Left from './leftaffix'
+import Left from './leftaffix';
+import Center from './centerNews';
 class Home extends Component{
     constructor(props) {
         super(props);
@@ -8,8 +9,9 @@ class Home extends Component{
     render(){
         return (
             <div className={"container"}>
-                <div className={"row"}>
+                <div className={"row g-py-50"}>
                     <Left/>
+                    <Center/>
                 </div>
             </div>
         )

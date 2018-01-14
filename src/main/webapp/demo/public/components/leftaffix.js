@@ -12,7 +12,7 @@ class Left extends Component{
     }
     render(){
         return (
-            <div className="scrollable-container col-xs-6 col-sm-4 g-my-50" ref={(node) => { this.container = node; }}>
+            <div className="scrollable-container col-xs-4 col-sm-3" ref={(node) => { this.container = node; }}>
                 <div className="background">
                     <Affix target={() => this.container}>
                         <div>

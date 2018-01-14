@@ -1,7 +1,7 @@
 const path = require('path');
 // const webpack = require('webpack');  //加载webpack依赖包
 module.exports = {
-    entry: './pubilc/main.js',
+    entry: './public/main.js',
     //入口文件并添加了热加载
     output: {
         path:  '/',
