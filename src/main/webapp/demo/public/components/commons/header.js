@@ -25,7 +25,7 @@ class Header extends Component{
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul className="nav navbar-nav">
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                <li><a href="#">测试</a></li>
+                                <li><a href="/shopList">商品</a></li>
                                 {/*<li className={"dropdown"}>*/}
                                     {/*<a href="#" className="dropdown-toggle" data-toggle="dropdown">*/}
                                         {/*商品分类 <b className="caret"></b>*/}

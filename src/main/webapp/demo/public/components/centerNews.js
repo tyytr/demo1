@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import {Carousel} from "antd";
 import 'antd/dist/antd.css';
-class Center extends Component{
+import Detail from './centerNewsDetail';
+class CenterNews extends Component{
     constructor(props) {
         super(props);
         this.state = {};
@@ -30,15 +31,18 @@ class Center extends Component{
             },
         ];
         return (
-            <div className={"col-xs-8 col-sm-6"} >
+            <div className={"col-xs-7 col-sm-9"} >
                 <div>
                     <Carousel autoplay>
                         {carousel.map(this.renderRow)}
                     </Carousel>
                 </div>
+                <div>
+                    <Detail/>
+                </div>
             </div>
         )
     }
 }
-export default Center;
+export default CenterNews;
 // module.exports = ProductBox;

@@ -12,9 +12,9 @@ class Left extends Component{
     }
     render(){
         return (
-            <div className="scrollable-container col-xs-4 col-sm-3" ref={(node) => { this.container = node; }}>
+            <div className="scrollable-container col-xs-5 col-sm-3">
                 <div className="background">
-                    <Affix target={() => this.container}>
+                    <Affix offsetTop={50}>
                         <div>
                             <Switch
                                 checked={this.state.theme === 'light'}
@@ -36,18 +36,17 @@ class Left extends Component{
                                         current: e.key,
                                     });
                                 }}
-                                // style={{ width: 256 }}
                                 defaultOpenKeys={['sub1']}
                                 selectedKeys={[this.state.current]}
-                                mode="inline"
+                                mode="vertical"
                             >
-                                <SubMenu key="sub1" title={<span><Icon type="mobile" /><span>手机</span></span>}>
-                                    <Menu.Item key="1">Option 1</Menu.Item>
-                                </SubMenu>
-                                <SubMenu key="sub2" title={<span><Icon type="desktop" /><span>电脑</span></span>}>
-                                </SubMenu>
-                                <SubMenu key="sub3" title={<span><Icon type="book" /><span>书籍</span></span>}>
-                                </SubMenu>
+                                <SubMenu key="sub1" title={<span><Icon type="mobile"/><span>手机</span></span>}/>
+                                <SubMenu key="sub2" title={<span><Icon type="desktop"/><span>电脑</span></span>}/>
+                                <SubMenu key="sub3" title={<span><Icon type="book"/><span>书籍</span></span>}/>
+                                <SubMenu key="sub4" title={<span><Icon type="skin"/><span>衣服</span></span>}/>
+                                <SubMenu key="sub5" title={<span><Icon type="camera-o"/><span>摄影</span></span>}/>
+                                <SubMenu key="sub6" title={<span><Icon type="usb"/><span>存储设备</span></span>}/>
+                                <SubMenu key="sub7" title={<span><Icon type="ellipsis"/><span>其他</span></span>}/>
                             </Menu>
                         </div>
                     </Affix>

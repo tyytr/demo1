@@ -12,10 +12,10 @@ class Publish extends Component{
                 <div className={"container"}>
                     <div className={"row g-py-20 g-rounded-5"}>
                         <div className={"g-my-10 col-xs-12 col-sm-2"}>
-                            <Select className={"col-xs-12"} size={"large"} placeholder={"请选择搜索属性"} showSearch={true} value={"jack"}>
-                                <Select.Option value="jack" >Jack</Select.Option>
-                                <Select.Option value="lucy">Lucy</Select.Option>
-                                <Select.Option value="tom">Tom</Select.Option>
+                            <Select className={"col-xs-12"} size={"large"} placeholder={"请选择搜索属性"} showSearch={true} value={"全部"}>
+                                <Select.Option value="全部" >全部</Select.Option>
+                                <Select.Option value="全部">全部</Select.Option>
+                                <Select.Option value="全部">全部</Select.Option>
                             </Select>
                         </div>
                         <div className={"g-my-10 col-xs-8 col-sm-4"}>
