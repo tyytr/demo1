@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Tabs} from "antd";
 import 'antd/dist/antd.css';
-class Detail extends Component{
+class ShopShow extends Component{
     constructor(props) {
         super(props);
         this.state = {};
@@ -87,9 +87,11 @@ class Detail extends Component{
                         <Tabs.TabPane tab="最新" key="1">{carousel.map(this.renderRow)}</Tabs.TabPane>
                     </Tabs>
                 </div>
+
+
             </div>
         )
     }
 }
-export default Detail;
+export default ShopShow;
 // module.exports = ProductBox;

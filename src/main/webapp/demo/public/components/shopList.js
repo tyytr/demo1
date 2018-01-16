@@ -39,7 +39,7 @@ class ShopList extends Component{
                 name : "手机",
                 price : "1200"
             }
-        ];
+            ];
         const carousel = [
             {
                 src : "../../public/style/image/shop1.jpg",
@@ -190,49 +190,31 @@ class ShopList extends Component{
         return (
             <div className={"container g-my-20"}>
                 <div className={"row"}>
-                    {/*<Tabs defaultActiveKey="0">*/}
-                        {/*/!*{renderTabs.map(this.renderTags)}*!/*/}
-                        {/*<Tabs.TabPane id={"Mobile"} tab="手机" key="0">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                        {/*<Tabs.TabPane id={"Desktop"} tab="电脑" key="1">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                        {/*<Tabs.TabPane tab="书籍" key="2">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                        {/*<Tabs.TabPane tab="衣服" key="3">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                        {/*<Tabs.TabPane tab="摄影" key="4">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                        {/*<Tabs.TabPane tab="存储设备" key="5">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                        {/*<Tabs.TabPane tab="其他" key="6">{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-                    {/*</Tabs>*/}
-                    <ul className="nav nav-tabs" role="tablist" id="tab-list">
-                        <li role="presentation" className="active"><a href={"#Tab0"} aria-controls="home" role="tab" data-toggle="tab">手机</a></li>
-                        <li role="presentation"><a href={"#Tab1"} aria-controls="profile" role="tab" data-toggle="tab">电脑</a></li>
-                        <li role="presentation"><a href={"#Tab2"} aria-controls="messages" role="tab" data-toggle="tab">书籍</a></li>
-                        <li role="presentation"><a href={"#Tab3"} aria-controls="settings" role="tab" data-toggle="tab">衣服</a></li>
-                        <li role="presentation"><a href={"#Tab4"} aria-controls="settings" role="tab" data-toggle="tab">摄影</a></li>
-                        <li role="presentation"><a href={"#Tab5"} aria-controls="settings" role="tab" data-toggle="tab">存储设备</a></li>
-                        <li role="presentation"><a href={"#Tab6"} aria-controls="settings" role="tab" data-toggle="tab">其他</a></li>
-                    </ul>
-                    <div className="tab-content">
-                        <div id={"#Tab0"} role="tabpanel" className="active">
-                            {carousel.map(this.renderRow)}
-                        </div>
-                        <div id={"#Tab1"} role="tabpanel">
-                            {carousell.map(this.renderRow)}
-                        </div>
-                        <div id={"#Tab2"}>
-                            {carousel.map(this.renderRow)}
-                        </div>
-                        <div id={"#Tab3"}>
-                            {carousel.map(this.renderRow)}
-                        </div>
-                        <div id={"#Tab4"}>
-                            {carousel.map(this.renderRow)}
-                        </div>
-                        <div id={"#Tab5"}>
-                            {carousel.map(this.renderRow)}
-                        </div>
-                        <div id={"#Tab6"}>
-                            {carousel.map(this.renderRow)}
-                        </div>
-                    </div>
+                    <Tabs defaultActiveKey="0">
+                        {/*{renderTabs.map(this.renderTags)}*/}
+                        <Tabs.TabPane tab="手机" key="0"><div id={"Mobile"}>{carousel.map(this.renderRow)}</div></Tabs.TabPane>
+                        <Tabs.TabPane tab="电脑" key="1"><div id={"Desktop"}>{carousel.map(this.renderRow)}</div></Tabs.TabPane>
+                        <Tabs.TabPane tab="书籍" key="2">{carousel.map(this.renderRow)}</Tabs.TabPane>
+                        <Tabs.TabPane tab="衣服" key="3">{carousel.map(this.renderRow)}</Tabs.TabPane>
+                        <Tabs.TabPane tab="摄影" key="4">{carousel.map(this.renderRow)}</Tabs.TabPane>
+                        <Tabs.TabPane tab="存储设备" key="5">{carousel.map(this.renderRow)}</Tabs.TabPane>
+                        <Tabs.TabPane tab="其他" key="6">{carousel.map(this.renderRow)}</Tabs.TabPane>
+                    </Tabs>
                 </div>
+                {/*<ul className="nav nav-tabs" role={"tablist"}>*/}
+                    {/*<li role={"presentation"} className="active"><a href={"#Mobile"} aria-controls="Mobile" role="tab" data-toggle="tab">手机</a></li>*/}
+                    {/*<li role={"presentation"}><a href={"#Desktop"}  aria-controls="Desktop" role="tab" data-toggle="tab">电脑</a></li>*/}
+                    {/*<li><a href="#">iOS</a></li>*/}
+                    {/*<li><a href="#">VB.Net</a></li>*/}
+                    {/*<li><a href="#">Java</a></li>*/}
+                    {/*<li><a href="#">PHP</a></li>*/}
+                {/*</ul>*/}
+                {/*<div className="tab-content">*/}
+                    {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
+                    {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousell.map(this.renderRow)}</div>*/}
+                {/*</div>*/}
+                {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
+                {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousel.map(this.renderRow)}</div>*/}
             </div>
         )
     }
