@@ -3,7 +3,7 @@
     padding: 0;
 }
 .shop_name{
-    position: relative; max-height: 1.5em;overflow: hidden;
+    position: relative; min-height: 3.0em; max-height: 3.0em;overflow: hidden;line-height: 1.5em;
 }
 .shop_name::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
     background: -webkit-linear-gradient(left, transparent, #fff 55%);

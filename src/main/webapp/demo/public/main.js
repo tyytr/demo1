@@ -5,6 +5,7 @@ import Home from './components/home';
 import Singin from './components/auth/singin';
 import Singup from './components/auth/singup';
 import ShopList from './components/shopList';
+import Grounding from './components/grounding';
 import Header from './components/commons/header';
 import Publish from './components/commons/publish';
 import Footer from './components/commons/footer';
@@ -17,6 +18,7 @@ ReactDOM.render(
                 <Route path='/singin' component={Singin} />
                 <Route path='/singup' component={Singup} />
                 <Route path='/shopList' component={ShopList} />
+                <Route path='/grounding' component={Grounding} />
                 <Route path='/' component={Home} />
             </Switch>
             <Footer />

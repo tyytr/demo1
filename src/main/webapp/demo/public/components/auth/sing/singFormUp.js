@@ -92,25 +92,28 @@ class SingFormUp extends Component{
             });
         }
         $.ajax({
-            url : 'http://localhost:8080/user/register',
+            type : "POST",
+            url : "http://localhost:8080/user/register",
             data : {
-                "username" : this.state.userName,
-                "password" : this.state.passWord,
-                "phone" : this.state.phone,
-                "admin" : this.state.isAdmin,
-                "agree" : this.state.isAgree
+                username : this.state.userName,
+                phone : this.state.phone,
+                password : this.state.passWord,
+                rpassword : this.state.rPassWord,
+                admin : this.state.isAdmin,
+                agree : this.state.isAgree
             },
-            type : 'post',
+            async : false,
             // contentType: "application/json",
             success : function (data) {
-                console.log(data);
-                alert(data);
+                console.log("success:"+data);
+                alert("success:"+data);
             },
             error : function (err) {
-                console.log(err);
-                alert(err);
+                console.log("error:"+err);
+                alert("error:"+err);
             }
         });
+        console.log(data);
     //    存localstorage
     //     if(this.state.isRemember===true){
     //         let loginData = {};
@@ -142,7 +145,7 @@ class SingFormUp extends Component{
                             </div>
                             <div className="form-group">
                                 <label className="exampleInputPassword1">密码</label>
-                                <input type="password" ref="password" name="password" className="form-control" placeholder="密码" onChange={this.changePhone.bind(this)} />
+                                <input type="password" name="password" className="form-control" placeholder="密码" onChange={this.changePassword.bind(this)} />
                                 <span>{this.state.phoneHelp}</span>
                             </div>
                             <div className="form-group">

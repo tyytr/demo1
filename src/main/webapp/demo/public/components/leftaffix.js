@@ -6,8 +6,10 @@ class Left extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            mode : 'inline',
             theme: 'light',
             current: '1',
+            sub : ''
         };
     }
     render(){
@@ -16,6 +18,18 @@ class Left extends Component{
                 <div className="background">
                     <Affix offsetTop={50}>
                         <div>
+                            <div style={{textAlign:"center"}}>
+                            <Switch
+                                checked={this.state.mode === 'inline'}
+                                onChange={(value) => {
+                                this.setState({
+                                    mode: value ? 'inline' : 'vertical',
+                                });
+                            }}
+                                checkedChildren="垂直"
+                                unCheckedChildren="内联"
+                            /> 风格
+                            <span className="ant-divider" style={{ margin: '0 1em' }} />
                             <Switch
                                 checked={this.state.theme === 'light'}
                                 onChange={(value) => {
@@ -23,25 +37,40 @@ class Left extends Component{
                                 theme: value ? 'light' : 'dark',
                             });
                         }}
-                                checkedChildren="Dark"
-                                unCheckedChildren="Light"
-                            />
+                                checkedChildren="夜间"
+                                unCheckedChildren="白天"
+                            />主题
+                            </div>
                             <br />
                             <br />
                             <Menu
+                                mode={this.state.mode}
                                 theme={this.state.theme}
                                 onClick={(e) => {
                                     console.log('click ', e);
                                     this.setState({
                                         current: e.key,
+                                        sub : e.item.props.children
                                     });
                                 }}
+                                defaultSelectedKeys={['1']}
                                 defaultOpenKeys={['sub1']}
                                 selectedKeys={[this.state.current]}
-                                mode="vertical"
+
+                                // theme={this.state.theme}
                             >
-                                <SubMenu key="sub1" title={<span><Icon type="mobile"/><span>手机</span></span>}/>
-                                <SubMenu key="sub2" title={<span><Icon type="desktop"/><span>电脑</span></span>}/>
+                                <SubMenu key="sub1" title={<span><Icon type="mobile"/><span><a href="/shopList#Mobile">手机</a></span></span>}>
+                                    <Menu.Item key="1">苹果</Menu.Item>
+                                    <Menu.Item key="2">小米</Menu.Item>
+                                    <Menu.Item key="3">OPPO</Menu.Item>
+                                    <Menu.Item key="4">vivo</Menu.Item>
+                                </SubMenu>
+                                <SubMenu key="sub2" title={<span><Icon type="desktop"/><span><a href="/shopList#Desktop">电脑</a></span></span>}>
+                                    <Menu.Item key="5">苹果</Menu.Item>
+                                    <Menu.Item key="6">联想</Menu.Item>
+                                    <Menu.Item key="7">戴尔</Menu.Item>
+                                    <Menu.Item key="8">华硕</Menu.Item>
+                                </SubMenu>
                                 <SubMenu key="sub3" title={<span><Icon type="book"/><span>书籍</span></span>}/>
                                 <SubMenu key="sub4" title={<span><Icon type="skin"/><span>衣服</span></span>}/>
                                 <SubMenu key="sub5" title={<span><Icon type="camera-o"/><span>摄影</span></span>}/>

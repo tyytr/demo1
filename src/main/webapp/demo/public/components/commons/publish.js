@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Grounding from '../grounding';
 import {Select,Input,Button} from 'antd';
 import 'antd/dist/antd.css';
 class Publish extends Component{
@@ -22,7 +23,7 @@ class Publish extends Component{
                             <Input.Search placeholder="input search text" enterButton="Search" size="large" />
                         </div>
                         <div className={"g-my-10 col-xs-2 col-sm-2 col-xs-offset-1 col-md-offset-4"}>
-                            <Button type="primary" size={"large"}>发布</Button>
+                            <a href="/grounding"><Button type="primary" size={"large"}>发布</Button></a>
                         </div>
                     </div>
                 </div>
