@@ -27,7 +27,7 @@ class GroundingImg extends Component {
             </div>
         );
         return (
-            <div className={"g-my-30"}  style={{}}>
+            <div className={""}  style={{}}>
                 <div className={"col-xs-12"}>
                     <Divider><h4>图片管理</h4></Divider>
                 </div>

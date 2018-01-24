@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
+import {Icon} from "antd";
+import 'antd/dist/antd.css';
 // import Home from  '../home';
-// import
+
 class Header extends Component{
     constructor(props) {
         super(props);
@@ -23,9 +25,11 @@ class Header extends Component{
                             <a className="navbar-brand" href="#">测试</a>
                         </div>
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
-                            <ul className="nav navbar-nav">
+                            <ul className="nav navbar-nav navbar-right">
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                <li><a href="/shopList">商品</a></li>
+                                <li><a href="/shopList">商品展示</a></li>
+                                <li><a href="/personal">个人中心</a></li>
+                                <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
                                 {/*<li className={"dropdown"}>*/}
                                     {/*<a href="#" className="dropdown-toggle" data-toggle="dropdown">*/}
                                         {/*商品分类 <b className="caret"></b>*/}
@@ -40,7 +44,7 @@ class Header extends Component{
                                         {/*<li><a href="#">专业书籍</a></li>*/}
                                     {/*</ul>*/}
                                 {/*</li>*/}
-                                <li>
+                                <li className={""}>
                                     <Link to="/singin" >登录</Link>
                                 </li>
                                 <li>

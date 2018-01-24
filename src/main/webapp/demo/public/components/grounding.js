@@ -4,7 +4,7 @@ import { ColorPicker } from 'zent';
 import 'zent/css/index.css';
 import Left from './leftaffix';
 import 'antd/dist/antd.css';
-import {Divider, InputNumber, Input} from "antd";
+import {Divider, InputNumber, Input, Button} from "antd";
 import GroundingImg from './groundingImg';
 import GroundingProp from './groundinngProp';
 class Grounding extends Component{
@@ -20,7 +20,7 @@ class Grounding extends Component{
 
     render(){
         return (
-            <div className={"container"}>
+            <div className={"container g-mb-100"}>
                 <div className={"row"}>
                 <form action="">
                 {/*商品属性*/}
@@ -53,7 +53,7 @@ class Grounding extends Component{
                     </div>
                 </div>
                 {/*商品描述*/}
-                <div className={"g-my-30"}  style={{lineHeight:"32px",textAlign:"center"}}>
+                <div className={""}  style={{lineHeight:"32px",textAlign:"center"}}>
                     <div className={"col-xs-12"}>
                         <Divider><h4>商品信息</h4></Divider>
                     </div>
@@ -66,6 +66,15 @@ class Grounding extends Component{
                 </div>
                 {/*图片管理*/}
                 <GroundingImg/>
+                {/*发布*/}
+                <div className={"g-mb-70"}>
+                    <div className={"col-xs-12"}>
+                        <Divider></Divider>
+                    </div>
+                    <div className="col-xs-4 col-xs-offset-4" style={{textAlign:"center"}}>
+                        <Button type="primary" size={"large"}>发布商品</Button>
+                    </div>
+                </div>
                 </form>
                 </div>
             </div>

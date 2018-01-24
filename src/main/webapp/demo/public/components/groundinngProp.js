@@ -78,7 +78,7 @@ class GroundingProp extends Component {
                     <div className={"col-xs-12 g-my-5"}>
                         <span className={"col-xs-6 "}>商品种类：</span>
                         <div className={"col-xs-6"}>
-                            <Cascader style={{height:"auto"}} defaultValue={['手机']} options={options} onChange={(value, selectedOptions)=>{console.log(value, selectedOptions);}} placeholder="商品名称" showSearch />
+                            <Cascader style={{}} defaultValue={['手机']} options={options} onChange={(value, selectedOptions)=>{console.log(value, selectedOptions);}} placeholder="商品名称" showSearch />
                         </div>
                     </div>
                     <div className={"col-xs-12 g-my-5"}>
