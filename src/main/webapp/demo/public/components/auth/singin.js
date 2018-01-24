@@ -1,5 +1,5 @@
 /**
- * Created by fengxiaoli on 2017/12/12.
+ * Created by lijun on 2017/12/10.
  */
 import React, { Component } from 'react';
 import Sing from './sing/sing';

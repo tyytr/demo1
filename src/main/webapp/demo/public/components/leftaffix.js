@@ -18,47 +18,19 @@ class Left extends Component{
                 <div className="background">
                     <Affix offsetTop={50}>
                         <div>
-                            <div style={{textAlign:"center"}}>
-                            <Switch
-                                checked={this.state.mode === 'inline'}
-                                onChange={(value) => {
-                                this.setState({
-                                    mode: value ? 'inline' : 'vertical',
-                                });
-                            }}
-                                checkedChildren="垂直"
-                                unCheckedChildren="内联"
-                            /> 风格
-                            <span className="ant-divider" style={{ margin: '0 1em' }} />
-                            <Switch
-                                checked={this.state.theme === 'light'}
-                                onChange={(value) => {
-                            this.setState({
-                                theme: value ? 'light' : 'dark',
-                            });
-                        }}
-                                checkedChildren="夜间"
-                                unCheckedChildren="白天"
-                            />主题
+                            <div className={"col-xs-12 col-sm-6"} style={{textAlign:"center"}}>
+                                <Switch checked={this.state.mode === 'inline'} onChange={(value) => {this.setState({mode: value ? 'inline' : 'vertical',});}} checkedChildren="垂直" unCheckedChildren="内联"/>
                             </div>
-                            <br />
-                            <br />
-                            <Menu
-                                mode={this.state.mode}
-                                theme={this.state.theme}
-                                onClick={(e) => {
-                                    console.log('click ', e);
+                            <div className={"col-xs-12 col-sm-6"} style={{textAlign:"center"}}>
+                                <Switch checked={this.state.theme === 'light'} onChange={(value) => {this.setState({theme: value ? 'light' : 'dark',});}} checkedChildren="夜间" unCheckedChildren="白天"/>
+                            </div>
+                            <Menu mode={this.state.mode} theme={this.state.theme} onClick={(e) => {
+                                console.log('click ', e);
                                     this.setState({
                                         current: e.key,
                                         sub : e.item.props.children
                                     });
-                                }}
-                                defaultSelectedKeys={['1']}
-                                defaultOpenKeys={['sub1']}
-                                selectedKeys={[this.state.current]}
-
-                                // theme={this.state.theme}
-                            >
+                                }} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} selectedKeys={[this.state.current]}>
                                 <SubMenu key="sub1" title={<span><Icon type="mobile"/><span><a href="/shopList#Mobile">手机</a></span></span>}>
                                     <Menu.Item key="1">苹果</Menu.Item>
                                     <Menu.Item key="2">小米</Menu.Item>

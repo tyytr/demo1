@@ -102,18 +102,22 @@ class SingFormUp extends Component{
                 admin : this.state.isAdmin,
                 agree : this.state.isAgree
             },
-            async : false,
+            // async : false,
             // contentType: "application/json",
-            success : function (data) {
-                console.log("success:"+data);
-                alert("success:"+data);
+            dataType : "json",
+            success : function (msg) {
+                console.log(msg);
+                alert("error:"+msg);
+                // if (msg) {//根据返回值进行跳转
+                //     window.location.href = 'http://localhost:8081/singup';
+                // }
             },
             error : function (err) {
-                console.log("error:"+err);
-                alert("error:"+err);
+                console.log(err);
+                alert(err);
             }
         });
-        console.log(data);
+        // console.log(data);
     //    存localstorage
     //     if(this.state.isRemember===true){
     //         let loginData = {};
@@ -169,7 +173,7 @@ class SingFormUp extends Component{
                                     <input type="checkbox" checked={this.state.isAgree} onClick={this.handleAgree.bind(this)} />我已阅读并同意 <a href="#">《易换网用户协议》</a>
                                 </label>
                             </div>
-                            <button type="submit" className="btn btn-default" onClick={this.handleClick.bind(this,this.state)}>注册</button>
+                            <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this,this.state)}>注册</button>
                         </form>
                     </div>
                 </div>

@@ -68,9 +68,10 @@ class SingFormIn extends Component{
             },
             type : 'post',
             // contentType: "application/json",
-            success : function (data) {
-                console.log(data);
-                alert(data);
+            success : function (msg) {
+                console.log("success");
+                console.log(msg);
+                alert(msg);
             },
             error : function (err) {
                 console.log(err);
@@ -116,7 +117,7 @@ class SingFormIn extends Component{
                                     <span>管理员登陆</span>
                                 </label>
                             </div>
-                            <button type="submit" className="btn btn-default" onClick={this.handleClick.bind(this,this.state)}>登陆</button>
+                            <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this,this.state)}>登陆</button>
                         </form>
                     </div>
                 </div>

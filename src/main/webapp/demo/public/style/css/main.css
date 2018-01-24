@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+/*商品展示*/
 .shop_name{
     position: relative; min-height: 3.0em; max-height: 3.0em;overflow: hidden;line-height: 1.5em;
 }
