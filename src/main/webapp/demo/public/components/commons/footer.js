@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {BackTop} from "antd";
+import {BackTop,Icon} from "antd";
 import 'antd/dist/antd.css';
 class Footer extends Component{
     constructor(props) {
@@ -10,9 +10,16 @@ class Footer extends Component{
         return (
             <div>
                 <BackTop />
-                <footer className="footer navbar-fixed-bottom ">
-                    <div className="container-fluid" style={{backgroundColor:"#9a9a9a"}}>
-                        <h4 style={{textAlign:"center"}}>易换网</h4>
+                <footer className="footer navbar-fixed-bottom">
+                    <div className="container g-py-20" style={{textAlign:"center"}}>
+                        <div className={"col-xs-12 col-sm-6"}>
+                            <a href=""><Icon type="github" />GitHub</a><br/>
+                            <a href=""><Icon type="gitlab" />GitLab</a>
+                        </div>
+                        <div className={"col-xs-12 col-sm-6"}>
+                            <a href=""><Icon type="qq" />1141734565</a><br/>
+                            <a href=""><Icon type="wechat" />zijindiao002</a>
+                        </div>
                     </div>
                 </footer>
             </div>

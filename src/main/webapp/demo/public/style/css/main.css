@@ -12,3 +12,7 @@
     background: -moz-linear-gradient(right, transparent, #fff 55%);
     background: linear-gradient(to right, transparent, #fff 55%);
 }
+/*footer*/
+.footer{
+    background-color : #f8f8f8;
+}
