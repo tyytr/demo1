@@ -20,8 +20,10 @@ public class UserServiceImpl implements UserService {
         String rpassword = user.getRpassword();
         String admin = user.getAdmin();
         String agree = user.getAgree();
-        if(username == null||phone == null||password == null||rpassword == null||admin == null||agree == null||agree == "false"||password !=rpassword) return false;
-        else return userdao.findUser(user);
+        System.out.println("注册");
+//        if(username == null||phone == null||password == null||rpassword == null||admin == null||agree == null||agree == "false"||password !=rpassword) return false;
+//        else return userdao.findUser(user);
+        return userdao.findUser(user);
     }
 
     @Override

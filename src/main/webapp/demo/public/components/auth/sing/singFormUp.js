@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {singupAction} from "../../../actions/auth";
 // import Code from './code';
 class SingFormUp extends Component{
     constructor(props) {
@@ -62,61 +63,83 @@ class SingFormUp extends Component{
     }
     //handleClick
     handleClick(){
-        if(this.state.userName === ""||this.state.userName === null){
-            this.setState({nameHelp:  "* 用户名不能为空"});
-            // alert(this.state.nameHelp);
-        }else if(this.state.phone === ""||this.state.phone === null){
-            this.setState({
-                nameHelp:  " ",
-                phoneHelp : "* 电话号码不能为空"
-            });
-        }else if(this.state.passWord === ""||this.state.passWord === null){
-            this.setState({
-                nameHelp:  " ",
-                phoneHelp : "",
-                wordHelp : "* 密码不能为空"
-            });
-        }else if(this.state.rPassWord === ""||this.state.passWord !== this.state.rPassWord){
-            this.setState({
-                nameHelp : "",
-                phoneHelp : "",
-                wordHelp : "",
-                rWordHelp: "* 两次密码不一致"
-            })
-        }else {
-            this.setState({ //清除提示文字
-                nameHelp: "",
-                phoneHelp : "",
-                wordHelp: "",
-                rWordHelp: ""
-            });
-        }
-        $.ajax({
-            type : "POST",
-            url : "http://localhost:8080/user/register",
-            data : {
-                username : this.state.userName,
-                phone : this.state.phone,
-                password : this.state.passWord,
-                rpassword : this.state.rPassWord,
-                admin : this.state.isAdmin,
-                agree : this.state.isAgree
-            },
-            // async : false,
-            // contentType: "application/json",
-            dataType : "json",
-            success : function (msg) {
-                console.log(msg);
-                alert("error:"+msg);
-                // if (msg) {//根据返回值进行跳转
-                //     window.location.href = 'http://localhost:8081/singup';
-                // }
-            },
-            error : function (err) {
-                console.log(err);
-                alert(err);
+        const data = {
+            username : this.state.userName,
+            phone : this.state.phone,
+            password : this.state.passWord,
+            rpassword : this.state.rPassWord,
+            admin : this.state.isAdmin,
+            agree : this.state.isAgree
+        };
+        if(this.state.isAgree === false){
+            alert("请先阅读《易换网用户协议》并且同意协议");
+        }else{
+            if(this.state.userName === ""||this.state.userName === null){
+                this.setState({nameHelp:  "* 用户名不能为空"});
+                // alert(this.state.nameHelp);
+            }else if(this.state.phone === ""||this.state.phone === null){
+                this.setState({
+                    nameHelp:  " ",
+                    phoneHelp : "* 电话号码不能为空"
+                });
+            }else if(this.state.passWord === ""||this.state.passWord === null){
+                this.setState({
+                    nameHelp:  "",
+                    phoneHelp : "",
+                    wordHelp : "* 密码不能为空"
+                });
+            }else if(this.state.rPassWord === ""||this.state.passWord !== this.state.rPassWord){
+                this.setState({
+                    nameHelp : "",
+                    phoneHelp : "",
+                    wordHelp : "",
+                    rWordHelp: "* 两次密码不一致"
+                })
+            }else{
+                this.setState({ //清除提示文字
+                    nameHelp: "",
+                    phoneHelp : "",
+                    wordHelp: "",
+                    rWordHelp: ""
+                });
+                singupAction(data);
             }
-        });
+        }
+        // const data = {
+        //             username : this.state.userName,
+        //             phone : this.state.phone,
+        //             password : this.state.passWord,
+        //             rpassword : this.state.rPassWord,
+        //             admin : this.state.isAdmin,
+        //             agree : this.state.isAgree
+        // };
+        // singupAction(data);
+
+        // $.ajax({
+        //     type : "POST",
+        //     url : "http://localhost:8080/user/register",
+        //     data : {
+        //         username : this.state.userName,
+        //         phone : this.state.phone,
+        //         password : this.state.passWord,
+        //         rpassword : this.state.rPassWord,
+        //         admin : this.state.isAdmin,
+        //         agree : this.state.isAgree
+        //     },
+        //     dataType : "json",
+        //     success : function (msg) {
+        //         console.log(msg);
+        //         // alert("error:"+msg);
+        //         // if (msg) {//根据返回值进行跳转
+        //         //     window.location.href = 'http://localhost:8081/singup';
+        //         // }
+        //     },
+        //     error : function (err) {
+        //         console.log(err);
+        //         alert(err);
+        //     }
+        // });
+
         // console.log(data);
     //    存localstorage
     //     if(this.state.isRemember===true){

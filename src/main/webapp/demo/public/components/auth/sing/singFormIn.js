@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import {signinAction} from '../../../actions/auth';
+
 class SingFormIn extends Component{
     constructor(props) {
         super(props);
@@ -58,26 +61,31 @@ class SingFormIn extends Component{
                 wordHelp: ""
             });
         }
-        $.ajax({
-            url : 'http://localhost:8080/user/login',
-            data : {
-                "username" : this.state.userName,
-                "password" : this.state.passWord,
-                "remember" : this.state.isRemember,
-                "admin" : this.state.isAdmin
-            },
-            type : 'post',
-            // contentType: "application/json",
-            success : function (msg) {
-                console.log("success");
-                console.log(msg);
-                alert(msg);
-            },
-            error : function (err) {
-                console.log(err);
-                alert(err);
-            }
-        });
+        const data = {
+                    "username" : this.state.userName,
+                    "password" : this.state.passWord,
+                    "remember" : this.state.isRemember,
+                    "admin" : this.state.isAdmin
+                };
+        signinAction(data);
+        // $.ajax({
+        //     url : 'http://localhost:8080/user/login',
+        //     data : {
+        //         "username" : this.state.userName,
+        //         "password" : this.state.passWord,
+        //         "remember" : this.state.isRemember,
+        //         "admin" : this.state.isAdmin
+        //     },
+        //     type : 'post',
+        //     success : function (msg) {
+        //         console.log("success");
+        //         console.log(msg);
+        //     },
+        //     error : function (err) {
+        //         console.log("error");
+        //         console.log(err);
+        //     }
+        // });
     }
     render(){
         return(

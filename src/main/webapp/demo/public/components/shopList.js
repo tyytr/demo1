@@ -12,10 +12,12 @@ class ShopList extends Component{
     }
     renderRow(src,index){
         return (
-            <div key={index} className={"col-xs-4 col-sm-2 g-pa-20"}>
+            <div key={index} className={"col-xs-4 col-sm-2 g-pa-20 shopList g-ma-5"}>
+                <a href="">
                 <img style={{width:"100%",height:"100%"}} src={src.src} alt={index}/>
+                <span style={{color:"#ff2832"}}>￥：{src.price}</span>
                 <p className={"shop_name"}>{src.name}</p>
-                <span>￥：{src.price}</span>
+                </a>
             </div>
         )
     }

@@ -3,7 +3,11 @@
     padding: 0;
 }
 /*商品展示*/
+.shopList{
+    border:1px solid #aaa;
+}
 .shop_name{
+    /*font-size: 10px;*/
     position: relative; min-height: 3.0em; max-height: 3.0em;overflow: hidden;line-height: 1.5em;
 }
 .shop_name::after{content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;

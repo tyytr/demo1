@@ -19,10 +19,10 @@ class Publish extends Component{
                                     {/*<Select.Option value="电脑">电脑</Select.Option>*/}
                                 {/*</Select>*/}
                             {/*</div>*/}
-                            <div className={"g-my-10 col-xs-6 col-sm-4 col-xs-offset-1 col-sm-offset-1"}>
-                                <Input.Search placeholder="请输入搜索内容" enterButton="Search" size="large" />
+                            <div className={"g-my-10 col-xs-6 col-sm-4"}>
+                                <Input.Search placeholder="请输入搜索内容" enterButton="搜索" size="large" />
                             </div>
-                            <div className={"g-my-10 col-xs-2 col-sm-2 col-xs-offset-1 col-sm-offset-4"}>
+                            <div className={"g-my-10 col-xs-2 col-sm-2 col-xs-offset-2 col-sm-offset-4"}>
                                 <a href="/grounding"><Button type="primary" size={"large"}>发布</Button></a>
                             </div>
                         </div>
