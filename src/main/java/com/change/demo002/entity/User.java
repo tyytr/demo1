@@ -1,6 +1,8 @@
 package com.change.demo002.entity;
 
 public class User {
+
+    private String id;
     private String username;
     private String phone;
     private String password;
@@ -9,10 +11,28 @@ public class User {
     private String agree;
     private String remember;
 
-//    @Override
-//    public String toString(){
-//        return "";
-//    }
+
+    public User() {
+    }
+
+    public User(String id, String username, String phone, String password, String rpassword, String admin, String agree, String remember) {
+        this.id = id;
+        this.username = username;
+        this.phone = phone;
+        this.password = password;
+        this.rpassword = rpassword;
+        this.admin = admin;
+        this.agree = agree;
+        this.remember = remember;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -68,5 +88,19 @@ public class User {
 
     public void setRemember(String remember) {
         this.remember = remember;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                ", rpassword='" + rpassword + '\'' +
+                ", admin='" + admin + '\'' +
+                ", agree='" + agree + '\'' +
+                ", remember='" + remember + '\'' +
+                '}';
     }
 }

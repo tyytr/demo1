@@ -1,11 +1,10 @@
 package com.change.demo002.controller;
 
+import com.change.demo002.entity.Rest;
 import com.change.demo002.entity.User;
 import com.change.demo002.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,29 +23,21 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public User register(User user, HttpServletResponse response){
-        String username = user.getUsername();
-        String phone = user.getPhone();
-        String password = user.getPassword();
-        String rpassword = user.getRpassword();
-        String admin = user.getAdmin();
-        String agree = user.getAgree();
-        System.out.println("username:"+username+"     phone:"+phone+"     password:"+password+"     rpassword:"+rpassword+"     admin:"+admin+"     agree:"+agree);
-//        System.out.println(user);
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        userService.insertUser(user);
-        return user;
+
+    @PostMapping("/register")
+    public Rest<User> register(@RequestBody User user){
+
+        //调用service执行插入语句（注册）
+        int b = userService.insert(user);
+
+        if (b == 0){
+            return new Rest<User>(-1,"用户名重复",null);
+        }else if (b == 1){
+            return new Rest<User>(1,"插入成功",user);
+        }else{
+            return new Rest<User>(-1,"未知原因插入失败，稍后再试",null);
+        }
+
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public User login(User user, HttpServletResponse response){
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        String username = user.getUsername();
-        String password = user.getPassword();
-        String admin = user.getAdmin();
-        System.out.println("username:"+username+"     password:"+password+"     admin:"+admin);
-        userService.loginUser(user);
-        return user;
-    }
 }
