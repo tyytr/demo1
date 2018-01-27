@@ -115,30 +115,30 @@ class SingFormUp extends Component{
         // };
         // singupAction(data);
 
-        // $.ajax({
-        //     type : "POST",
-        //     url : "http://localhost:8080/user/register",
-        //     data : {
-        //         username : this.state.userName,
-        //         phone : this.state.phone,
-        //         password : this.state.passWord,
-        //         rpassword : this.state.rPassWord,
-        //         admin : this.state.isAdmin,
-        //         agree : this.state.isAgree
-        //     },
-        //     dataType : "json",
-        //     success : function (msg) {
-        //         console.log(msg);
-        //         // alert("error:"+msg);
-        //         // if (msg) {//根据返回值进行跳转
-        //         //     window.location.href = 'http://localhost:8081/singup';
-        //         // }
-        //     },
-        //     error : function (err) {
-        //         console.log(err);
-        //         alert(err);
-        //     }
-        // });
+        $.ajax({
+            type : "POST",
+            url : "http://localhost:8080/user/register",
+            data:{
+                "username" : this.state.userName,
+                "phone" : this.state.phone,
+                "password" : this.state.passWord,
+                "rpassword" : this.state.rPassWord,
+                "admin" : this.state.isAdmin,
+                "agree" : this.state.isAgree,
+            },
+            success : function (msg) {
+                console.log("success");
+                console.log(msg);
+                // alert("error:"+msg);
+                // if (msg) {//根据返回值进行跳转
+                //     window.location.href = 'http://localhost:8081/singup';
+                // }
+            },
+            error : function (err) {
+                console.log("err");
+                console.log(err);
+            }
+        });
 
         // console.log(data);
     //    存localstorage

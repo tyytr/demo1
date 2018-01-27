@@ -3,7 +3,10 @@ function setAuthToLocalStorage(data) {
     // localStorage.setItem('token', data.token);
     localStorage.setItem('userId', data.id); //用户ID
     localStorage.setItem('loginname', data.username); //用户登录名
-    localStorage.setItem('mobilephone', data.phone);//手机号
+    localStorage.setItem('phone', data.phone);//手机号
+    localStorage.setItem('password', data.password);//密码
+    localStorage.setItem('admin', data.admin);//管理员
+    localStorage.setItem('agree', data.agree);//同意协议
     console.log(localStorage);
 }
 export function singupAction(data) {
