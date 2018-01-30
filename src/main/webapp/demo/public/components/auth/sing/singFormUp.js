@@ -105,53 +105,6 @@ class SingFormUp extends Component{
                 singupAction(data);
             }
         }
-        // const data = {
-        //             username : this.state.userName,
-        //             phone : this.state.phone,
-        //             password : this.state.passWord,
-        //             rpassword : this.state.rPassWord,
-        //             admin : this.state.isAdmin,
-        //             agree : this.state.isAgree
-        // };
-        // singupAction(data);
-
-        $.ajax({
-            type : "POST",
-            url : "http://localhost:8080/user/register",
-            data:{
-                "username" : this.state.userName,
-                "phone" : this.state.phone,
-                "password" : this.state.passWord,
-                "rpassword" : this.state.rPassWord,
-                "admin" : this.state.isAdmin,
-                "agree" : this.state.isAgree,
-            },
-            success : function (msg) {
-                console.log("success");
-                console.log(msg);
-                // alert("error:"+msg);
-                // if (msg) {//根据返回值进行跳转
-                //     window.location.href = 'http://localhost:8081/singup';
-                // }
-            },
-            error : function (err) {
-                console.log("err");
-                console.log(err);
-            }
-        });
-
-        // console.log(data);
-    //    存localstorage
-    //     if(this.state.isRemember===true){
-    //         let loginData = {};
-    //         loginData.userName = this.state.userName;
-    //         loginData.userPassword = this.state.userPassword;
-    //         Data.localSetItem("mm_loginStatus",loginData);
-    //     }else{
-    //         Data.localRemoveItem("jiaj-loginStatus");
-    //     }
-    //     this.props.login(this.state.userName,this.state.userPassword);
-    //     console.log(this.state);
     }
     render(){
         return(
@@ -186,11 +139,11 @@ class SingFormUp extends Component{
                                     {/*<p className="help-block">Example block-level help text here.</p>*/}
                             {/*</div>*/}
                             {/*<Code/>*/}
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox" checked={this.state.isAdmin} onClick={this.handleAdmin.bind(this)} /><span>管理员注册</span>
-                                </label>
-                            </div>
+                            {/*<div className="checkbox">*/}
+                                {/*<label>*/}
+                                    {/*<input type="checkbox" checked={this.state.isAdmin} onClick={this.handleAdmin.bind(this)} /><span>管理员注册</span>*/}
+                                {/*</label>*/}
+                            {/*</div>*/}
                             <div className="checkbox">
                                 <label>
                                     <input type="checkbox" checked={this.state.isAgree} onClick={this.handleAgree.bind(this)} />我已阅读并同意 <a href="#">《易换网用户协议》</a>

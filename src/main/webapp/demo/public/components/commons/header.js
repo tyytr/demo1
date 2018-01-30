@@ -10,6 +10,10 @@ class Header extends Component{
         this.state = {};
     }
     render(){
+        const loginStatus = localStorage.getItem("loginStatus");
+        const token = localStorage.getItem("token");
+        const username = localStorage.getItem("username");
+        // console.log(loginStatus);
         return (
             <div>
                 <nav className="navbar navbar-default navbar-static-top header g-mb-0" role="navigation">
@@ -25,30 +29,29 @@ class Header extends Component{
                             <a className="g-pl-40" href="/home"><img style={{height:"43px"}} src="../../../public/style/image/logo.png" alt="1"/></a>
                         </div>
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
-                            <ul className="nav navbar-nav navbar-right">
+                            <ul className={`nav navbar-nav navbar-right ${loginStatus?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
                                 <li><a href="/shopList">商品展示</a></li>
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
-                                {/*<li className={"dropdown"}>*/}
-                                    {/*<a href="#" className="dropdown-toggle" data-toggle="dropdown">*/}
-                                        {/*商品分类 <b className="caret"></b>*/}
-                                    {/*</a>*/}
-                                    {/*<ul className="dropdown-menu">*/}
-                                        {/*<li><a href="#">学习文具</a></li>*/}
-                                        {/*<li><a href="#">生活用品</a></li>*/}
-                                        {/*<li><a href="#">交通工具</a></li>*/}
-                                        {/*<li className="divider"></li>*/}
-                                        {/*<li><a href="#">衣装服饰</a></li>*/}
-                                        {/*<li className="divider"></li>*/}
-                                        {/*<li><a href="#">专业书籍</a></li>*/}
-                                    {/*</ul>*/}
-                                {/*</li>*/}
                                 <li className={""}>
                                     <Link to="/singin" >登录</Link>
                                 </li>
                                 <li>
                                     <Link to="/singup" >注册</Link>
+                                </li>
+                            </ul>
+                            <ul className={`nav navbar-nav navbar-right ${loginStatus?"":"hidden"}`}>
+                                <li className=""><Link to="/home" >首页</Link></li>
+                                <li><a href="/shopList">商品展示</a></li>
+                                <li><a href={`${token==2?"/admin":"/personal"}`}>个人中心</a></li>
+                                <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
+                                <li className={""}>
+                                    <Link to="" style={{color:"#1890ff"}} >{username}</Link>
+                                </li>
+                                <li>
+                                    {/*<button onClick={()=> {localStorage.clear();}}>退出</button>*/}
+                                    <Link to="/singin" onClick={()=> {localStorage.clear();}} >退出</Link>
                                 </li>
                             </ul>
                         </div>

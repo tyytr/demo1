@@ -24,4 +24,8 @@ public interface UserMapper {
     @Select("select * from register where username=#{username}")
     User findUserByName(@Param("username") String username);
 
+    @Select("select * from register where username=#{username} and password=#{password} and admin=#{admin}")
+    int select(@Param("username") String username,
+                @Param("password") String password,
+                @Param("admin") String admin);
 }

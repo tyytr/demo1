@@ -35,15 +35,32 @@ public class LoginController {
 //        @RequestBody User user
 
         System.out.println(user.getUsername());
-        int b = userService.insert(user);
+        int userInsertStatus = userService.userInsert(user);
 
-        if (b == 0){
-            return new Rest<User>(-1,"用户名重复",null);
-        }else if (b == 1){
-            return new Rest<User>(1,"插入成功",user);
+        if (userInsertStatus == 0){
+            return new Rest<User>(-1,"该用户名已经注册，请重新注册",user);
+        }else if (userInsertStatus == 1){
+            return new Rest<User>(1,"注册成功",user);
         }else{
-            return new Rest<User>(-1,"未知原因插入失败，稍后再试",null);
+            return new Rest<User>(0,"未知原因注册失败，稍后再试",user);
         }
     }
 
+    @PostMapping("/login")
+    public Rest<User> login(User user){
+        System.out.println(user.getUsername());
+        int userLoginStatus = userService.userSelect(user);
+        user = userService.selectUser(user);
+        if (userLoginStatus == -2){
+            return new Rest<User>(-2,"用户尚未注册，请先注册在登陆",user);
+        }else if (userLoginStatus == -1) {
+            return new Rest<User>(-1,"用户名或者密码错误",user);
+        }else if (userLoginStatus == 1) {
+            return new Rest<User>( 1,"普通用户登陆成功",user);
+        }else if (userLoginStatus == 2){
+            return new Rest<User>( 2,"管理员用户登陆成功",user);
+        }else {
+            return new Rest<User>( 0, "未知原因登陆失败，稍后再试",user);
+        }
+    }
 }

@@ -9,7 +9,7 @@ class SingFormIn extends Component{
             userName : "",
             passWord : "",
             isRemember : false,
-            isAdmin : false,
+            isAdmin : "false",
             nameHelp : "",
             wordHelp : ""
         };
@@ -47,6 +47,12 @@ class SingFormIn extends Component{
         console.log(this.state.isAdmin);
     }
     handleClick() {
+        const data = {
+            "username" : this.state.userName,
+            "password" : this.state.passWord,
+            // "remember" : this.state.isRemember,
+            "admin" : this.state.isAdmin
+        };
         if (this.state.userName === "" || this.state.userName === null) {
             this.setState({nameHelp: "* 用户名不能为空"});
             // alert(this.state.nameHelp);
@@ -60,32 +66,9 @@ class SingFormIn extends Component{
                 nameHelp: "",
                 wordHelp: ""
             });
+            signinAction(data);
+            // console.log(localStorage);
         }
-        const data = {
-                    "username" : this.state.userName,
-                    "password" : this.state.passWord,
-                    "remember" : this.state.isRemember,
-                    "admin" : this.state.isAdmin
-                };
-        signinAction(data);
-        // $.ajax({
-        //     url : 'http://localhost:8080/user/login',
-        //     data : {
-        //         "username" : this.state.userName,
-        //         "password" : this.state.passWord,
-        //         "remember" : this.state.isRemember,
-        //         "admin" : this.state.isAdmin
-        //     },
-        //     type : 'post',
-        //     success : function (msg) {
-        //         console.log("success");
-        //         console.log(msg);
-        //     },
-        //     error : function (err) {
-        //         console.log("error");
-        //         console.log(err);
-        //     }
-        // });
     }
     render(){
         return(
@@ -104,27 +87,18 @@ class SingFormIn extends Component{
                                 <input type="password" ref="password" name="password" className="form-control" placeholder="密码" onChange={this.changePassword.bind(this)} />
                                 <span>{this.state.wordHelp}</span>
                             </div>
-                            {/*<div className="form-group">*/}
-                                {/*<label className="exampleInputPassword1">确认密码</label>*/}
-                                {/*<input type="password" name="rpassword" className="form-control" placeholder="确认密码" />*/}
+                            {/*<div className="checkbox">*/}
+                                {/*<label>*/}
+                                    {/*<input type="checkbox" checked={this.state.isRemember} onClick={this.handlePassword.bind(this)} />*/}
+                                    {/*<span>记住密码</span>*/}
+                                {/*</label>*/}
                             {/*</div>*/}
-                            {/*<div className="form-group">*/}
-                            {/*<label className="exampleInputFile">File input</label>*/}
-                            {/*<input type="file" id="exampleInputFile" />*/}
-                            {/*<p className="help-block">Example block-level help text here.</p>*/}
+                            {/*<div className="checkbox">*/}
+                                {/*<label>*/}
+                                    {/*<input type="checkbox" checked={this.state.isAdmin} onClick={this.handleAdmin.bind(this)} />*/}
+                                    {/*<span>管理员登陆</span>*/}
+                                {/*</label>*/}
                             {/*</div>*/}
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox" checked={this.state.isRemember} onClick={this.handlePassword.bind(this)} />
-                                    <span>记住密码</span>
-                                </label>
-                            </div>
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox" checked={this.state.isAdmin} onClick={this.handleAdmin.bind(this)} />
-                                    <span>管理员登陆</span>
-                                </label>
-                            </div>
                             <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this,this.state)}>登陆</button>
                         </form>
                     </div>

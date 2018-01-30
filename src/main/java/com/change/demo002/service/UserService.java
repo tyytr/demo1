@@ -8,16 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-
     @Autowired
     private UserMapper userMapper;
-
-
-    public int insert(User user){
-
+//    注册
+    public int userInsert(User user){
         //查询用户名是否存在
         User exitUser = userMapper.findUserByName(user.getUsername());
-
 
         if (exitUser != null){
             //用户名存在
@@ -35,6 +31,27 @@ public class UserService {
                 return 2;
             }
         }
+    }
+//    登陆
+    public int userSelect(User user){
+        //查询是否注册
+        User exitUser = userMapper.findUserByName(user.getUsername());
+        System.out.println(user);
+        if (null == exitUser){
+            return -2;
+        }else if (!exitUser.getPassword().equals(user.getPassword())){
+            return -1;
+        }else if ("false".equals(exitUser.getAdmin())){
+            return 1;
+        }else if ("true".equals(exitUser.getAdmin())) {
+            return 2;
+        }else {
+            return 0;
+        }
+    }
+//    查询
+    public User selectUser(User user){
+        return userMapper.findUserByName(user.getUsername());
     }
 
 }

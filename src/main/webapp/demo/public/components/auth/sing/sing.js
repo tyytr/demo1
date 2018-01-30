@@ -8,9 +8,9 @@ class Sing extends Component{
     render(){
         return(
             <div className={"container"}>
-                <div className={"row"}>
-                    <div className="col-sm-12" style={{textAlign:"center"}}>
-                        <h2>欢迎来到易换网</h2>
+                <div className={"row g-py-40"}>
+                    <div className="col-sm-12" style={{textAlign:"center",fontSize:"28px",color:"#1890ff"}}>
+                        欢迎来到易换网
                     </div>
                 </div>
             </div>
