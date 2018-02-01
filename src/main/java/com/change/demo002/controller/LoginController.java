@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author: lijun
@@ -50,6 +48,7 @@ public class LoginController {
     public Rest<User> login(User user){
         System.out.println(user.getUsername());
         int userLoginStatus = userService.userSelect(user);
+//        根据用户名查询用户所有信息
         user = userService.selectUser(user);
         if (userLoginStatus == -2){
             return new Rest<User>(-2,"用户尚未注册，请先注册在登陆",user);

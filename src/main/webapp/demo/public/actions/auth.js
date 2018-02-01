@@ -61,7 +61,7 @@ export function signinAction(data) {
                 localStorage.setItem('loginStatus', true);
                 localStorage.setItem('token', "2");
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/home`;
+                window.location.href = `${ROOT_URLF}/home`;
             }else if (msg.status === 1) {
                 localStorage.setItem('loginStatus', true);
                 localStorage.setItem('token', "1");
@@ -85,4 +85,22 @@ export function signinAction(data) {
         }
     });
 }
-
+/**
+ * 管理员查询所有用户
+ */
+export function adminSelectAllUser(){
+    $.ajax({
+        type : "POST",
+        url : `${ROOT_URL}/admin/person`,
+        data : "",
+        dataType : "json",
+        success : function (msg) {
+            console.log("1");
+            console.log(msg);
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}

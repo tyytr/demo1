@@ -96,6 +96,7 @@
             <artifactId>jooq</artifactId>
             <version>3.9.5</version>
         </dependency>
+
     </dependencies>
 
 	<build>

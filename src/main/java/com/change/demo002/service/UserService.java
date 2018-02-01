@@ -5,6 +5,8 @@ import com.change.demo002.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -49,9 +51,10 @@ public class UserService {
             return 0;
         }
     }
-//    查询
+//    根据用户名查询用户所有信息
     public User selectUser(User user){
         return userMapper.findUserByName(user.getUsername());
     }
+
 
 }
