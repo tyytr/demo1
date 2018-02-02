@@ -7,7 +7,9 @@ import {adminSelectAllUser} from "../actions/auth";
 class Admin extends Component{
     constructor(props) {
         super(props);
-        this.state = {tabPosition: 'left',};
+        this.state = {
+            tabPosition: 'left',
+        };
     }
     render(){
         return (
@@ -24,8 +26,9 @@ class Admin extends Component{
                     </div>
                     <div className={"col-xs-12"}>
                         <Tabs tabPosition={this.state.tabPosition}>
-                            <Tabs.TabPane tab="注册用户" key="1" onTabClick={adminSelectAllUser()}><AdminRegister/></Tabs.TabPane>
-                            <Tabs.TabPane tab="买卖订单" key="2">Content of Tab 2</Tabs.TabPane>
+                            {/*<Tabs.TabPane tab="注册用户" key="1" onTabClick={adminSelectAllUser(this.state.data)}><AdminRegister/></Tabs.TabPane>*/}
+                            <Tabs.TabPane tab="注册认证" key="1"><AdminRegister/></Tabs.TabPane>
+                            <Tabs.TabPane tab="权限管理" key="2">Content of Tab 2</Tabs.TabPane>
                             {/*<Tabs.TabPane tab="系统公告" key="3"><PersonalNotice/></Tabs.TabPane>*/}
                             {/*<Tabs.TabPane tab="反馈建议" key="4"><PersonalAdvice/></Tabs.TabPane>*/}
                         </Tabs>

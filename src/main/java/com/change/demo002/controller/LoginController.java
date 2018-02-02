@@ -4,9 +4,6 @@ import com.change.demo002.entity.Rest;
 import com.change.demo002.entity.User;
 import com.change.demo002.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
 

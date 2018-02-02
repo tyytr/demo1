@@ -88,13 +88,15 @@ export function signinAction(data) {
 /**
  * 管理员查询所有用户
  */
-export function adminSelectAllUser(){
+export function adminSelectAllUser(data){
     $.ajax({
         type : "POST",
         url : `${ROOT_URL}/admin/person`,
-        data : "",
+        data : "1",
         dataType : "json",
         success : function (msg) {
+            data = msg.data;
+            // this.setState({data : msg.data});
             console.log("1");
             console.log(msg);
         },

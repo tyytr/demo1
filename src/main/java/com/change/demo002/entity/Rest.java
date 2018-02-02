@@ -1,6 +1,5 @@
 package com.change.demo002.entity;
 
-import java.util.List;
 
 public class Rest<T> {
 

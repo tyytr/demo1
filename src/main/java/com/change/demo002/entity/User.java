@@ -10,6 +10,7 @@ public class User {
     private String admin;
     private String agree;
     private String remember;
+    private String key;
 
 
     public User() {
@@ -90,6 +91,14 @@ public class User {
         this.remember = remember;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -101,6 +110,7 @@ public class User {
                 ", admin='" + admin + '\'' +
                 ", agree='" + agree + '\'' +
                 ", remember='" + remember + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
 }
