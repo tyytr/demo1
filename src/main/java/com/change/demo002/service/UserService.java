@@ -21,11 +21,13 @@ public class UserService {
             return 0;
         }else {
             //用户名不存在，执行插入语句
-            int b = userMapper.insert(user.getUsername(),
+            int b = userMapper.insert(
+                    user.getUsername(),
                     user.getPhone(),
                     user.getPassword(),
                     user.getAdmin(),
-                    user.getAgree());
+                    user.getAgree(),
+                    user.getAuthentication());
             if (b !=0 ){
                 return 1;
             }else {
@@ -37,9 +39,13 @@ public class UserService {
     public int userSelect(User user){
         //查询是否注册
         User exitUser = userMapper.findUserByName(user.getUsername());
+        user = selectUser(user);
+//        User user = userMapper.select(user.getUsername(),user.)
         System.out.println(user);
         if (null == exitUser){
             return -2;
+        }else if ("false".equals(exitUser.getAuthentication())){
+            return -3;
         }else if (!exitUser.getPassword().equals(user.getPassword())){
             return -1;
         }else if ("false".equals(exitUser.getAdmin())){

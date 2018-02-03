@@ -2,7 +2,7 @@ package com.change.demo002.entity;
 
 public class User {
 
-    private String id;
+    private Integer id;
     private String username;
     private String phone;
     private String password;
@@ -10,13 +10,13 @@ public class User {
     private String admin;
     private String agree;
     private String remember;
-    private String key;
-
+    private Integer key;
+    private String authentication;
 
     public User() {
     }
 
-    public User(String id, String username, String phone, String password, String rpassword, String admin, String agree, String remember) {
+    public User(Integer id, String username, String phone, String password, String rpassword, String admin, String agree, String remember ,String authentication) {
         this.id = id;
         this.username = username;
         this.phone = phone;
@@ -25,13 +25,14 @@ public class User {
         this.admin = admin;
         this.agree = agree;
         this.remember = remember;
+        this.authentication = authentication;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -91,12 +92,20 @@ public class User {
         this.remember = remember;
     }
 
-    public String getKey() {
+    public Integer getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(Integer key) {
         this.key = key;
+    }
+
+    public String getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(String authentication) {
+        this.authentication = authentication;
     }
 
     @Override
@@ -110,7 +119,9 @@ public class User {
                 ", admin='" + admin + '\'' +
                 ", agree='" + agree + '\'' +
                 ", remember='" + remember + '\'' +
+                ", authentication='" + authentication + '\'' +
                 ", key='" + key + '\'' +
                 '}';
     }
+
 }

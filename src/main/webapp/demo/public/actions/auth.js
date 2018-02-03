@@ -2,6 +2,7 @@ import {
     ROOT_URL,
     ROOT_URLF
 } from "./type";
+import axios from 'axios';
 
 function setAuthToLocalStorage(data) {
     localStorage.setItem('token', "-1");
@@ -73,6 +74,9 @@ export function signinAction(data) {
             }else if(msg.status === -2){
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singin`;
+            }else if (msg.state === -3){
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singin`;
             }else{
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singin`;
@@ -85,20 +89,64 @@ export function signinAction(data) {
         }
     });
 }
+// /**
+//  * 管理员查询所有用户
+//  */
+// export function adminSelectAllUser(data){
+//     $.ajax({
+//         type : "POST",
+//         url : `${ROOT_URL}/admin/person`,
+//         data : "1",
+//         dataType : "json",
+//         success : function (msg) {
+//             data = msg.data;
+//             // this.setState({data : msg.data});
+//             console.log("1");
+//             console.log(msg);
+//         },
+//         error : function (err) {
+//             console.log(err);
+//             alert("与后台交互走error");
+//         }
+//     });
+// }
 /**
- * 管理员查询所有用户
+ * 管理员注册认证
  */
-export function adminSelectAllUser(data){
+export function authenticationAgree(data) {
+    console.log(data);
     $.ajax({
-        type : "POST",
-        url : `${ROOT_URL}/admin/person`,
-        data : "1",
-        dataType : "json",
+        type : "GET",
+        url : `${ROOT_URL}/admin/authentication`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
         success : function (msg) {
-            data = msg.data;
-            // this.setState({data : msg.data});
-            console.log("1");
             console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/admin`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+export function authenticationDisagree(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/authenticationDisagree`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/admin`;
+            }
         },
         error : function (err) {
             console.log(err);

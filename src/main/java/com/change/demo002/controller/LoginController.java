@@ -4,6 +4,7 @@ import com.change.demo002.entity.Rest;
 import com.change.demo002.entity.User;
 import com.change.demo002.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -47,7 +48,9 @@ public class LoginController {
         int userLoginStatus = userService.userSelect(user);
 //        根据用户名查询用户所有信息
         user = userService.selectUser(user);
-        if (userLoginStatus == -2){
+        if ( userLoginStatus == -3){
+            return new Rest<User>(-3, "管理员正在认证注册信息，请稍后登陆",user);
+        }else if (userLoginStatus == -2){
             return new Rest<User>(-2,"用户尚未注册，请先注册在登陆",user);
         }else if (userLoginStatus == -1) {
             return new Rest<User>(-1,"用户名或者密码错误",user);

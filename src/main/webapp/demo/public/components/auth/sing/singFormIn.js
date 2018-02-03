@@ -17,7 +17,7 @@ class SingFormIn extends Component{
     //username change
     changeUsername(e){
         let username = e.target.value;
-        this.setState({userName : username });
+        this.setState({userName:username});
         console.log(this.state.userName);
     }
     //password change
@@ -99,7 +99,7 @@ class SingFormIn extends Component{
                                     {/*<span>管理员登陆</span>*/}
                                 {/*</label>*/}
                             {/*</div>*/}
-                            <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this.state)}>登陆</button>
+                            <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this)}>登陆</button>
                         </form>
                     </div>
                 </div>

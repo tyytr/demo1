@@ -14,12 +14,13 @@ import java.util.List;
 public interface UserMapper {
 
     //注册方法
-    @Insert("insert into register(username, phone, password, admin, agree) values(#{username}, #{phone}, #{password}, #{admin}, #{agree})")
+    @Insert("insert into register(username, phone, password, admin, agree, authentication) values(#{username}, #{phone}, #{password}, #{admin}, #{agree}, #{authentication})")
     int insert(@Param("username") String username,
                @Param("phone") String phone,
                @Param("password") String password,
                @Param("admin") String admin,
-               @Param("agree") String agree);
+               @Param("agree") String agree,
+               @Param("authentication") String authentication);
 
     //根据用户名查询用户
     @Select("select * from register where username=#{username}")

@@ -3,6 +3,7 @@ import {Table,Button} from 'antd';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";
 import axios from 'axios';
+import {authenticationAgree, authenticationDisagree} from "../actions/auth";
 
 class AdminRegister extends Component{
     constructor(props) {
@@ -12,7 +13,8 @@ class AdminRegister extends Component{
             isCheck : false,
             data: {},
             selectedRowKeys: [], // Check here to configure the default column
-            loading: false,
+            loadingAgree: false,
+            loadingDisagree: false
         };
     }
     componentDidMount(){
@@ -45,7 +47,7 @@ class AdminRegister extends Component{
         // console.log(typeof(array));
         // console.log(array);
 
-        const { loading, selectedRowKeys } = this.state;
+        const { loadingAgree, loadingDisagree, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: (selectedRowKeys) => {
@@ -53,7 +55,7 @@ class AdminRegister extends Component{
                 this.setState({ selectedRowKeys });
             },
         };
-        console.log(selectedRowKeys);
+        // console.log(selectedRowKeys);
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <div>
@@ -61,22 +63,43 @@ class AdminRegister extends Component{
                     <Button
                         type="primary"
                         onClick={() => {
-                            this.setState({ loading: true });
+                            this.setState({ loadingAgree: true });
                             // ajax request after empty completing
+                            // console.log(typeof (selectedRowKeys));
+                            authenticationAgree(selectedRowKeys);
                             setTimeout(() => {
                                 this.setState({
                                     selectedRowKeys: [],
-                                    loading: false,
+                                    loadingAgree: false,
                                 });
                             }, 1000);
                         }}
                         disabled={!hasSelected}
-                        loading={loading}
+                        loading={loadingAgree}
+                        className={"g-mr-10"}
                     >
-                        Reload
+                        认证同意
+                    </Button>
+                    <Button
+                        type="primary"
+                        onClick={() => {
+                            this.setState({ loadingDisagree: true });
+                            // ajax request after empty completing
+                            authenticationDisagree(selectedRowKeys);
+                            setTimeout(() => {
+                                this.setState({
+                                    selectedRowKeys: [],
+                                    loadingDisagree: false,
+                                });
+                            }, 1000);
+                        }}
+                        disabled={!hasSelected}
+                        loading={loadingDisagree}
+                    >
+                        认证拒绝
                     </Button>
                     <span style={{ marginLeft: 8 }}>
-                        {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+                        {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>
                 </div>
                 <Table rowSelection={rowSelection} columns={columns} dataSource={array} />

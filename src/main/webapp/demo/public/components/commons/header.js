@@ -29,7 +29,7 @@ class Header extends Component{
                             <a className="g-pl-40" href="/home"><img style={{height:"43px"}} src="../../../public/style/image/logo.png" alt="1"/></a>
                         </div>
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
-                            <ul className={`nav navbar-nav navbar-right ${loginStatus?"hidden":""}`}>
+                            <ul className={`nav navbar-nav navbar-right ${loginStatus==="true"?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
                                 <li><a href="/shopList">商品展示</a></li>
                                 <li><a href="/personal">个人中心</a></li>
@@ -41,7 +41,7 @@ class Header extends Component{
                                     <Link to="/singup" >注册</Link>
                                 </li>
                             </ul>
-                            <ul className={`nav navbar-nav navbar-right ${loginStatus?"":"hidden"}`}>
+                            <ul className={`nav navbar-nav navbar-right ${(loginStatus==="false")||(loginStatus===null)?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
                                 <li><a href="/shopList">商品展示</a></li>
                                 <li><a href={`${token==2?"/admin":"/personal"}`}>个人中心</a></li>

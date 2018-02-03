@@ -11,6 +11,7 @@ class SingFormUp extends Component{
             rPassWord : "",
             isAdmin : false,
             isAgree : false,
+            authentication : false,
             nameHelp : "",
             phoneHelp : "",
             wordHelp : "",
@@ -69,7 +70,8 @@ class SingFormUp extends Component{
             password : this.state.passWord,
             rpassword : this.state.rPassWord,
             admin : this.state.isAdmin,
-            agree : this.state.isAgree
+            agree : this.state.isAgree,
+            authentication : this.state.authentication
         };
         if(this.state.isAgree === false){
             alert("请先阅读《易换网用户协议》并且同意协议");
