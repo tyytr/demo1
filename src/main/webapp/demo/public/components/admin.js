@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { Tabs, Select } from 'antd';
 import 'antd/dist/antd.css';
 import AdminRegister from "./adminRegister";
+import AdminAuthority from "./adminAuthority";
 import {adminSelectAllUser} from "../actions/auth";
 
 class Admin extends Component{
@@ -28,7 +29,7 @@ class Admin extends Component{
                         <Tabs tabPosition={this.state.tabPosition}>
                             {/*<Tabs.TabPane tab="注册用户" key="1" onTabClick={adminSelectAllUser(this.state.data)}><AdminRegister/></Tabs.TabPane>*/}
                             <Tabs.TabPane tab="注册认证" key="1"><AdminRegister/></Tabs.TabPane>
-                            <Tabs.TabPane tab="权限管理" key="2">Content of Tab 2</Tabs.TabPane>
+                            <Tabs.TabPane tab="权限管理" key="2"><AdminAuthority/></Tabs.TabPane>
                             {/*<Tabs.TabPane tab="系统公告" key="3"><PersonalNotice/></Tabs.TabPane>*/}
                             {/*<Tabs.TabPane tab="反馈建议" key="4"><PersonalAdvice/></Tabs.TabPane>*/}
                         </Tabs>

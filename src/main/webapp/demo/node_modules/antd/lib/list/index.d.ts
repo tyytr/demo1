@@ -4,7 +4,7 @@ import { SpinProps } from '../spin';
 import Item from './Item';
 export { ListItemProps, ListItemMetaProps } from './Item';
 export declare type ColumnCount = 1 | 2 | 3 | 4 | 6 | 8 | 12 | 24;
-export declare type ColumnType = 'gutter' | 'column' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export declare type ColumnType = 'gutter' | 'column' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export interface ListGridType {
     gutter?: number;
     column?: ColumnCount;
@@ -13,6 +13,7 @@ export interface ListGridType {
     md?: ColumnCount;
     lg?: ColumnCount;
     xl?: ColumnCount;
+    xxl?: ColumnCount;
 }
 export declare type ListSize = 'small' | 'default' | 'large';
 export interface ListProps {

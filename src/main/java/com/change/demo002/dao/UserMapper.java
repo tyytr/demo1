@@ -12,8 +12,13 @@ import java.util.List;
 @Mapper
 @Repository
 public interface UserMapper {
-
-    //注册方法
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/5 11:53
+    No such property: code for class: Script1
+     * @Description:用户：注册方法
+     *
+     */
     @Insert("insert into register(username, phone, password, admin, agree, authentication) values(#{username}, #{phone}, #{password}, #{admin}, #{agree}, #{authentication})")
     int insert(@Param("username") String username,
                @Param("phone") String phone,
@@ -25,8 +30,13 @@ public interface UserMapper {
     //根据用户名查询用户
     @Select("select * from register where username=#{username}")
     User findUserByName(@Param("username") String username);
-
-    //登陆方法
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/5 11:54
+    No such property: code for class: Script1
+     * @Description:用户：登陆方法
+     *
+     */
     @Select("select * from register where username=#{username} and password=#{password} and admin=#{admin}")
     int select(@Param("username") String username,
                 @Param("password") String password,

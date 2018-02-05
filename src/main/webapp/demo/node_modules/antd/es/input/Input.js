@@ -177,7 +177,7 @@ Input.propTypes = {
     type: PropTypes.string,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     size: PropTypes.oneOf(['small', 'default', 'large']),
-    maxLength: PropTypes.string,
+    maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     disabled: PropTypes.bool,
     value: PropTypes.any,
     defaultValue: PropTypes.any,

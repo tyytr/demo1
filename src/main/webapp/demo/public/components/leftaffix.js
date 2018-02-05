@@ -26,11 +26,11 @@ class Left extends Component{
                             </div>
                             <Menu mode={this.state.mode} theme={this.state.theme} onClick={(e) => {
                                 console.log('click ', e);
-                                    this.setState({
-                                        current: e.key,
-                                        sub : e.item.props.children
-                                    });
-                                }} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} selectedKeys={[this.state.current]}>
+                                this.setState({
+                                    current: e.key,
+                                    sub : e.item.props.children
+                                });
+                            }} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} selectedKeys={[this.state.current]}>
                                 <SubMenu key="sub1" title={<span><Icon type="mobile"/><span><a href="/shopList#Mobile">手机</a></span></span>}>
                                     <Menu.Item key="1">苹果</Menu.Item>
                                     <Menu.Item key="2">小米</Menu.Item>
@@ -57,4 +57,3 @@ class Left extends Component{
     }
 }
 export default Left;
-// module.exports = ProductBox;

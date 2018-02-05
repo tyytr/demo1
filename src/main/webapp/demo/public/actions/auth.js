@@ -67,7 +67,7 @@ export function signinAction(data) {
                 localStorage.setItem('loginStatus', true);
                 localStorage.setItem('token', "1");
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/home`;
+                window.location.href = `${ROOT_URLF}/home`;
             }else if (msg.status === -1){
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singin`;
@@ -111,7 +111,7 @@ export function signinAction(data) {
 //     });
 // }
 /**
- * 管理员注册认证
+ * 注册认证：认证同意
  */
 export function authenticationAgree(data) {
     console.log(data);
@@ -134,10 +134,37 @@ export function authenticationAgree(data) {
         }
     });
 }
+/**
+ * 注册认证：认证拒绝
+ */
 export function authenticationDisagree(data) {
     $.ajax({
         type : "GET",
         url : `${ROOT_URL}/admin/authenticationDisagree`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/admin`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+
+/**
+ * 权限管理：权限升级
+ */
+export function updatePerson(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/updatePerson`,
         cache : false,
         traditional: true,
         data : {"data":data},

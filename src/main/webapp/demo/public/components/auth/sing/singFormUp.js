@@ -80,16 +80,26 @@ class SingFormUp extends Component{
                 this.setState({nameHelp:  "* 用户名不能为空"});
                 // alert(this.state.nameHelp);
             }else if(this.state.phone === ""||this.state.phone === null){
+                // let mPattern = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
                 this.setState({
                     nameHelp:  " ",
                     phoneHelp : "* 电话号码不能为空"
                 });
+                // if (mPattern.test(this.state.phone)){
+                // }else{
+                //     alert("请输入正确手机号");
+                // }
             }else if(this.state.passWord === ""||this.state.passWord === null){
+                // let pPattern = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
                 this.setState({
                     nameHelp:  "",
                     phoneHelp : "",
                     wordHelp : "* 密码不能为空"
                 });
+                // if (pPattern.test(this.state.passWord)){
+                // }else{
+                //     alert("最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符");
+                // }
             }else if(this.state.rPassWord === ""||this.state.passWord !== this.state.rPassWord){
                 this.setState({
                     nameHelp : "",

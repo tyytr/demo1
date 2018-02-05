@@ -35,7 +35,7 @@ class Header extends Component{
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
                                 <li className={""}>
-                                    <Link to="/singin" >登录</Link>
+                                    <Link to="/singin" >登陆</Link>
                                 </li>
                                 <li>
                                     <Link to="/singup" >注册</Link>

@@ -18,7 +18,7 @@ class AdminRegister extends Component{
         };
     }
     componentDidMount(){
-        axios.post(`${ROOT_URL}/admin/person`)
+        axios.get(`${ROOT_URL}/admin/person`)
             .then(response =>{
                 console.log(response);
                 this.setState({data : response.data.data});

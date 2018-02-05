@@ -13,7 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "amazeui-react": "^1.2.3",
-    "antd": "^3.1.1",
+    "antd": "^3.2.0",
     "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

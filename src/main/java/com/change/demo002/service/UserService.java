@@ -11,7 +11,13 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
-//    注册
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/5 11:52
+    No such property: code for class: Script1
+     * @Description:用户：注册
+     *
+     */
     public int userInsert(User user){
         //查询用户名是否存在
         User exitUser = userMapper.findUserByName(user.getUsername());
@@ -35,12 +41,16 @@ public class UserService {
             }
         }
     }
-//    登陆
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/5 11:52
+    No such property: code for class: Script1
+     * @Description:用户：登陆
+     *
+     */
     public int userSelect(User user){
         //查询是否注册
         User exitUser = userMapper.findUserByName(user.getUsername());
-        user = selectUser(user);
-//        User user = userMapper.select(user.getUsername(),user.)
         System.out.println(user);
         if (null == exitUser){
             return -2;

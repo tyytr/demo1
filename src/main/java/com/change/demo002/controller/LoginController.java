@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * @Author: lijun
  * @Date: 2018/1/15 14:11-
 No such property: code for class: Script1
- * @Description:
+ * @Description:用户
  *
  */
 
@@ -23,14 +23,17 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
-
-
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/5 11:50
+    No such property: code for class: Script1
+     * @Description:用户：注册
+     *
+     */
     @CrossOrigin
     @PostMapping("/register")
     public Rest<User> register(User user){
-//        @RequestBody User user
-
-        System.out.println(user.getUsername());
+//        System.out.println(user.getUsername());
         int userInsertStatus = userService.userInsert(user);
 
         if (userInsertStatus == 0){
@@ -41,23 +44,29 @@ public class LoginController {
             return new Rest<User>(0,"未知原因注册失败，稍后再试",user);
         }
     }
-
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/5 11:51
+    No such property: code for class: Script1
+     * @Description:用户：登陆
+     *
+     */
     @PostMapping("/login")
     public Rest<User> login(User user){
-        System.out.println(user.getUsername());
+//        System.out.println(user.getUsername());
         int userLoginStatus = userService.userSelect(user);
 //        根据用户名查询用户所有信息
-        user = userService.selectUser(user);
+        User user1 = userService.selectUser(user);
         if ( userLoginStatus == -3){
-            return new Rest<User>(-3, "管理员正在认证注册信息，请稍后登陆",user);
+            return new Rest<User>(-3, "管理员正在认证注册信息，请稍后登陆",user1);
         }else if (userLoginStatus == -2){
             return new Rest<User>(-2,"用户尚未注册，请先注册在登陆",user);
         }else if (userLoginStatus == -1) {
-            return new Rest<User>(-1,"用户名或者密码错误",user);
+            return new Rest<User>(-1,"用户名或者密码错误",user1);
         }else if (userLoginStatus == 1) {
-            return new Rest<User>( 1,"普通用户登陆成功",user);
+            return new Rest<User>( 1,"普通用户登陆成功",user1);
         }else if (userLoginStatus == 2){
-            return new Rest<User>( 2,"管理员用户登陆成功",user);
+            return new Rest<User>( 2,"管理员用户登陆成功",user1);
         }else {
             return new Rest<User>( 0, "未知原因登陆失败，稍后再试",user);
         }

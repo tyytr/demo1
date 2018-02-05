@@ -216,7 +216,7 @@ Input.propTypes = {
     type: _propTypes2['default'].string,
     id: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].number]),
     size: _propTypes2['default'].oneOf(['small', 'default', 'large']),
-    maxLength: _propTypes2['default'].string,
+    maxLength: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].number]),
     disabled: _propTypes2['default'].bool,
     value: _propTypes2['default'].any,
     defaultValue: _propTypes2['default'].any,
