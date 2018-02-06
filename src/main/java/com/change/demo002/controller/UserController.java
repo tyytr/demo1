@@ -4,7 +4,6 @@ import com.change.demo002.entity.Rest;
 import com.change.demo002.entity.User;
 import com.change.demo002.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,7 +18,7 @@ No such property: code for class: Script1
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/user")
-public class LoginController {
+public class UserController {
 
     @Autowired
     private UserService userService;

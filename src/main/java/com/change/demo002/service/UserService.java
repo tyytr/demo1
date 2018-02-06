@@ -27,14 +27,14 @@ public class UserService {
             return 0;
         }else {
             //用户名不存在，执行插入语句
-            int b = userMapper.insert(
+            int result = userMapper.insert(
                     user.getUsername(),
                     user.getPhone(),
                     user.getPassword(),
                     user.getAdmin(),
                     user.getAgree(),
                     user.getAuthentication());
-            if (b !=0 ){
+            if (result !=0 ){
                 return 1;
             }else {
                 return 2;

@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import AdminRegister from "./adminRegister";
 import AdminAuthority from "./adminAuthority";
 import {adminSelectAllUser} from "../actions/auth";
+import AdminAdvice from "./adminAdvice";
 
 class Admin extends Component{
     constructor(props) {
@@ -14,9 +15,9 @@ class Admin extends Component{
     }
     render(){
         return (
-            <div className={"container g-my-10"}>
+            <div className={"container g-mb-40"}>
                 <div className={"row"}>
-                    <div className={"col-xs-12 g-py-20"}>
+                    <div className={"col-xs-12 g-py-10"}>
                         个人中心：
                         <Select value={this.state.tabPosition} onChange={(tabPosition) => {this.setState({ tabPosition });}} dropdownMatchSelectWidth={false}>
                             <Select.Option value="top">顶部</Select.Option>
@@ -25,13 +26,13 @@ class Admin extends Component{
                             <Select.Option value="right">右侧</Select.Option>
                         </Select>
                     </div>
-                    <div className={"col-xs-12"}>
+                    <div className={"col-xs-12 g-pb-30"}>
                         <Tabs tabPosition={this.state.tabPosition}>
                             {/*<Tabs.TabPane tab="注册用户" key="1" onTabClick={adminSelectAllUser(this.state.data)}><AdminRegister/></Tabs.TabPane>*/}
                             <Tabs.TabPane tab="注册认证" key="1"><AdminRegister/></Tabs.TabPane>
                             <Tabs.TabPane tab="权限管理" key="2"><AdminAuthority/></Tabs.TabPane>
-                            {/*<Tabs.TabPane tab="系统公告" key="3"><PersonalNotice/></Tabs.TabPane>*/}
-                            {/*<Tabs.TabPane tab="反馈建议" key="4"><PersonalAdvice/></Tabs.TabPane>*/}
+                            {/*<Tabs.TabPane tab="发布公告" key="3"></Tabs.TabPane>*/}
+                            <Tabs.TabPane tab="反馈建议" key="4"><AdminAdvice/></Tabs.TabPane>
                         </Tabs>
                     </div>
                 </div>

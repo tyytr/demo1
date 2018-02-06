@@ -17,41 +17,9 @@ class GroundingProp extends Component {
         const options = [{
             value: '手机',
             label: '手机',
-            children: [{
-                value: '苹果',
-                label: '苹果',
-            },{
-                value: '小米',
-                label: '小米',
-            },{
-                value: 'OPPO',
-                label: 'OPPO',
-            },{
-                value: 'vivo',
-                label: 'vivo',
-            },{
-                value: '其他',
-                label: '其他',
-            }],
-        }, {
+        },{
             value: '电脑',
             label: '电脑',
-            children: [{
-                value: '苹果',
-                label: '苹果',
-            },{
-                value: '联想',
-                label: '联想',
-            },{
-                value: '戴尔',
-                label: '戴尔',
-            },{
-                value: '华硕',
-                label: '华硕',
-            },{
-                value: '其他',
-                label: '其他',
-            }],
         },{
             value: '书籍',
             label: '书籍',
@@ -78,13 +46,13 @@ class GroundingProp extends Component {
                     <div className={"col-xs-12 g-my-5"}>
                         <span className={"col-xs-6 "}>商品种类：</span>
                         <div className={"col-xs-6"}>
-                            <Cascader style={{}} defaultValue={['手机']} options={options} onChange={(value, selectedOptions)=>{console.log(value, selectedOptions);}} placeholder="商品名称" showSearch />
+                            <Cascader style={{}} defaultValue={['手机']} options={options} onChange={(value, selectedOptions)=>{this.props.handleProp_type(value);console.log(value, selectedOptions);}} placeholder="商品名称" showSearch />
                         </div>
                     </div>
                     <div className={"col-xs-12 g-my-5"}>
                         <span className={"col-xs-6"}>商品颜色：</span>
                         <div className={"col-xs-6"}>
-                            <ColorPicker color={color} onChange={(color) => {this.setState({color});}} />
+                            <ColorPicker color={color} onChange={(color) => {this.props.handleProp_color(color); this.setState({color});}} />
                         </div>
                     </div>
                     <div className={"col-xs-12 g-my-5"}>

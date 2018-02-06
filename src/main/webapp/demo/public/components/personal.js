@@ -3,7 +3,7 @@ import React,{Component} from 'react';
 import { Tabs, Select } from 'antd';
 import 'antd/dist/antd.css';
 
-import PersonalAdvice from './personalAdvise';
+import PersonalAdvice from './personalAdvice';
 import PersonalNotice from './personalNotice';
 
 class Personal extends Component{

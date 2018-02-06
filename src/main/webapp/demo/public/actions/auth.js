@@ -19,7 +19,7 @@ function setAuthToLocalStorage(data) {
  * 注册
  */
 export function singupAction(data) {
-     console.log(data);
+    console.log(data);
     $.ajax({
         type : "POST",
         url : `${ROOT_URL}/user/register`,
@@ -29,7 +29,7 @@ export function singupAction(data) {
             setAuthToLocalStorage(msg);
             console.log(msg);
             if (msg.status === "1") {
-                alert("恭喜用户  "+localStorage.getItem('username')+"  注册成功，快点登陆吧！");
+                alert(localStorage.getItem('username')+"  的注册信息已经提交，等待管理员审核！");
                 // window.location.href = `${ROOT_URLF}/singin`;
             }else if (msg.status === "-1"){
                 alert(msg.message);
@@ -158,6 +158,7 @@ export function authenticationDisagree(data) {
     });
 }
 
+
 /**
  * 权限管理：权限升级
  */
@@ -165,6 +166,86 @@ export function updatePerson(data) {
     $.ajax({
         type : "GET",
         url : `${ROOT_URL}/admin/updatePerson`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/admin`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+
+
+
+/**
+ * 普通用户个人中心：反馈建议
+ */
+export function personAdvice(data) {
+    console.log(data);
+    $.ajax({
+        type : "POST",
+        url : `${ROOT_URL}/person/advice`,
+        data : data,
+        dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === "1") {
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singin`;
+            }else if (msg.status === "-1"){
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }else{
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+/**
+ * 普通用户个人中心：接受建议
+ */
+export function adviceAgree(data) {
+    console.log(data);
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/adviceAgree`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/admin`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+/**
+ * 普通用户个人中心：接受建议
+ */
+export function adviceDisagree(data) {
+    console.log(data);
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/adviceDisagree`,
         cache : false,
         traditional: true,
         data : {"data":data},
