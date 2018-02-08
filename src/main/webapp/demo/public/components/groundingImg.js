@@ -35,7 +35,7 @@ class GroundingImg extends Component {
                     <span className={"col-xs-6"} style={{textAlign:"center"}}>上传图片：</span>
                     <div className="col-xs-6 clearfix">
                         <Upload action="http://localhost:8080/groundingImg" listType="picture-card"
-                            fileList={fileList}
+                            // fileList={fileList}
                             onPreview={(file) => {
                                 this.setState({
                                     previewImage: file.url || file.thumbUrl,

@@ -26,12 +26,13 @@ class Header extends Component{
                                 <span className="icon-bar"></span>
                                 <span className="icon-bar"></span>
                             </button>
-                            <a className="g-pl-40" href="/home"><img style={{height:"43px"}} src="../../../public/style/image/logo.png" alt="1"/></a>
+                            <a className="g-pl-20" href="/home"><img style={{height:"43px"}} src="../../../public/style/image/logo.png" alt="1"/></a>
                         </div>
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul className={`nav navbar-nav navbar-right ${loginStatus==="true"?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                <li><a href="/shopList">商品展示</a></li>
+                                <li><a href="/shopList">商品</a></li>
+                                <li><a href="/grounding">商品发布</a></li>
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
                                 <li className={""}>
@@ -43,10 +44,11 @@ class Header extends Component{
                             </ul>
                             <ul className={`nav navbar-nav navbar-right ${(loginStatus==="false")||(loginStatus===null)?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                <li><a href="/shopList">商品展示</a></li>
-                                <li><a href={`${token==2?"/admin":"/personal"}`}>个人中心</a></li>
-                                <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
-                                <li className={""}>
+                                <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/shopList">商品</a></li>
+                                <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/grounding">商品发布</a></li>
+                                <li><a href={`${token===2?"/admin":"/personal"}`}>个人中心</a></li>
+                                <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
+                                <li>
                                     <Link to="" style={{color:"#1890ff"}} >{username}</Link>
                                 </li>
                                 <li>

@@ -31,15 +31,15 @@ class CenterNews extends Component{
             },
         ];
         return (
-            <div className={"col-xs-7 col-sm-9"} >
+            <div className={"col-xs-12 col-sm-12"} >
                 <div>
                     <Carousel autoplay>
                         {carousel.map(this.renderRow)}
                     </Carousel>
                 </div>
-                <div>
-                    <Detail/>
-                </div>
+                {/*<div>*/}
+                    {/*<Detail/>*/}
+                {/*</div>*/}
             </div>
         )
     }

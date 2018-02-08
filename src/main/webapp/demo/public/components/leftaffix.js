@@ -32,16 +32,16 @@ class Left extends Component{
                                 });
                             }} defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} selectedKeys={[this.state.current]}>
                                 <SubMenu key="sub1" title={<span><Icon type="mobile"/><span><a href="/shopList#Mobile">手机</a></span></span>}>
-                                    <Menu.Item key="1">苹果</Menu.Item>
-                                    <Menu.Item key="2">小米</Menu.Item>
-                                    <Menu.Item key="3">OPPO</Menu.Item>
-                                    <Menu.Item key="4">vivo</Menu.Item>
+                                    {/*<Menu.Item key="1">苹果</Menu.Item>*/}
+                                    {/*<Menu.Item key="2">小米</Menu.Item>*/}
+                                    {/*<Menu.Item key="3">OPPO</Menu.Item>*/}
+                                    {/*<Menu.Item key="4">vivo</Menu.Item>*/}
                                 </SubMenu>
                                 <SubMenu key="sub2" title={<span><Icon type="desktop"/><span><a href="/shopList#Desktop">电脑</a></span></span>}>
-                                    <Menu.Item key="5">苹果</Menu.Item>
-                                    <Menu.Item key="6">联想</Menu.Item>
-                                    <Menu.Item key="7">戴尔</Menu.Item>
-                                    <Menu.Item key="8">华硕</Menu.Item>
+                                    {/*<Menu.Item key="5">苹果</Menu.Item>*/}
+                                    {/*<Menu.Item key="6">联想</Menu.Item>*/}
+                                    {/*<Menu.Item key="7">戴尔</Menu.Item>*/}
+                                    {/*<Menu.Item key="8">华硕</Menu.Item>*/}
                                 </SubMenu>
                                 <SubMenu key="sub3" title={<span><Icon type="book"/><span>书籍</span></span>}/>
                                 <SubMenu key="sub4" title={<span><Icon type="skin"/><span>衣服</span></span>}/>
