@@ -54,10 +54,10 @@ public class AdminController {
     //  注册拒绝
     @GetMapping("/authenticationDisagree")
     public @ResponseBody Rest<List<String>> authenticationDisagree(Admin admin){
-        System.out.println(admin.getData());
-        for (String s:admin.getData()) {
-            adminService.adminDisagree(s);
-            System.out.println(s);
+//        System.out.println(admin.getData());
+        for (String result:admin.getData()) {
+            adminService.adminDisagree(result);
+//            System.out.println(result);
         }
         return new Rest<List<String>>(1,"认证拒绝成功",admin.getData());
     }
@@ -83,9 +83,9 @@ public class AdminController {
     @GetMapping("/updatePerson")
     public @ResponseBody Rest<List<String>> updatePerson(Admin admin){
 //        System.out.println(person.getData());
-        for (String s:admin.getData()) {
-            adminService.updatePerson(s);
-            System.out.println(s);
+        for (String result:admin.getData()) {
+            adminService.updatePerson(result);
+//            System.out.println(result);
         }
         return new Rest<>(1,"注册认证成功",admin.getData());
     }
@@ -93,7 +93,7 @@ public class AdminController {
      * @Author: lijun
      * @Date: 2018/2/7 14:40
     No such property: code for class: Script1
-     * @Description:管理员个人中心：发布公告
+     * @Description:管理员个人中心：公告系统
      *
      */
     //    管理员发布公告
@@ -119,13 +119,13 @@ public class AdminController {
 //        System.out.println(allUser);
         return new Rest<List<Admin>>(1, "查询未处理建议成功s", allNotice);
     }
-    //  注册拒绝
+    //  删除公告
     @GetMapping("/adminDeleteNotice")
     public @ResponseBody Rest<List<String>> adminDeleteNotice(Admin admin){
-        System.out.println(admin.getData());
+//        System.out.println(admin.getData());
         for (String result:admin.getData()) {
             adminService.adminDeleteNotice(result);
-            System.out.println(result);
+//            System.out.println(result);
         }
         return new Rest<List<String>>(1,"认证拒绝成功",admin.getData());
     }
@@ -150,20 +150,20 @@ public class AdminController {
     //    采纳建议
     @GetMapping("/adviceAgree")
     public @ResponseBody Rest<List<String>> adviceAgree(Admin admin){
-        System.out.println(admin.getData());
+//        System.out.println(admin.getData());
         for (String result:admin.getData()) {
             adminService.adviceAgree(result);
-            System.out.println(result);
+//            System.out.println(result);
         }
         return new Rest<List<String>>(1,"采纳建议",admin.getData());
     }
-    //  注册拒绝
+    //    拒绝建议
     @GetMapping("/adviceDisagree")
     public @ResponseBody Rest<List<String>> adviceDisagree(Admin admin){
 //        System.out.println(admin.getData());
         for (String result:admin.getData()) {
             adminService.adviceDisagree(result);
-            System.out.println(result);
+//            System.out.println(result);
         }
         return new Rest<List<String>>(1,"拒绝建议",admin.getData());
     }

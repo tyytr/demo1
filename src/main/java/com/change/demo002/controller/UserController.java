@@ -38,7 +38,7 @@ public class UserController {
         if (userInsertStatus == 0){
             return new Rest<User>(-1,"该用户名已经注册，请重新注册",user);
         }else if (userInsertStatus == 1){
-            return new Rest<User>(1,"注册成功",user);
+            return new Rest<User>(1,"注册信息提交成功，等待管理员认证注册",user);
         }else{
             return new Rest<User>(0,"未知原因注册失败，稍后再试",user);
         }

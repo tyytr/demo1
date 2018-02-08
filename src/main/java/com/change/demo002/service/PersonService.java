@@ -16,7 +16,7 @@ public class PersonService {
      * @Author: lijun
      * @Date: 2018/2/7 18:19
     No such property: code for class: Script1
-     * @Description:
+     * @Description:普通用户个人中心：系统公告方法
      *
      */
     //    查询所有系统公告
@@ -30,6 +30,7 @@ public class PersonService {
      * @Description:普通用户个人中心：反馈建议方法
      *
      */
+    //    反馈建议
     public int personInsertAdvice(Person person){
         int result = personMapper.personInsertAdvice(
                 person.getId(),

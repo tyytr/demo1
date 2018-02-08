@@ -48,9 +48,10 @@ public interface AdminMapper {
      * @Author: lijun
      * @Date: 2018/2/7 15:07
     No such property: code for class: Script1
-     * @Description:管理员个人中心：发布公告
+     * @Description:管理员个人中心：公告系统
      *
      */
+    //    管理员发布公告
     @Insert("insert into notice (id, username, notice, time) values(#{id}, #{username}, #{notice}, #{time})")
     int adminInsertNotice(
             @Param("id") String id,

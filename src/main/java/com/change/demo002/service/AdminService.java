@@ -66,7 +66,7 @@ public class AdminService {
      * @Author: lijun
      * @Date: 2018/2/7 14:50
     No such property: code for class: Script1
-     * @Description:管理员个人中心：发布公告方法
+     * @Description:管理员个人中心：公告系统方法
      *
      */
     //    管理员发布公告

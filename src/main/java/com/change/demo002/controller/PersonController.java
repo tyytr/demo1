@@ -44,7 +44,7 @@ public class PersonController {
      * @Author: lijun
      * @Date: 2018/2/6 16:37
     No such property: code for class: Script1
-     * @Description:普通用户反馈建议
+     * @Description:普通用户个人中心：反馈建议
      *
      */
     @PostMapping("/advice")

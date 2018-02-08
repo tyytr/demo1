@@ -51,7 +51,7 @@ public class UserService {
     public int userSelect(User user){
         //查询是否注册
         User exitUser = userMapper.findUserByName(user.getUsername());
-        System.out.println(user);
+//        System.out.println(user);
         if (null == exitUser){
             return -2;
         }else if ("false".equals(exitUser.getAuthentication())){
