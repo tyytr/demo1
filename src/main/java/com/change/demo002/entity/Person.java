@@ -3,6 +3,16 @@ package com.change.demo002.entity;
 import java.util.List;
 
 public class Person {
+    private List<String> data;
+
+    public List<String> getData() {
+        return data;
+    }
+
+    public void setData(List<String> data) {
+        this.data = data;
+    }
+
     private String advice_id;
     private String id;
     private String username;

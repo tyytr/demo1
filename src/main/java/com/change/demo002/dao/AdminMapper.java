@@ -1,5 +1,6 @@
 package com.change.demo002.dao;
 
+import com.change.demo002.entity.Admin;
 import com.change.demo002.entity.Person;
 import com.change.demo002.entity.User;
 import org.apache.ibatis.annotations.*;
@@ -45,6 +46,27 @@ public interface AdminMapper {
 
     /**
      * @Author: lijun
+     * @Date: 2018/2/7 15:07
+    No such property: code for class: Script1
+     * @Description:管理员个人中心：发布公告
+     *
+     */
+    @Insert("insert into notice (id, username, notice, time) values(#{id}, #{username}, #{notice}, #{time})")
+    int adminInsertNotice(
+            @Param("id") String id,
+            @Param("username") String username,
+            @Param("notice") String notice,
+            @Param("time") String time
+    );
+    //    管理员显示所有发布公告
+    @Select("select * from notice")
+    List<Admin> selectAllNotice();
+    //    管理员删除公告
+    @Delete("delete from notice where notice_id = #{data}")
+    boolean adminDeleteNotice(@Param("data") String data);
+
+    /**
+     * @Author: lijun
      * @Date: 2018/2/6 17:26
     No such property: code for class: Script1
      * @Description:管理员个人中心：反馈建议方法
@@ -53,4 +75,10 @@ public interface AdminMapper {
     //    管理员显示所有反馈建议信息
     @Select("select * from advice where agree = 'false' and disagree = 'false'")
     List<Person> selectAllAdvice();
+    //    采纳建议
+    @Update("update advice set agree = 'true' where advice_id = #{data}")
+    boolean updateAdviceAgree(@Param("data") String data);
+    //    拒绝建议
+    @Update("update advice set disagree = 'true' where advice_id = #{data}")
+    boolean updateAdviceDisagree(@Param("data") String data);
 }

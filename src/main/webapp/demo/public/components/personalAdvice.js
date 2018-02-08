@@ -40,9 +40,12 @@ class PersonalAdvice extends Component{
             "disagree" : this.state.disagree,
             "time" : time
         };
-        if (token === "1" && loginStatus === "true"){
+        if (token === "1" && loginStatus === "true" && advice !== null){
             // console.log(data);
             personAdvice(data);
+        }
+        else {
+            alert("反馈建议内容为空，请核实重新提交");
         }
 
     }

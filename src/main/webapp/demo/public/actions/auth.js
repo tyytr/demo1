@@ -89,27 +89,9 @@ export function signinAction(data) {
         }
     });
 }
-// /**
-//  * 管理员查询所有用户
-//  */
-// export function adminSelectAllUser(data){
-//     $.ajax({
-//         type : "POST",
-//         url : `${ROOT_URL}/admin/person`,
-//         data : "1",
-//         dataType : "json",
-//         success : function (msg) {
-//             data = msg.data;
-//             // this.setState({data : msg.data});
-//             console.log("1");
-//             console.log(msg);
-//         },
-//         error : function (err) {
-//             console.log(err);
-//             alert("与后台交互走error");
-//         }
-//     });
-// }
+
+
+
 /**
  * 注册认证：认证同意
  */
@@ -159,6 +141,7 @@ export function authenticationDisagree(data) {
 }
 
 
+
 /**
  * 权限管理：权限升级
  */
@@ -183,6 +166,60 @@ export function updatePerson(data) {
     });
 }
 
+
+
+/**
+ * 管理员个人中心：发布公告
+ */
+export function adminNotice(data) {
+    console.log(data);
+    $.ajax({
+        type : "POST",
+        url : `${ROOT_URL}/admin/notice`,
+        data : data,
+        dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === "1") {
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singin`;
+            }else if (msg.status === "-1"){
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }else{
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+/**
+ * 注册认证：认证拒绝
+ */
+export function adminDeleteNotice(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/adminDeleteNotice`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/admin`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
 
 
 /**
@@ -215,7 +252,7 @@ export function personAdvice(data) {
     });
 }
 /**
- * 普通用户个人中心：接受建议
+ * 管理员个人中心：采纳建议
  */
 export function adviceAgree(data) {
     console.log(data);
@@ -229,7 +266,7 @@ export function adviceAgree(data) {
         success : function (msg) {
             console.log(msg);
             if (msg.status === 1){
-                window.location.href = `${ROOT_URLF}/admin`;
+                // window.location.href = `${ROOT_URLF}/admin`;
             }
         },
         error : function (err) {
@@ -239,7 +276,7 @@ export function adviceAgree(data) {
     });
 }
 /**
- * 普通用户个人中心：接受建议
+ * 管理员个人中心：拒绝建议
  */
 export function adviceDisagree(data) {
     console.log(data);
@@ -253,7 +290,7 @@ export function adviceDisagree(data) {
         success : function (msg) {
             console.log(msg);
             if (msg.status === 1){
-                window.location.href = `${ROOT_URLF}/admin`;
+                // window.location.href = `${ROOT_URLF}/admin`;
             }
         },
         error : function (err) {

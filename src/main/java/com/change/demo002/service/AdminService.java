@@ -1,6 +1,7 @@
 package com.change.demo002.service;
 
 import com.change.demo002.dao.AdminMapper;
+import com.change.demo002.entity.Admin;
 import com.change.demo002.entity.Person;
 import com.change.demo002.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,40 @@ public class AdminService {
     }
     /**
      * @Author: lijun
+     * @Date: 2018/2/7 14:50
+    No such property: code for class: Script1
+     * @Description:管理员个人中心：发布公告方法
+     *
+     */
+    //    管理员发布公告
+    public int adminInsertNotice(Admin admin){
+        int result = adminMapper.adminInsertNotice(
+                admin.getId(),
+                admin.getUsername(),
+                admin.getNotice(),
+                admin.getTime());
+        if(result != 0){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+    //    管理员显示所有公告
+    public List<Admin> selectAllNotice(){
+        return adminMapper.selectAllNotice();
+    }
+    //    管理员删除公告
+    public int adminDeleteNotice(String data){
+        boolean result = adminMapper.adminDeleteNotice(data);
+        if (result){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+
+    /**
+     * @Author: lijun
      * @Date: 2018/2/6 17:17
     No such property: code for class: Script1
      * @Description:管理员个人中心：反馈建议
@@ -73,4 +108,22 @@ public class AdminService {
         return adminMapper.selectAllAdvice();
     }
 
+    //    采纳建议
+    public int adviceAgree(String data){
+        boolean result = adminMapper.updateAdviceAgree(data);
+        if (result){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+    //    拒绝建议
+    public int adviceDisagree(String data){
+        boolean result = adminMapper.updateAdviceDisagree(data);
+        if (result){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
 }

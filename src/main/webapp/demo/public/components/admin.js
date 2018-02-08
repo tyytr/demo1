@@ -3,8 +3,8 @@ import { Tabs, Select } from 'antd';
 import 'antd/dist/antd.css';
 import AdminRegister from "./adminRegister";
 import AdminAuthority from "./adminAuthority";
-import {adminSelectAllUser} from "../actions/auth";
 import AdminAdvice from "./adminAdvice";
+import AdminNotice from "./adminNotice";
 
 class Admin extends Component{
     constructor(props) {
@@ -31,7 +31,7 @@ class Admin extends Component{
                             {/*<Tabs.TabPane tab="注册用户" key="1" onTabClick={adminSelectAllUser(this.state.data)}><AdminRegister/></Tabs.TabPane>*/}
                             <Tabs.TabPane tab="注册认证" key="1"><AdminRegister/></Tabs.TabPane>
                             <Tabs.TabPane tab="权限管理" key="2"><AdminAuthority/></Tabs.TabPane>
-                            {/*<Tabs.TabPane tab="发布公告" key="3"></Tabs.TabPane>*/}
+                            <Tabs.TabPane tab="公告系统" key="3"><AdminNotice/></Tabs.TabPane>
                             <Tabs.TabPane tab="反馈建议" key="4"><AdminAdvice/></Tabs.TabPane>
                         </Tabs>
                     </div>
