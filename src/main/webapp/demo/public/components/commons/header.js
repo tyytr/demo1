@@ -32,7 +32,7 @@ class Header extends Component{
                             <ul className={`nav navbar-nav navbar-right ${loginStatus==="true"?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
                                 <li><a href="/shopList">商品</a></li>
-                                <li><a href="/grounding">商品发布</a></li>
+                                <li><a href="/publish">商品发布</a></li>
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
                                 <li className={""}>
@@ -45,7 +45,7 @@ class Header extends Component{
                             <ul className={`nav navbar-nav navbar-right ${(loginStatus==="false")||(loginStatus===null)?"hidden":""}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
                                 <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/shopList">商品</a></li>
-                                <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/grounding">商品发布</a></li>
+                                <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/publish">商品发布</a></li>
                                 <li><a href={`${token===2?"/admin":"/personal"}`}>个人中心</a></li>
                                 <li className={`${(loginStatus==="false")||(loginStatus===null)||(token==="2")?"hidden":""}`}><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
                                 <li>

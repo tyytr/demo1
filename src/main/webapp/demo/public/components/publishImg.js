@@ -4,7 +4,8 @@
 import React, { Component } from 'react';
 import {Upload, Icon, Modal, Divider} from 'antd';
 import 'antd/dist/antd.css';
-class GroundingImg extends Component {
+import {ROOT_URL} from "../actions/type";
+class PublishImg extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +15,7 @@ class GroundingImg extends Component {
                 uid: -1,
                 name: 'xxx.png',
                 status: 'done',
-                url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+                url: "../../public/style/image/carousel1.jpg",
             }],
         };
     }
@@ -34,16 +35,19 @@ class GroundingImg extends Component {
                 <div className={"col-xs-12 g-my-5"}>
                     <span className={"col-xs-6"} style={{textAlign:"center"}}>上传图片：</span>
                     <div className="col-xs-6 clearfix">
-                        <Upload action="http://localhost:8080/groundingImg" listType="picture-card"
-                            // fileList={fileList}
+                        <Upload
+                            action={`${ROOT_URL}/publishImg`}
+                            listType="picture-card"
+                            fileList={fileList}
                             onPreview={(file) => {
-                                this.setState({
-                                    previewImage: file.url || file.thumbUrl,
-                                    previewVisible: true,
-                                });
+                            this.setState({
+                            previewImage: file.url || file.thumbUrl,
+                            previewVisible: true,
+                            });
                             }}
-                            onChange={({ fileList }) => {this.setState({ fileList });console.log(fileList[0].url);this.props.handlePhoto(fileList)}}>
-                            {fileList.length >= 3 ? null : uploadButton}
+                            onChange={({ fileList }) => {this.setState({ fileList });console.log(this.state.fileList);console.log(event)}}
+                        >
+                            {fileList.length >= 1 ? null : uploadButton}
                         </Upload>
                         <Modal visible={previewVisible} footer={null} onCancel={() => this.setState({ previewVisible: false })}>
                             <img alt="example" style={{ width: '100%' }} src={previewImage} />
@@ -54,7 +58,7 @@ class GroundingImg extends Component {
         );
     }
 }
-export default GroundingImg;
+export default PublishImg;
 
 
 

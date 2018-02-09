@@ -6,7 +6,7 @@ import { ColorPicker } from 'zent';
 import 'zent/css/index.css';
 import 'antd/dist/antd.css';
 import {Divider,Cascader} from "antd";
-class GroundingProp extends Component {
+class PublishProp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -64,7 +64,7 @@ class GroundingProp extends Component {
         );
     }
 }
-export default GroundingProp;
+export default PublishProp;
 
 
 

@@ -23,7 +23,7 @@ class Publish extends Component{
                                 <Input.Search placeholder="请输入搜索内容" enterButton="搜索" size="large" />
                             </div>
                             <div className={"g-my-10 col-xs-2 col-sm-2 col-xs-offset-2 col-sm-offset-4"}>
-                                <a href="/grounding"><Button type="primary" size={"large"}>发布</Button></a>
+                                <a href="/publish"><Button type="primary" size={"large"}>发布</Button></a>
                             </div>
                         </div>
                     </div>

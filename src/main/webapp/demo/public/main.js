@@ -9,7 +9,7 @@ import Singin from './components/auth/singin';
 import Singup from './components/auth/singup';
 import Singout from './components/auth/singout'
 import ShopList from './components/shopList';
-import Grounding from './components/grounding';
+import Publish from './components/publish';
 import Personal from './components/personal';
 import Admin from './components/admin';
 import Cart from './components/cart';
@@ -34,7 +34,7 @@ ReactDOM.render(
                     <Route path='/singup' component={Singup} />
                     <Route path='/singout' component={Singout} />
                     <Route path='/shopList' component={ShopList} />
-                    <Route path='/grounding' component={Grounding} />
+                    <Route path='/publish' component={Publish} />
                     <Route path='/personal' component={Personal} />
                     <Route path='/admin' component={Admin} />
                     <Route path='/cart' component={Cart} />
