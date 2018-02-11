@@ -7,21 +7,24 @@ import 'antd/dist/antd.css';
 import {Divider, InputNumber, Input, Button} from "antd";
 import PublishImg from './publishImg';
 import PublishProp from './publishProp';
+import {goodsPublish} from "../actions/auth";
 class Publish extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            prop:"",
-            color:"",
+            prop:"手机",
+            color:"#1890ff",
 
-            originalPrice: 1,
-            price:1,
-            number:1,
+            originalPrice: "1",
+            price: "1",
+            number: "1",
 
             title:"",
             describe:"",
 
             agree : false,
+
+            url : "",
 
             fileList: [{
                 uid: -1,
@@ -50,13 +53,45 @@ class Publish extends Component{
         console.log(e.target.value);
     }
     // 商品图片
-    handlePhoto(fileList){
-        console.log(fileList);
-        this.setState({fileList:fileList});
+    handlePhoto(url){
+        console.log(url);
+        this.setState({url:url});
     }
 
-    handleClick(){
-
+    handleClick(e){
+        const token = localStorage.getItem("token");
+        const status = localStorage.getItem("loginStatus");
+        const userId = localStorage.getItem("userId");
+        const username = localStorage.getItem("username");
+        const data = {
+            id : userId,
+            username : username,
+            prop : this.state.prop,
+            color : this.state.color,
+            originalPrice : this.state.originalPrice,
+            price : this.state.price,
+            title : this.state.title,
+            describe : this.state.describe,
+            agree : this.state.agree,
+            url : this.state.url,
+            number : this.state.number
+        };
+        console.log(data);
+        if(token === "1" && status === "true"){
+            if (this.state.title === ""){
+                alert("请输入商品标题");
+            }else if (this.state.describe === ""){
+                alert("请输入商品描述");
+            }else if (this.state.originalPrice < this.state.price){
+                alert("您的商品售价高于原价，请确认价钱");
+            }else if (data.url === ""){
+                alert("请上传商品图片");
+            }else {
+                goodsPublish(data);
+            }
+        }else {
+            alert("请您先登陆账号");
+        }
     }
     render(){
         return (

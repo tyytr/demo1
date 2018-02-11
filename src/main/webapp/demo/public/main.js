@@ -14,7 +14,6 @@ import Personal from './components/personal';
 import Admin from './components/admin';
 import Cart from './components/cart';
 import Header from './components/commons/header';
-// import Publish from './components/commons/publish';
 import Footer from './components/commons/footer';
 
 import reducers from './reducers';

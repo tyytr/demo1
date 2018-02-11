@@ -9,6 +9,7 @@ class PublishImg extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
             previewVisible: false,
             previewImage: '',
             fileList: [{
@@ -45,7 +46,12 @@ class PublishImg extends Component {
                             previewVisible: true,
                             });
                             }}
-                            onChange={({ fileList }) => {this.setState({ fileList });console.log(this.state.fileList);console.log(event)}}
+                            onChange={({ fileList }) => {
+                                this.setState({ fileList });
+                                console.log(this.state.fileList);
+                                console.log(event);
+                                if (fileList[0] && fileList[0].status==="done")
+                                {this.props.handlePhoto(fileList[0].response);}}}
                         >
                             {fileList.length >= 1 ? null : uploadButton}
                         </Upload>

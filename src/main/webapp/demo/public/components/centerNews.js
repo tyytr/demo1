@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import {Carousel} from "antd";
 import 'antd/dist/antd.css';
-import Detail from './centerNewsDetail';
 class CenterNews extends Component{
     constructor(props) {
         super(props);
@@ -45,4 +44,3 @@ class CenterNews extends Component{
     }
 }
 export default CenterNews;
-// module.exports = ProductBox;

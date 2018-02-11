@@ -299,3 +299,36 @@ export function adviceDisagree(data) {
         }
     });
 }
+
+
+/**
+ * 普通用户个人中心：商品发布
+ */
+export function goodsPublish(data) {
+    console.log(data);
+    $.ajax({
+        type : "POST",
+        url : `${ROOT_URL}/goods/publish`,
+        data : data,
+        // cache : false,
+        // traditional: true,
+        dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === "1") {
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singin`;
+            }else if (msg.status === "-1"){
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }else{
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}

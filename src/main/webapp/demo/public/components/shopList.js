@@ -14,9 +14,9 @@ class ShopList extends Component{
         return (
             <div key={index} className={"col-xs-4 col-sm-2 g-pa-20 shopList g-ma-5"}>
                 <a href="">
-                <img style={{width:"100%",height:"100%"}} src={src.src} alt={index}/>
-                <span style={{color:"#ff2832"}}>￥：{src.price}</span>
-                <p className={"shop_name"}>{src.name}</p>
+                    <img style={{width:"100%",height:"100%"}} src={src.src} alt={index}/>
+                    <span style={{color:"#ff2832"}}>￥：{src.price}</span>
+                    <p className={"shop_name"}>{src.name}</p>
                 </a>
             </div>
         )
@@ -41,7 +41,7 @@ class ShopList extends Component{
                 name : "手机",
                 price : "1200"
             }
-            ];
+        ];
         const carousel = [
             {
                 src : "../../public/style/image/shop1.jpg",
@@ -204,16 +204,16 @@ class ShopList extends Component{
                     </Tabs>
                 </div>
                 {/*<ul className="nav nav-tabs" role={"tablist"}>*/}
-                    {/*<li role={"presentation"} className="active"><a href={"#Mobile"} aria-controls="Mobile" role="tab" data-toggle="tab">手机</a></li>*/}
-                    {/*<li role={"presentation"}><a href={"#Desktop"}  aria-controls="Desktop" role="tab" data-toggle="tab">电脑</a></li>*/}
-                    {/*<li><a href="#">iOS</a></li>*/}
-                    {/*<li><a href="#">VB.Net</a></li>*/}
-                    {/*<li><a href="#">Java</a></li>*/}
-                    {/*<li><a href="#">PHP</a></li>*/}
+                {/*<li role={"presentation"} className="active"><a href={"#Mobile"} aria-controls="Mobile" role="tab" data-toggle="tab">手机</a></li>*/}
+                {/*<li role={"presentation"}><a href={"#Desktop"}  aria-controls="Desktop" role="tab" data-toggle="tab">电脑</a></li>*/}
+                {/*<li><a href="#">iOS</a></li>*/}
+                {/*<li><a href="#">VB.Net</a></li>*/}
+                {/*<li><a href="#">Java</a></li>*/}
+                {/*<li><a href="#">PHP</a></li>*/}
                 {/*</ul>*/}
                 {/*<div className="tab-content">*/}
-                    {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
-                    {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousell.map(this.renderRow)}</div>*/}
+                {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
+                {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousell.map(this.renderRow)}</div>*/}
                 {/*</div>*/}
                 {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
                 {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousel.map(this.renderRow)}</div>*/}
@@ -222,4 +222,3 @@ class ShopList extends Component{
     }
 }
 export default ShopList;
-// module.exports = ProductBox;

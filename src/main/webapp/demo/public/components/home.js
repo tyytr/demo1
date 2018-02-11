@@ -14,7 +14,7 @@ class Home extends Component{
             <div className={"container"}>
                 <div className={"row g-py-50"}>
                     <CenterNews/>
-                    {/*<Publish/>*/}
+                    <Publish/>
                     <Left/>
                     <Detail/>
                 </div>
@@ -23,4 +23,3 @@ class Home extends Component{
     }
 }
 export default Home;
-// module.exports = ProductBox;

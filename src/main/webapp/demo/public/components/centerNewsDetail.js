@@ -80,7 +80,7 @@ class Detail extends Component{
             }
         ];
         return (
-            <div className={"col-xs-12 col-sm-12"} >
+            <div className={"col-xs-7 col-sm-9"} >
                 <div className={"g-my-20"}>
                     <Tabs defaultActiveKey="0">
                         <Tabs.TabPane tab="推荐" key="0">{carousel.map(this.renderRow)}</Tabs.TabPane>
