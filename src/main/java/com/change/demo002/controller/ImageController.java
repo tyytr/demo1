@@ -22,6 +22,7 @@ public class ImageController {
 
 
     private static final Logger logger = LoggerFactory.getLogger(ImageController.class);
+    private int i = 0;
 
     /**
     * @Author: lijun
@@ -35,10 +36,8 @@ public class ImageController {
         String contentType = file.getContentType();
 
         String fileName = file.getOriginalFilename();
-        int i = 0;
-        while(true) {
 
-            String filePath = request.getSession().getServletContext().getRealPath("/ServiceImage/" + (i += 1) + "/");
+            String filePath = request.getSession().getServletContext().getRealPath("/ServiceImage/" + i + "/");
 
             System.out.println(contentType);
             System.out.println(filePath);
@@ -47,13 +46,12 @@ public class ImageController {
 
             try {
                 FileUtils.uploadFile(file.getBytes(), filePath, fileName);
+                i++;
             } catch (Exception e) {
                 // TODO: handle exception
             }
-            continue;
             //返回json
-            return 0;
-        }
+            return filePath+fileName;
 
     }
 
