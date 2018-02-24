@@ -1,6 +1,7 @@
 package com.change.demo002.dao;
 
 import com.change.demo002.entity.Admin;
+import com.change.demo002.entity.Goods;
 import com.change.demo002.entity.Person;
 import com.change.demo002.entity.User;
 import org.apache.ibatis.annotations.*;
@@ -44,6 +45,24 @@ public interface AdminMapper {
     @Update("update register set admin = 'true' where id = #{data}")
     boolean updatePerson(@Param("data") String data);
 
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/24 17:10
+    No such property: code for class: Script1
+     * @Description:
+     *
+     */
+    //    管理员显示所有未商品认证的商品信息
+    @Select("select * from goods where agree = 'false'")
+    List<Goods> selectAllGoods();
+
+    //    管理员注册认证
+    @Update("update goods set agree = 'true' where goods_id = #{data}")
+    boolean updateGoods(@Param("data") String data);
+
+    //    管理员注册认证拒绝
+    @Delete("delete from goods where goods_id = #{data}")
+    boolean deleteGoods(@Param("data") String data);
     /**
      * @Author: lijun
      * @Date: 2018/2/7 15:07

@@ -9,7 +9,7 @@ class Footer extends Component{
     render() {
         return (
             <div>
-                <BackTop style={{bottom:"100px"}} visibilityHeight={"200"} />
+                <BackTop style={{bottom:"100px"}} visibilityHeight={"300"} />
                 <footer className="footer navbar-fixed-bottom">
                     <div className="container g-py-20" style={{textAlign:"center"}}>
                         <div className={"col-xs-12 col-sm-6"}>

@@ -59,10 +59,12 @@ class Publish extends Component{
     }
 
     handleClick(e){
+        const myDate = new Date();
         const token = localStorage.getItem("token");
         const status = localStorage.getItem("loginStatus");
         const userId = localStorage.getItem("userId");
         const username = localStorage.getItem("username");
+        const time = myDate.toLocaleString();
         const data = {
             id : userId,
             username : username,
@@ -71,10 +73,11 @@ class Publish extends Component{
             originalPrice : this.state.originalPrice,
             price : this.state.price,
             title : this.state.title,
-            describe : this.state.describe,
+            goods_describe : this.state.describe,
             agree : this.state.agree,
             url : this.state.url,
-            number : this.state.number
+            number : this.state.number,
+            time : time
         };
         console.log(data);
         if(token === "1" && status === "true"){
@@ -108,13 +111,13 @@ class Publish extends Component{
                             <div className={"col-xs-12 g-my-5"}>
                                 <span className={"col-xs-6"}>商品标题：</span>
                                 <div className={"col-xs-6"}>
-                                    <Input.TextArea placeholder="请用10字以内的话定义商品的标题" autosize maxLength={"10"} onChange={this.handleShop_title.bind(this)} />
+                                    <Input.TextArea placeholder="请用6字以内的话定义商品的标题" autosize maxLength={"6"} onChange={this.handleShop_title.bind(this)} />
                                 </div>
                             </div>
                             <div className={"col-xs-12 g-my-5"}>
                                 <span className={"col-xs-6"}>商品描述：</span>
                                 <div className={"col-xs-6"}>
-                                    <Input.TextArea placeholder="请用100字以内的话来对商品进行描述" autosize maxLength={"100"} onChange={this.handleShop_describe.bind(this)} />
+                                    <Input.TextArea placeholder="请用15字以内的话来对商品进行描述" autosize maxLength={"15"} onChange={this.handleShop_describe.bind(this)} />
                                 </div>
                             </div>
                         </div>

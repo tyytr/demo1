@@ -1,9 +1,6 @@
 package com.change.demo002.controller;
 
-import com.change.demo002.entity.Admin;
-import com.change.demo002.entity.Person;
-import com.change.demo002.entity.Rest;
-import com.change.demo002.entity.User;
+import com.change.demo002.entity.*;
 import com.change.demo002.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,6 +86,44 @@ public class AdminController {
         }
         return new Rest<>(1,"注册认证成功",admin.getData());
     }
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/24 16:54
+    No such property: code for class: Script1
+     * @Description:管理员个人中心：商品认证
+     *
+     */
+    //    查询未处理的商品
+    @GetMapping("/goods")
+    public @ResponseBody Rest<List<Goods>> goods(){
+        List<Goods> allUser = adminService.selectAllGoods();
+        for (Goods goods1 : allUser){
+            goods1.setKey(goods1.getGoods_id());
+        }
+//        System.out.println(allUser);
+        return new Rest<List<Goods>>(1, "查询未商品认证的商品信息成功", allUser);
+    }
+    //    商品认证
+    @GetMapping("/goodsAgree")
+    public @ResponseBody Rest<List<String>> goodsAgree(Goods goods){
+//        System.out.println(person.getData());
+        for (String result:goods.getData()) {
+            adminService.goodsAgree(result);
+//            System.out.println(result);
+        }
+        return new Rest<List<String>>(1,"商品认证成功",goods.getData());
+    }
+    //  注册拒绝
+    @GetMapping("/goodsDisagree")
+    public @ResponseBody Rest<List<String>> goodsDelete(Goods goods){
+//        System.out.println(admin.getData());
+        for (String result:goods.getData()) {
+            adminService.goodsDisagree(result);
+//            System.out.println(result);
+        }
+        return new Rest<List<String>>(1,"认证拒绝成功",goods.getData());
+    }
+
     /**
      * @Author: lijun
      * @Date: 2018/2/7 14:40

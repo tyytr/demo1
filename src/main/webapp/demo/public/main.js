@@ -11,17 +11,17 @@ import Singout from './components/auth/singout'
 import ShopList from './components/shopList';
 import Publish from './components/publish';
 import Personal from './components/personal';
-import Admin from './components/admin';
+import AdminRegister from './components/adminRegister';
+import AdminAuthority from './components/adminAuthority';
+import AdminGoods from './components/adminGoods'
+import AdminNotice from './components/adminNotice';
+import AdminAdvice from './components/adminAdvice';
 import Cart from './components/cart';
 import Header from './components/commons/header';
 import Footer from './components/commons/footer';
 
 import reducers from './reducers';
-// const createStoreWithMiddleware = compose(
-//     applyMiddleware(reduxThunk),
-//     window.devToolsExtension ? window.devToolsExtension() : f => f
-// )(createStore);
-// const store = createStoreWithMiddleware(reducers);
+
 ReactDOM.render(
 
         <BrowserRouter>
@@ -35,7 +35,11 @@ ReactDOM.render(
                     <Route path='/shopList' component={ShopList} />
                     <Route path='/publish' component={Publish} />
                     <Route path='/personal' component={Personal} />
-                    <Route path='/admin' component={Admin} />
+                    <Route path='/adminRegister' component={AdminRegister} />
+                    <Route path='/adminAuthority' component={AdminAuthority} />
+                    <Route path='/adminGoods' component={AdminGoods} />
+                    <Route path='/adminNotice' component={AdminNotice} />
+                    <Route path='/adminAdvice' component={AdminAdvice} />
                     <Route path='/cart' component={Cart} />
                     <Route path='/' component={Home} />
                 </Switch>

@@ -35,7 +35,8 @@ public class GoodsService {
                 goods.getGoods_describe(),
                 goods.getAgree(),
                 goods.getUrl(),
-                goods.getNumber()
+                goods.getNumber(),
+                goods.getTime()
         );
         if (result !=0 ){
             return 1;

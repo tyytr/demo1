@@ -1,12 +1,9 @@
 import React,{Component} from 'react';
 import { Tabs, Select } from 'antd';
 import 'antd/dist/antd.css';
-import AdminRegister from "./adminRegister";
-import AdminAuthority from "./adminAuthority";
-import AdminAdvice from "./adminAdvice";
-import AdminNotice from "./adminNotice";
+import AdminHandleGoods from "./AdminHandleGoods";
 
-class Admin extends Component{
+class AdminGoods extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +15,7 @@ class Admin extends Component{
             <div className={"container g-mb-40"}>
                 <div className={"row"}>
                     <div className={"col-xs-12 g-py-10"}>
-                        个人中心：
+                        商品认证：
                         <Select value={this.state.tabPosition} onChange={(tabPosition) => {this.setState({ tabPosition });}} dropdownMatchSelectWidth={false}>
                             <Select.Option value="top">顶部</Select.Option>
                             <Select.Option value="bottom">底部</Select.Option>
@@ -28,11 +25,7 @@ class Admin extends Component{
                     </div>
                     <div className={"col-xs-12 g-pb-30"}>
                         <Tabs tabPosition={this.state.tabPosition}>
-                            {/*<Tabs.TabPane tab="注册用户" key="1" onTabClick={adminSelectAllUser(this.state.data)}><AdminRegister/></Tabs.TabPane>*/}
-                            <Tabs.TabPane tab="注册认证" key="1"><AdminRegister/></Tabs.TabPane>
-                            <Tabs.TabPane tab="权限管理" key="2"><AdminAuthority/></Tabs.TabPane>
-                            <Tabs.TabPane tab="公告系统" key="3"><AdminNotice/></Tabs.TabPane>
-                            <Tabs.TabPane tab="反馈建议" key="4"><AdminAdvice/></Tabs.TabPane>
+                            <Tabs.TabPane tab="商品认证" key="1"><AdminHandleGoods/></Tabs.TabPane>
                         </Tabs>
                     </div>
                 </div>
@@ -40,4 +33,4 @@ class Admin extends Component{
         )
     }
 }
-export default Admin;
+export default AdminGoods;

@@ -1,7 +1,19 @@
 package com.change.demo002.entity;
 
+import java.util.List;
+
 public class Goods {
-    private Integer goods_id;
+    private List<String> data;
+
+    public List<String> getData() {
+        return data;
+    }
+
+    public void setData(List<String> data) {
+        this.data = data;
+    }
+
+    private String goods_id;
     private String id;
     private String username;
     private String prop;
@@ -13,12 +25,14 @@ public class Goods {
     private String agree;
     private String url;
     private String number;
+    private String time;
+    private String key;
 
     public Goods(){
 
     }
 
-    public Goods(Integer goods_id, String id, String username, String prop, String color, String originalPrice, String price ,String title, String describe, String agree, String url, String number) {
+    public Goods(String goods_id, String id, String username, String prop, String color, String originalPrice, String price ,String title, String goods_describe, String agree, String url, String number, String time, String key) {
         this.goods_id = goods_id;
         this.id = id;
         this.username = username;
@@ -27,17 +41,19 @@ public class Goods {
         this.originalPrice = originalPrice;
         this.price = price;
         this.title = title;
-        this.goods_describe = describe;
+        this.goods_describe = goods_describe;
         this.agree = agree;
         this.url = url;
         this.number = number;
+        this.time = time;
+        this.key = key;
     }
 
-    public Integer getGoods_id() {
+    public String getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(Integer goods_id) {
+    public void setGoods_id(String goods_id) {
         this.goods_id = goods_id;
     }
 
@@ -129,6 +145,22 @@ public class Goods {
         this.number = number;
     }
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -144,6 +176,8 @@ public class Goods {
                 ", agree='" + agree + '\'' +
                 ", url='" + url + '\'' +
                 ", number='" + number + '\'' +
+                ", time='" + time + '\'' +
+                ", key='" + key + '\'' +
                 '}';
     }
 }

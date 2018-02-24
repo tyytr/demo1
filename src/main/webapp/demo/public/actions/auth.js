@@ -168,6 +168,57 @@ export function updatePerson(data) {
 
 
 
+
+/**
+ * 注册认证：认证同意
+ */
+export function goodsAgree(data) {
+    console.log(data);
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/goodsAgree`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/adminGoods`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+/**
+ * 注册认证：认证拒绝
+ */
+export function goodsDisagree(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/admin/goodsDisagree`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/adminGoods`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+
+
+
 /**
  * 管理员个人中心：发布公告
  */
@@ -198,7 +249,7 @@ export function adminNotice(data) {
     });
 }
 /**
- * 注册认证：认证拒绝
+ * 管理员个人中心：删除公告
  */
 export function adminDeleteNotice(data) {
     $.ajax({

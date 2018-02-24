@@ -16,7 +16,7 @@ No such property: code for class: Script1
 @Repository
 public interface GoodsMapper {
     //    商品发布方法
-    @Insert("insert into goods(id, username, prop, color, originalPrice, price, title, goods_describe, agree, url, number) values(#{id}, #{username}, #{prop}, #{color}, #{originalPrice}, #{price}, #{title}, #{goods_describe}, #{agree}, #{url}, #{number})")
+    @Insert("insert into goods(id, username, prop, color, originalPrice, price, title, goods_describe, agree, url, number, time) values(#{id}, #{username}, #{prop}, #{color}, #{originalPrice}, #{price}, #{title}, #{goods_describe}, #{agree}, #{url}, #{number}, #{time})")
     int goodsInsert(@Param("id") String id,
                     @Param("username") String username,
                     @Param("prop") String prop,
@@ -27,5 +27,6 @@ public interface GoodsMapper {
                     @Param("goods_describe") String goods_describe,
                     @Param("agree") String agree,
                     @Param("url") String url,
-                    @Param("number") String number);
+                    @Param("number") String number,
+                    @Param("time") String time);
 }

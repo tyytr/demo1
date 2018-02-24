@@ -16,7 +16,7 @@ class PublishImg extends Component {
                 uid: -1,
                 name: 'xxx.png',
                 status: 'done',
-                url: "../../public/style/image/carousel1.jpg",
+                url: "../../public/style/image/example.png",
             }],
         };
     }

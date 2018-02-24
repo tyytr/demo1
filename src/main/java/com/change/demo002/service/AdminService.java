@@ -2,6 +2,7 @@ package com.change.demo002.service;
 
 import com.change.demo002.dao.AdminMapper;
 import com.change.demo002.entity.Admin;
+import com.change.demo002.entity.Goods;
 import com.change.demo002.entity.Person;
 import com.change.demo002.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class AdminService {
     public List<User> selectAllUser() {
         return adminMapper.selectAllUser();
     }
-    //    管理员同意注册认证
-    public int adminAgree(String data){
-        boolean result = adminMapper.updateUser(data);
+    //    管理员同意商品认证
+    public int goodsAgree(String data){
+        boolean result = adminMapper.updateGoods(data);
         if (result){
             return 1;
         }else {
@@ -34,8 +35,8 @@ public class AdminService {
         }
     }
     //    管理员认证拒绝
-    public int adminDisagree(String data){
-        boolean result = adminMapper.deleteUser(data);
+    public int goodsDisagree(String data){
+        boolean result = adminMapper.deleteGoods(data);
         if (result){
             return 1;
         }else {
@@ -56,6 +57,35 @@ public class AdminService {
     //    权限升级
     public int updatePerson(String data){
         boolean result = adminMapper.updatePerson(data);
+        if (result){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+    /**
+     * @Author: lijun
+     * @Date: 2018/2/24 17:08
+    No such property: code for class: Script1
+     * @Description:管理员个人中心：商品认证
+     *
+     */
+    //    查询所有用户信息
+    public List<Goods> selectAllGoods() {
+        return adminMapper.selectAllGoods();
+    }
+    //    管理员同意注册认证
+    public int adminAgree(String data){
+        boolean result = adminMapper.updateUser(data);
+        if (result){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+    //    管理员认证拒绝
+    public int adminDisagree(String data){
+        boolean result = adminMapper.deleteUser(data);
         if (result){
             return 1;
         }else {
