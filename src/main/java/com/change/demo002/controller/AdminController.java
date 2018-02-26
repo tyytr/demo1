@@ -152,7 +152,7 @@ public class AdminController {
             admin1.setKey(admin1.getNotice_id());
         }
 //        System.out.println(allUser);
-        return new Rest<List<Admin>>(1, "查询未处理建议成功s", allNotice);
+        return new Rest<List<Admin>>(1, "查询未处理建议成功", allNotice);
     }
     //  删除公告
     @GetMapping("/adminDeleteNotice")

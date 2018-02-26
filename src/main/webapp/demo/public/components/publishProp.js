@@ -55,10 +55,10 @@ class PublishProp extends Component {
                             <ColorPicker color={color} onChange={(color) => {this.props.handleProp_color(color); this.setState({color});}} />
                         </div>
                     </div>
-                    <div className={"col-xs-12 g-my-5"}>
-                        <span className={"col-xs-6"} style={{float:"left"}}>当前颜色：</span>
-                        <span className={"col-xs-6"} style={{ color, marginTop: 5,float:"left"}}>{color}</span>
-                    </div>
+                    {/*<div className={"col-xs-12 g-my-5"}>*/}
+                        {/*<span className={"col-xs-6"} style={{float:"left"}}>当前颜色：</span>*/}
+                        {/*<span className={"col-xs-6"} style={{ color, marginTop: 5,float:"left"}}>{color}</span>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         );

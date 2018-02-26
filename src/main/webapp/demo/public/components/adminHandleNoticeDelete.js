@@ -62,7 +62,7 @@ class AdminHandleNoticeDelete extends Component{
         const hasSelected = selectedRowKeys.length > 0;
         return (
             <div className={"col-xs-12"}>
-                <div style={{ marginBottom: 16 }}>
+                <div className={"col-sm-6"} style={{ marginBottom: 16 }}>
                     <Button
                         type="primary"
                         onClick={() => {
@@ -83,11 +83,29 @@ class AdminHandleNoticeDelete extends Component{
                     >
                         删除公告
                     </Button>
+                    {/*<Input.Search className={"pull-right"} style={{float:"right"}} placeholder="input search text" enterButton="Search" type="primary"/>*/}
                     <span style={{ marginLeft: 8 }}>
                         {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={array} />
+                <div className="col-sm-6">
+                    <Input.Search
+                        placeholder="请输入搜索内容"
+                        onSearch={value => {
+                            console.log(value);
+                            axios.get(`${ROOT_URL}/search/searchNotice`, { value })
+                            .then(response =>{
+                                console.log(response);
+                                this.setState({data : response.data.data});
+                                // alert("success");
+                            })
+                            .catch((err) => {
+                                alert(err);
+                            })}}
+                        enterButton
+                    />
+                </div>
+                <Table className={"col-sm-12"} rowSelection={rowSelection} columns={columns} dataSource={array} />
             </div>
         )
     }

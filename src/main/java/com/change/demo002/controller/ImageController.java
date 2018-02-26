@@ -37,21 +37,22 @@ public class ImageController {
 
         String fileName = file.getOriginalFilename();
 
-            String filePath = request.getSession().getServletContext().getRealPath("/ServiceImage/" + i + "/");
+        String filePath = request.getSession().getServletContext().getRealPath("/ServiceImage/" + i + "/");
+//        String filePath = request.getRequestURI()+"/ServiceImage/" + i + "/";
+        String filePath1 ="/ServiceImage/" + i + "/";
+        System.out.println(contentType);
+        System.out.println(filePath);
+        System.out.println(fileName);
 
-            System.out.println(contentType);
-            System.out.println(filePath);
-            System.out.println(fileName);
 
-
-            try {
-                FileUtils.uploadFile(file.getBytes(), filePath, fileName);
-                i++;
-            } catch (Exception e) {
-                // TODO: handle exception
-            }
-            //返回json
-            return filePath+fileName;
+        try {
+            FileUtils.uploadFile(file.getBytes(), filePath, fileName);
+            i++;
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        //返回json
+        return filePath1+fileName;
 
     }
 

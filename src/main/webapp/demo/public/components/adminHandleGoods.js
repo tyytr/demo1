@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
-import {Table,Button} from 'antd';
+import {Table, Button, Column, Modal} from 'antd';
+import { ColorPicker } from 'zent';
+import 'zent/css/index.css';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";
 import axios from 'axios';
@@ -14,7 +16,10 @@ class AdminHandleGoods extends Component{
             data: {},
             selectedRowKeys: [], // Check here to configure the default column
             loadingAgree: false,
-            loadingDisagree: false
+            loadingDisagree: false,
+
+
+            visible:false,
         };
     }
     componentDidMount(){
@@ -29,11 +34,12 @@ class AdminHandleGoods extends Component{
             })
     }
     render(){
+        const { visible } = this.state;
         const columns = [{
             title : '用户名',
             dataIndex : 'username',
             key : 'username',
-            className : ''
+            className : '',
             // render: text => <a href="#">{text}</a>,
         },{
             title : '商品种类',
@@ -44,12 +50,17 @@ class AdminHandleGoods extends Component{
             title : '商品颜色',
             dataIndex : 'color',
             key : 'color',
-            className : ''
+            className : '',
+            render: (text, record) => (
+                <div>
+                    <ColorPicker color={record.color}/>
+                </div>
+            ),
         },{
             title : '商品标题',
             dataIndex : 'title',
             key : 'title',
-            className : ''
+            className : '',
         },{
             title : '商品描述',
             dataIndex : 'goods_describe',
@@ -74,13 +85,32 @@ class AdminHandleGoods extends Component{
             title : '商品图片',
             dataIndex : 'url',
             key : 'url',
-            className : ''
+            className : '',
+            // render: (text, record) => (<img src={record.url} alt={record.key}/>),
+            render: (text, record) => (
+                <div style={{border:"1px solid #bbb"}}>
+                    <img width={"50px"} onClick={() => {
+                        this.setState({
+                            visible: true,
+                        });
+                    }} src={`${ROOT_URL}`+record.url} alt={record.key}/>
+                    <Modal visible={this.state.visible} footer={null} onCancel={(e) => {
+                        console.log(e);
+                        this.setState({
+                            visible: false,
+                        });
+                    }}>
+                        {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
+                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+record.url} />
+                    </Modal>
+                </div>
+            ),
         }];
         const data = this.state.data;
         // console.log(data);
         const array = Object.keys(data).map(key=> data[key]);
         // console.log(typeof(array));
-        // console.log(array);
+        console.log(array);
 
         const { loadingAgree, loadingDisagree, selectedRowKeys } = this.state;
         const rowSelection = {
@@ -137,7 +167,8 @@ class AdminHandleGoods extends Component{
                         {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={array} />
+                <Table rowSelection={rowSelection} columns={columns} dataSource={array} >
+                </Table>
             </div>
         )
     }
