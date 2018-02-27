@@ -1,222 +1,139 @@
 import React,{Component} from 'react';
-import {Tabs} from "antd";
+import {Icon, Tabs, Card, Avatar} from "antd";
 import 'antd/dist/antd.css';
+import {ROOT_URL} from "../actions/type";
+import axios from 'axios';
+import Masonry from 'react-masonry-component';
+import LazyLoad from 'react-lazy-load';
 class ShopList extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            theme: 'light',
-            current: '1',
+            mobile : [],
+            desktop : [],
+            book : [],
+            skin : [],
+            camera : [],
+            usb : [],
+            ellipsis : [],
         };
         this.renderRow = this.renderRow.bind(this);
     }
+
+    componentWillMount(){
+        axios.get(`${ROOT_URL}/shopList/mobile`)
+            .then(response =>{
+                console.log(response);
+                this.setState({mobile : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+    componentDidMount(){
+        axios.get(`${ROOT_URL}/shopList/desktop`)
+            .then(response =>{
+                console.log(response);
+                this.setState({desktop : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        axios.get(`${ROOT_URL}/shopList/book`)
+            .then(response =>{
+                console.log(response);
+                this.setState({book : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        axios.get(`${ROOT_URL}/shopList/skin`)
+            .then(response =>{
+                console.log(response);
+                this.setState({skin : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        axios.get(`${ROOT_URL}/shopList/camera`)
+            .then(response =>{
+                console.log(response);
+                this.setState({camera : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        axios.get(`${ROOT_URL}/shopList/usb`)
+            .then(response =>{
+                console.log(response);
+                this.setState({usb : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        axios.get(`${ROOT_URL}/shopList/ellipsis`)
+            .then(response =>{
+                console.log(response);
+                this.setState({ellipsis : response.data.data});
+                console.log(this.state.usb);
+                // alert("success");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
     renderRow(src,index){
+        console.log(src);
         return (
-            <div key={index} className={"col-xs-4 col-sm-2 g-pa-20 shopList g-ma-5"}>
+            <div key={index} className={"col-xs-4 col-sm-2 g-my-10"}>
                 <a href="">
-                    <img style={{width:"100%",height:"100%"}} src={src.src} alt={index}/>
-                    <span style={{color:"#ff2832"}}>￥：{src.price}</span>
-                    <p className={"shop_name"}>{src.name}</p>
+                    <Card
+                        // style={{ height: 300 }}
+                        cover={<img className={"g-pa-5"} src={`${ROOT_URL}`+src.url} alt={index} />}
+                        actions={[<Icon style={{color :"#000"}} type="shopping-cart" />, <Icon style={{color :"#000"}} type="heart-o" />, <Icon style={{color :"#000"}} type="ellipsis" />]}
+                        // bordered={false}
+                        hoverable={true}
+                    >
+                        <Card.Meta
+                            avatar={<LazyLoad><img style={{marginTop:"4px"}} width={"15px"} src="../../public/style/image/icon.png" alt="1"/></LazyLoad>}
+                            title={src.title}
+                            description={"￥"+src.price}
+                        />
+                    </Card>
                 </a>
             </div>
         )
     }
-    // renderTags(src,index){
-    //     <Tabs.TabPane tab={src.name} key={index}>11111</Tabs.TabPane>
-    //     {/*<Tabs.TabPane tab={src[index]} key={index}>{carousel.map(this.renderRow)}</Tabs.TabPane>*/}
-    // }
+
     render(){
-        // const renderTabs = [
-        //     {name : "手机"},
-        //     {name : "电脑"},
-        //     {name : "书籍"},
-        //     {name : "衣服"},
-        //     {name : "摄影"},
-        //     {name : "存储设备"},
-        //     {name : "其他"}
-        // ];
-        const carousell = [
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            }
-        ];
-        const carousel = [
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            },
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            },
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            }
-            ,
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            }
-            ,
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            }
-            ,
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            }
-            ,
-            {
-                src : "../../public/style/image/shop1.jpg",
-                name : "手机",
-                price : "1200"
-            },
-            {
-                src : "../../public/style/image/shop2.jpg",
-                name : "红酒",
-                price : "600"
-            },
-            {
-                src : "../../public/style/image/shop3.jpg",
-                name : "华硕主板",
-                price : "2000"
-            },
-            {
-                src : "../../public/style/image/shop4.jpg",
-                name : "神舟（HASEE）战神Z7-KP7GT GTX1060 6G 15.6英寸游戏本",
-                price : "3200"
-            }
-        ];
-        // const renderTabs = ["手机","电脑","书籍","衣服","摄影","存储设备","其他"];
         return (
             <div className={"container g-my-20"}>
                 <div className={"row"}>
                     <Tabs defaultActiveKey="0">
                         {/*{renderTabs.map(this.renderTags)}*/}
-                        <Tabs.TabPane tab="手机" key="0"><div id={"Mobile"}>{carousel.map(this.renderRow)}</div></Tabs.TabPane>
-                        <Tabs.TabPane tab="电脑" key="1"><div id={"Desktop"}>{carousel.map(this.renderRow)}</div></Tabs.TabPane>
-                        <Tabs.TabPane tab="书籍" key="2">{carousel.map(this.renderRow)}</Tabs.TabPane>
-                        <Tabs.TabPane tab="衣服" key="3">{carousel.map(this.renderRow)}</Tabs.TabPane>
-                        <Tabs.TabPane tab="摄影" key="4">{carousel.map(this.renderRow)}</Tabs.TabPane>
-                        <Tabs.TabPane tab="存储设备" key="5">{carousel.map(this.renderRow)}</Tabs.TabPane>
-                        <Tabs.TabPane tab="其他" key="6">{carousel.map(this.renderRow)}</Tabs.TabPane>
+                        <Tabs.TabPane tab="手机" key="0"><Masonry>{this.state.mobile.map(this.renderRow)}</Masonry></Tabs.TabPane>
+                        <Tabs.TabPane tab="电脑" key="1"><Masonry>{this.state.desktop.map(this.renderRow)}</Masonry></Tabs.TabPane>
+                        <Tabs.TabPane tab="书籍" key="2"><Masonry>{this.state.book.map(this.renderRow)}</Masonry></Tabs.TabPane>
+                        <Tabs.TabPane tab="服装" key="3"><Masonry>{this.state.skin.map(this.renderRow)}</Masonry></Tabs.TabPane>
+                        <Tabs.TabPane tab="摄影" key="4"><Masonry>{this.state.camera.map(this.renderRow)}</Masonry></Tabs.TabPane>
+                        <Tabs.TabPane tab="存储设备" key="5"><Masonry>{this.state.usb.map(this.renderRow)}</Masonry></Tabs.TabPane>
+                        <Tabs.TabPane tab="其他" key="6"><Masonry>{this.state.ellipsis.map(this.renderRow)}</Masonry></Tabs.TabPane>
                     </Tabs>
                 </div>
-                {/*<ul className="nav nav-tabs" role={"tablist"}>*/}
-                {/*<li role={"presentation"} className="active"><a href={"#Mobile"} aria-controls="Mobile" role="tab" data-toggle="tab">手机</a></li>*/}
-                {/*<li role={"presentation"}><a href={"#Desktop"}  aria-controls="Desktop" role="tab" data-toggle="tab">电脑</a></li>*/}
-                {/*<li><a href="#">iOS</a></li>*/}
-                {/*<li><a href="#">VB.Net</a></li>*/}
-                {/*<li><a href="#">Java</a></li>*/}
-                {/*<li><a href="#">PHP</a></li>*/}
-                {/*</ul>*/}
-                {/*<div className="tab-content">*/}
-                {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
-                {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousell.map(this.renderRow)}</div>*/}
-                {/*</div>*/}
-                {/*<div role={"tabpanel"} id={"Mobile"} className={"tab-pane active"}>{carousel.map(this.renderRow)}</div>*/}
-                {/*<div role={"tabpanel"} id={"Desktop"} className={"tab-pane"}>{carousel.map(this.renderRow)}</div>*/}
             </div>
         )
     }

@@ -7,10 +7,7 @@ import com.change.demo002.entity.Search;
 import com.change.demo002.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,7 +32,7 @@ public class SearchController {
      * @Description:搜索：公告
      *
      */
-    @GetMapping("/searchNotice")
+    @PostMapping("/searchNotice")
     public @ResponseBody
     Rest<List<Admin>> searchNotice(Search search){
         System.out.println(search.getSearch());

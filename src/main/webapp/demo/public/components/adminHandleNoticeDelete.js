@@ -17,6 +17,7 @@ class AdminHandleNoticeDelete extends Component{
             loadingAgree: false,
             loadingDisagree: false
         };
+        // this.onSearch = this.onSearch.bind(this);
     }
 
     componentDidMount(){
@@ -60,6 +61,7 @@ class AdminHandleNoticeDelete extends Component{
         };
         // console.log(selectedRowKeys);
         const hasSelected = selectedRowKeys.length > 0;
+        const _this = this;
         return (
             <div className={"col-xs-12"}>
                 <div className={"col-sm-6"} style={{ marginBottom: 16 }}>
@@ -93,15 +95,26 @@ class AdminHandleNoticeDelete extends Component{
                         placeholder="请输入搜索内容"
                         onSearch={value => {
                             console.log(value);
-                            axios.get(`${ROOT_URL}/search/searchNotice`, { value })
-                            .then(response =>{
-                                console.log(response);
-                                this.setState({data : response.data.data});
-                                // alert("success");
-                            })
-                            .catch((err) => {
-                                alert(err);
-                            })}}
+                            $.ajax({
+                                type : "POST",
+                                url : `${ROOT_URL}/search/searchNotice`,
+                                cache : false,
+                                traditional: true,
+                                data : {"search":value},
+                                // dataType : "json",
+                                success : function (msg) {
+                                    console.log(msg);
+                                    if (msg.status === 1){
+                                        _this.setState({data : msg.data});
+                                        // window.location.href = `${ROOT_URLF}/adminGoods`;
+                                    }
+                                },
+                                error : function (err) {
+                                    console.log(err);
+                                    alert("与后台交互走error");
+                                }
+                            });
+                        }}
                         enterButton
                     />
                 </div>

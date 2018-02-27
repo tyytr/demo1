@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public interface SearchMapper {
 
-    //    管理员显示所有发布公告
-    @Select("select * from notice where notice like '%#{search}%'")
+    //    管理员显示搜索公告
+    @Select("select * from notice where username like '%${search}%' or notice like '%${search}%' or time like '%${search}%' ")
     List<Admin> searchNotice(@Param("search") String search);
 
 }

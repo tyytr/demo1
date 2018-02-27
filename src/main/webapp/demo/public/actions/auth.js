@@ -233,13 +233,13 @@ export function adminNotice(data) {
             console.log(msg);
             if (msg.status === "1") {
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singin`;
+                window.location.href = `${ROOT_URLF}/adminNotice`;
             }else if (msg.status === "-1"){
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singup`;
+                // window.location.href = `${ROOT_URLF}/adminNotice`;
             }else{
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singup`;
+                // window.location.href = `${ROOT_URLF}/adminNotice`;
             }
         },
         error : function (err) {
@@ -262,7 +262,7 @@ export function adminDeleteNotice(data) {
         success : function (msg) {
             console.log(msg);
             if (msg.status === 1){
-                window.location.href = `${ROOT_URLF}/admin`;
+                window.location.href = `${ROOT_URLF}/adminNotice`;
             }
         },
         error : function (err) {

@@ -4,7 +4,7 @@
 }
 /*商品展示*/
 .shopList{
-    border:1px solid #aaa;
+    background-color: #eee;
 }
 .shop_name{
     /*font-size: 10px;*/
