@@ -170,7 +170,7 @@ export function updatePerson(data) {
 
 
 /**
- * 注册认证：认证同意
+ * 商品认证：认证同意
  */
 export function goodsAgree(data) {
     console.log(data);
@@ -194,7 +194,7 @@ export function goodsAgree(data) {
     });
 }
 /**
- * 注册认证：认证拒绝
+ * 商品认证：认证拒绝
  */
 export function goodsDisagree(data) {
     $.ajax({
@@ -375,6 +375,69 @@ export function goodsPublish(data) {
             }else{
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singup`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+
+
+
+/**
+ * 普通用户商品：加入购物车
+ */
+export function AddCart(data) {
+    console.log("1");
+    // data.userId=localStorage.getItem("userId");
+    data={
+        user_id:localStorage.getItem("userId"),
+        goods_id:data,
+    };
+    console.log(data);
+    $.ajax({
+        type : "POST",
+        url : `${ROOT_URL}/cart/addCart`,
+        data : data,
+        // cache : false,
+        // traditional: true,
+        dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === "1") {
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singin`;
+            }else if (msg.status === "0"){
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }else{
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+/**
+ * 购物车删除：删除商品
+ */
+export function cartDeleteGoods(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/cart/deleteGoods`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/cart`;
             }
         },
         error : function (err) {

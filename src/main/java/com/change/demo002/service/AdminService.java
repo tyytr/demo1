@@ -70,11 +70,11 @@ public class AdminService {
      * @Description:管理员个人中心：商品认证
      *
      */
-    //    查询所有用户信息
+    //    查询所有商品
     public List<Goods> selectAllGoods() {
         return adminMapper.selectAllGoods();
     }
-    //    管理员同意注册认证
+    //    管理员同意认证商品
     public int adminAgree(String data){
         boolean result = adminMapper.updateUser(data);
         if (result){
@@ -83,7 +83,7 @@ public class AdminService {
             return -1;
         }
     }
-    //    管理员认证拒绝
+    //    管理员认证拒绝商品
     public int adminDisagree(String data){
         boolean result = adminMapper.deleteUser(data);
         if (result){
