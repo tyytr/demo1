@@ -273,6 +273,30 @@ export function adminDeleteNotice(data) {
 }
 
 
+
+/**
+ * 管理员个人中心：商品下架
+ */
+export function personGoodsDisagree(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/person/personGoodsDisagree`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                window.location.href = `${ROOT_URLF}/personal`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
 /**
  * 普通用户个人中心：反馈建议
  */

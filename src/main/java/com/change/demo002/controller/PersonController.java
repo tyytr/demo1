@@ -1,6 +1,7 @@
 package com.change.demo002.controller;
 
 import com.change.demo002.entity.Admin;
+import com.change.demo002.entity.Goods;
 import com.change.demo002.entity.Person;
 import com.change.demo002.entity.Rest;
 import com.change.demo002.service.PersonService;
@@ -22,6 +23,33 @@ No such property: code for class: Script1
 public class PersonController {
     @Autowired
     private PersonService personService;
+    /**
+     * @Author: lijun
+     * @Date: 2018/3/7 17:34
+    No such property: code for class: Script1
+     * @Description:普通用户个人中心：上架商品
+     *
+     */
+    //    显示上架的商品
+    @GetMapping("/showGoods")
+    public @ResponseBody Rest<List<Goods>> showGoods(Goods goods){
+        List<Goods> allNotice = personService.showGoods(goods);
+        for (Goods goods1 : allNotice){
+            goods1.setKey(goods1.getGoods_id());
+        }
+//        System.out.println(allUser);
+        return new Rest<List<Goods>>(1, "查询所有系统公告成功", allNotice);
+    }
+    //  商品下架
+    @GetMapping("/personGoodsDisagree")
+    public @ResponseBody Rest<List<String>> personGoodsDisagree(Goods goods){
+//        System.out.println(admin.getData());
+        for (String result:goods.getData()) {
+            personService.personGoodsDisagree(result);
+//            System.out.println(result);
+        }
+        return new Rest<List<String>>(1,"商品下架成功",goods.getData());
+    }
     /**
      * @Author: lijun
      * @Date: 2018/2/7 18:10

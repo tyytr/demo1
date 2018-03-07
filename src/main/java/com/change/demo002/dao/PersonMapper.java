@@ -1,10 +1,8 @@
 package com.change.demo002.dao;
 
 import com.change.demo002.entity.Admin;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.change.demo002.entity.Goods;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +10,19 @@ import java.util.List;
 @Mapper
 @Repository
 public interface PersonMapper {
+    /**
+     * @Author: lijun
+     * @Date: 2018/3/7 17:41
+    No such property: code for class: Script1
+     * @Description:普通用户个人中心：上架商品
+     *
+     */
+    //    显示上架商品
+    @Select("select * from goods where id = #{id} and agree = 'true'")
+    List<Goods> showGoods(@Param("id") String id);
+    //    下价升品
+    @Delete("delete from goods where goods_id = #{data} and agree = 'true'")
+    boolean personGoodsDisagree(@Param("data") String data);
     /**
      * @Author: lijun
      * @Date: 2018/2/7 18:20
