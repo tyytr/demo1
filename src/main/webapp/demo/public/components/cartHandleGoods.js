@@ -90,23 +90,19 @@ class CartHandleGoods extends Component{
             // render: (text, record) => (<img src={record.url} alt={record.key}/>),
             render: (text, record) => (
                 <div style={{border:"1px solid #bbb"}}>
-
-                    {console.log("1")}
-                    {console.log(record)}
-                    <img width={"74px"} onClick={() => {
+                    <img width={"50px"} onClick={() => {
                         this.setState({
                             visible: true,
                         });
                     }} src={`${ROOT_URL}`+record.url} alt={record.key}/>
                     <Modal visible={this.state.visible} footer={null} onCancel={(e) => {
-                        console.log(e);
+                        // console.log(e);
                         this.setState({
                             visible: false,
                         });
                     }}>
                         {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
-                        {console.log(text)}
-                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+text} />
+                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+record.url} />
                     </Modal>
                 </div>
             ),

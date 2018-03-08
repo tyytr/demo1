@@ -111,13 +111,13 @@ class ShopList extends Component{
                 <Card
                     // style={{ height: 300 }}
                     //<a href={`${ROOT_URLF}/`+src.id+"/"+src.key}><Icon style={{color :"#000"}} type="shopping-cart" /></a>,
-                    //<a href=""><Icon style={{color :"#000"}} type="heart-o" /></a>,
+                    //<Link to={`/shopBuy/${src.key}`}><Icon style={{color :"#000"}} type="heart-o" /></Link>,
                     //<a href={`${ROOT_URLF}/`+src.id+"/"+src.key}><Icon style={{color :"#000"}} type="ellipsis" /></a>,
                     cover={<img className={"g-pa-5"} src={`${ROOT_URL}`+src.url} alt={index} />}
                     actions={[
                         <Icon onClick={this.onAddCart.bind(this,src.goods_id)} style={{color :"#000"}} type="shopping-cart" />,
-                        <Icon style={{color :"#000"}} type="ellipsis" />,
-
+                        //<Link to={`/shopBuy/${src.key}`}><Icon style={{color :"#000"}} type="heart-o" /></Link>,
+                        <Link to={`/shopDetails/${src.key}`}><Icon style={{color :"#000"}} type="ellipsis" /></Link>
                     ]}
                     // bordered={false}
                     hoverable={true}

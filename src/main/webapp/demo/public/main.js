@@ -9,6 +9,7 @@ import Singin from './components/auth/singin';
 import Singup from './components/auth/singup';
 import Singout from './components/auth/singout'
 import ShopList from './components/shopList';
+import ShopDetails from './components/shopDetails';
 import Publish from './components/publish';
 import Personal from './components/personal';
 import AdminRegister from './components/adminRegister';
@@ -33,6 +34,7 @@ ReactDOM.render(
                     <Route path='/singup' component={Singup} />
                     <Route path='/singout' component={Singout} />
                     <Route path='/shopList' component={ShopList} />
+                    <Route path="/shopDetails/:id" component={ShopDetails} />
                     <Route path='/publish' component={Publish} />
                     <Route path='/personal' component={Personal} />
                     <Route path='/adminRegister' component={AdminRegister} />

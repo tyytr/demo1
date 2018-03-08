@@ -46,4 +46,9 @@ public class ShopService {
     public List<Goods> selectGoodsEllipsis(String ellipsis) {
         return shopMapper.selectGoodsEllipsis(ellipsis);
     }
+
+    //    商品详情
+    public Goods selectDetailsGoods(Goods goods){
+        return shopMapper.selectDetailsGoods(goods.getGoods_id());
+    }
 }

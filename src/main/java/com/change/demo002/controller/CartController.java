@@ -49,7 +49,7 @@ public class CartController {
         for (Goods goods : allUser){
             goods.setKey(goods.getGoods_id());
         }
-//        System.out.println(allUser);
+        System.out.println(allUser);
         return new Rest<List<Goods>>(1, "查询购物车商品信息成功", allUser);
     }
     //  删除商品

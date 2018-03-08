@@ -40,4 +40,8 @@ public interface ShopMapper {
     //    管理员显示其他商品信息
     @Select("select * from goods where prop = '${ellipsis}'")
     List<Goods> selectGoodsEllipsis(@Param("ellipsis") String ellipsis);
+
+    //    商品详情
+    @Select("select * from goods where goods_id = #{goods_id}")
+    Goods selectDetailsGoods(@Param("goods_id") String goods_id);
 }

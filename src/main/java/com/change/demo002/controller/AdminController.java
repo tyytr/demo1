@@ -100,7 +100,7 @@ public class AdminController {
         for (Goods goods1 : allUser){
             goods1.setKey(goods1.getGoods_id());
         }
-//        System.out.println(allUser);
+        System.out.println(allUser);
         return new Rest<List<Goods>>(1, "查询未商品认证的商品信息成功", allUser);
     }
     //    商品认证

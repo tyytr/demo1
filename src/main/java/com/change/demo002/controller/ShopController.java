@@ -115,4 +115,13 @@ public class ShopController {
 //        System.out.println(allUser);
         return new Rest<List<Goods>>(1, "查询其他信息成功", allUser);
     }
+
+    //    商品详情
+    @GetMapping("/shopDetails")
+    public @ResponseBody Rest<Goods> shopDetails(Goods goods){
+        Goods allUser = shopService.selectDetailsGoods(goods);
+        System.out.println(allUser);
+        return new Rest<Goods>(1, "查询商品详情信息成功", allUser);
+    }
+
 }
