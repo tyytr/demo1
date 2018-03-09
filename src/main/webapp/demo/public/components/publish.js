@@ -1,4 +1,3 @@
-
 import React,{Component} from 'react';
 import { ColorPicker } from 'zent';
 import 'zent/css/index.css';

@@ -1,27 +1,21 @@
 import React,{Component} from 'react';
-import {Icon, Tabs, Card, Avatar} from "antd";
 import 'antd/dist/antd.css';
-import {ROOT_URL, ROOT_URLF} from "../actions/type";
+import {ROOT_URL} from "../actions/type";
 import axios from 'axios';
-import Masonry from 'react-masonry-component';
-import LazyLoad from 'react-lazy-load';
+import {Button, Card, Divider, Modal} from 'antd';
+import {ColorPicker, NumberInput} from "zent";
 import {AddCart} from "../actions/auth";
-import {Link} from "react-router-dom";
 class ShopDetails extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            userId:"",
-            mobile : [],
-            desktop : [],
-            book : [],
-            skin : [],
-            camera : [],
-            usb : [],
-            ellipsis : [],
+            data : {
+                color : "",
+                number : 1,
+                goods_id: "",
+            },
+            visible:false,
         };
-        this.renderRow = this.renderRow.bind(this);
-        // this.onAddCart = this.onAddCart.bind(this,src.goods_id);
     }
 
     componentWillMount(){
@@ -37,107 +31,73 @@ class ShopDetails extends Component{
                 alert(err);
             });
     }
-
-    componentDidMount(){
-        axios.get(`${ROOT_URL}/shopList/desktop`)
-            .then(response =>{
-                console.log(response);
-                this.setState({desktop : response.data.data});
-                console.log(this.state.usb);
-                // alert("success");
-            })
-            .catch((err) => {
-                alert(err);
-            });
-        axios.get(`${ROOT_URL}/shopList/book`)
-            .then(response =>{
-                console.log(response);
-                this.setState({book : response.data.data});
-                console.log(this.state.usb);
-                // alert("success");
-            })
-            .catch((err) => {
-                alert(err);
-            });
-        axios.get(`${ROOT_URL}/shopList/skin`)
-            .then(response =>{
-                console.log(response);
-                this.setState({skin : response.data.data});
-                console.log(this.state.usb);
-                // alert("success");
-            })
-            .catch((err) => {
-                alert(err);
-            });
-        axios.get(`${ROOT_URL}/shopList/camera`)
-            .then(response =>{
-                console.log(response);
-                this.setState({camera : response.data.data});
-                console.log(this.state.usb);
-                // alert("success");
-            })
-            .catch((err) => {
-                alert(err);
-            });
-        axios.get(`${ROOT_URL}/shopList/usb`)
-            .then(response =>{
-                console.log(response);
-                this.setState({usb : response.data.data});
-                console.log(this.state.usb);
-                // alert("success");
-            })
-            .catch((err) => {
-                alert(err);
-            });
-        axios.get(`${ROOT_URL}/shopList/ellipsis`)
-            .then(response =>{
-                console.log(response);
-                this.setState({ellipsis : response.data.data});
-                console.log(this.state.usb);
-                // alert("success");
-            })
-            .catch((err) => {
-                alert(err);
-            });
-    }
     onAddCart(src,event){
         console.log(src);
         AddCart(src);
     }
-
-    renderRow(src,index){
-        console.log(src);
-        return (
-            <div key={index} className={"col-xs-4 col-sm-3 col-md-3 col-lg-2 g-my-10"}>
-                <Card
-                    // style={{ height: 300 }}
-                    //<a href={`${ROOT_URLF}/`+src.id+"/"+src.key}><Icon style={{color :"#000"}} type="shopping-cart" /></a>,
-                    //<a href=""><Icon style={{color :"#000"}} type="heart-o" /></a>,
-                    //<a href={`${ROOT_URLF}/`+src.id+"/"+src.key}><Icon style={{color :"#000"}} type="ellipsis" /></a>,
-                    cover={<img className={"g-pa-5"} src={`${ROOT_URL}`+src.url} alt={index} />}
-                    actions={[
-                        <Icon onClick={this.onAddCart.bind(this,src.goods_id)} style={{color :"#000"}} type="shopping-cart" />,
-                        <a href={`${ROOT_URLF}/`+"/"+src.key}><Icon style={{color :"#000"}} type="heart-o" /></a>,
-                        <Icon style={{color :"#000"}} type="ellipsis" />,
-                    ]}
-                    // bordered={false}
-                    hoverable={true}
-                >
-                    <Card.Meta
-                        avatar={<LazyLoad><img style={{marginTop:"4px"}} width={"15px"} src="../../public/style/image/icon.png" alt="1"/></LazyLoad>}
-                        title={src.title}
-                        description={"￥"+src.price+" 元"}
-                    />
-                </Card>
-            </div>
-        )
+    onBuyGoods(src,event){
+        // console.log(src);
+        // const _this = this;
+        // const data = {
+        //     _this.state.data
+        // };
+        // buyGoods()(data);
     }
-
     render(){
-        // this.setState({userId:localStorage.getItem("userId")});
+        const _this = this;
+        // console.log(typeof (this.state.data));
+        console.log();
         return (
             <div className={"container g-my-20"}>
-                <div className={"row"}>
+                <div className={"row g-py-100"} style={{backgroundColor:"#fff"}}>
+                    <div className={"col-sm-6"}>
+                        <Card
+                            hoverable
+                            style={{ width: 240,  margin:"0 auto", padding:"10px"}}
+                            cover={<img onClick={() => {
+                                this.setState({
+                                    visible: true,
+                                });
+                            }} alt={this.state.data.goods_id} src={`${ROOT_URL}`+this.state.data.url} />}
+                        >
+                            <Card.Meta
+                                // title={this.state.data.prop}
+                                // description={"卖家："+this.state.data.username}
+                            />
+                        </Card>
+                        <Modal visible={this.state.visible} footer={null} onCancel={(e) => {
+                            // console.log(e);
+                            this.setState({
+                                visible: false,
+                            });
+                        }}>
+                            {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
+                            <img alt={this.state.data.key} style={{ width: '100%' }} src={`${ROOT_URL}`+this.state.data.url} />
+                        </Modal>
+                    </div>
+                    <div className={"col-sm-6 text-center"}>
+                        <p style={{fontSize:"1.5em", color:"red"}}>{this.state.data.title}</p>
+                        <Divider dashed />
+                        <p style={{fontSize:"1.1em"}}>{this.state.data.goods_describe}</p>
+                        <Divider dashed />
+                        <div style={{fontSize:"1em"}}><s>原价：{this.state.data.originalPrice} 元</s><Divider type="vertical" /><span style={{color:"red"}}>售价：{this.state.data.price} 元</span></div>
+                        <Divider dashed />
+                        <div>
+                            颜色：
+                            <ColorPicker color={this.state.data.color}/>
+                        </div>
+                        <Divider dashed />
+                        <div className={"col-sm-12"} style={{margin:"0px 0px 10px 0px"}}>
+                            <div className={"col-sm-6"} style={{lineHeight:"30px"}}>库存数：{this.state.data.number} 个</div>
+                            <div className={"col-sm-6"}>
+                                <NumberInput min={1} max={Number(this.state.data.number)} value={1} showCounter placeholder="请输入数字" />
+                            </div>
+                        </div>
+                        <div className={"g-py-10"}>
+                            <Button className={"g-mr-10"} type="primary" icon="shopping-cart" size={"large"} onClick={this.onAddCart.bind(this,_this.state.data.goods_id)}>加入购物车</Button>
+                            <Button className={"g-ml-10"} type="primary" icon="heart-o" size={"large"} onClick={this.onBuyGoods.bind(this,_this.state.data.goods_id)}>立即购买</Button>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

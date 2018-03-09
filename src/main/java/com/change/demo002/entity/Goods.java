@@ -24,15 +24,17 @@ public class Goods {
     private String goods_describe;
     private String agree;
     private String url;
-    private String number;
+    private Integer number;
     private String time;
     private String key;
+    private Integer transaction_number;
+    private String userId;
 
     public Goods(){
 
     }
 
-    public Goods(String goods_id, String id, String username, String prop, String color, String originalPrice, String price ,String title, String goods_describe, String agree, String url, String number, String time, String key) {
+    public Goods(String goods_id, String id, String username, String prop, String color, String originalPrice, String price ,String title, String goods_describe, String agree, String url, Integer number, String time, String key, Integer transaction_number, String userId) {
         this.goods_id = goods_id;
         this.id = id;
         this.username = username;
@@ -47,6 +49,8 @@ public class Goods {
         this.number = number;
         this.time = time;
         this.key = key;
+        this.transaction_number = transaction_number;
+        this.userId = userId;
     }
 
     public String getGoods_id() {
@@ -137,11 +141,11 @@ public class Goods {
         this.url = url;
     }
 
-    public String getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
@@ -161,6 +165,22 @@ public class Goods {
         this.key = key;
     }
 
+    public Integer getTransaction_number() {
+        return transaction_number;
+    }
+
+    public void setTransaction_number(Integer transaction_number) {
+        this.transaction_number = transaction_number;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -178,6 +198,8 @@ public class Goods {
                 ", number='" + number + '\'' +
                 ", time='" + time + '\'' +
                 ", key='" + key + '\'' +
+                ", transaction_number='" + transaction_number + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }

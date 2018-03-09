@@ -27,6 +27,6 @@ public interface GoodsMapper {
                     @Param("goods_describe") String goods_describe,
                     @Param("agree") String agree,
                     @Param("url") String url,
-                    @Param("number") String number,
+                    @Param("number") Integer number,
                     @Param("time") String time);
 }
