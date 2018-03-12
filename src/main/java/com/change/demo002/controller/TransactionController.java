@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @Author: lijun
@@ -30,16 +31,21 @@ public class TransactionController {
      *
      */
     @PostMapping("/buyGoods")
-    public Rest<Goods> transaction(Goods goods){
+    public @ResponseBody Rest<Goods> transaction(Goods goods){
         int numberResult = transactionService.selectGoodsNumber(goods);
         Goods transactionResult = transactionService.selectTransaction(goods);
-        if (null == transactionResult){
-            boolean result1 = transactionService.insertGoodsToTransaction(goods);
-            boolean result2 = transactionService.updateGoodsNumber(numberResult-goods.getTransaction_number());
+        if (goods.getUserId().equals(goods.getId())){
+            return new Rest<Goods>(0,"您不能自己购买自己的商品",goods);
         }else {
-            boolean result1 = transactionService.updateTransactionNumber(goods.getTransaction_number()+transactionResult.getTransaction_number());
-            boolean result2 = transactionService.updateGoodsNumber(numberResult-goods.getTransaction_number());
+            if (null == transactionResult){
+                boolean result1 = transactionService.insertGoodsToTransaction(goods);
+                boolean result2 = transactionService.updateGoodsNumber(goods.getGoods_id(),numberResult-goods.getTransaction_number());
+            }else {
+                boolean result1 = transactionService.updateTransactionNumber(goods.getGoods_id(),goods.getTransaction_number()+transactionResult.getTransaction_number());
+                boolean result2 = transactionService.updateGoodsNumber(goods.getGoods_id(),numberResult-goods.getTransaction_number());
+            }
+            return new Rest<Goods>(1,"购买商品成功",goods);
         }
-        return new Rest<Goods>(1,"购买商品成功，",goods);
+
     }
 }

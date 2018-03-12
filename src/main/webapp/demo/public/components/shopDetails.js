@@ -4,7 +4,7 @@ import {ROOT_URL} from "../actions/type";
 import axios from 'axios';
 import {Button, Card, Divider, Modal} from 'antd';
 import {ColorPicker, NumberInput} from "zent";
-import {AddCart} from "../actions/auth";
+import {AddCart, BuyGoods} from "../actions/auth";
 class ShopDetails extends Component{
     constructor(props) {
         super(props);
@@ -15,6 +15,7 @@ class ShopDetails extends Component{
                 goods_id: "",
             },
             visible:false,
+            value : 1,
         };
     }
 
@@ -35,13 +36,13 @@ class ShopDetails extends Component{
         console.log(src);
         AddCart(src);
     }
-    onBuyGoods(src,event){
-        // console.log(src);
-        // const _this = this;
-        // const data = {
-        //     _this.state.data
-        // };
-        // buyGoods()(data);
+    onBuyGoods(e){
+        this.state.data.userId = localStorage.getItem("userId");
+        this.state.data.transaction_number = this.state.value;
+        const data = {
+            data : this.state.data,
+        };
+        BuyGoods(data.data);
     }
     render(){
         const _this = this;
@@ -89,13 +90,14 @@ class ShopDetails extends Component{
                         <Divider dashed />
                         <div className={"col-sm-12"} style={{margin:"0px 0px 10px 0px"}}>
                             <div className={"col-sm-6"} style={{lineHeight:"30px"}}>库存数：{this.state.data.number} 个</div>
+                            <div></div>
                             <div className={"col-sm-6"}>
-                                <NumberInput min={1} max={Number(this.state.data.number)} value={1} showCounter placeholder="请输入数字" />
+                                <NumberInput min={1} max={Number(this.state.data.number)} value={1} showCounter placeholder="请输入数字" onChange={(value)=>{this.setState({value:value.target.value})}}/>
                             </div>
                         </div>
                         <div className={"g-py-10"}>
                             <Button className={"g-mr-10"} type="primary" icon="shopping-cart" size={"large"} onClick={this.onAddCart.bind(this,_this.state.data.goods_id)}>加入购物车</Button>
-                            <Button className={"g-ml-10"} type="primary" icon="heart-o" size={"large"} onClick={this.onBuyGoods.bind(this,_this.state.data.goods_id)}>立即购买</Button>
+                            <Button className={"g-ml-10"} type="primary" icon="heart-o" size={"large"} onClick={this.onBuyGoods.bind(this)}>立即购买</Button>
                         </div>
                     </div>
                 </div>

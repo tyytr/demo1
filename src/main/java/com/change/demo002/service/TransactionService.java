@@ -46,13 +46,14 @@ public class TransactionService {
                 goods.getTime(),
                 goods.getUserId(),
                 goods.getTransaction_number(),
-                goods.getGoods_id());
+                goods.getGoods_id(),
+                goods.getAgree());
     }
 
-    public boolean updateTransactionNumber(Integer data){
-        return transactionMapper.updateTransactionNumber(data);
+    public boolean updateTransactionNumber(String goods_id,Integer data){
+        return transactionMapper.updateTransactionNumber(goods_id,data);
     }
-    public boolean updateGoodsNumber(Integer data){
-        return transactionMapper.updateGoodsNumber(data);
+    public boolean updateGoodsNumber(String goods_id,Integer data){
+        return transactionMapper.updateGoodsNumber(goods_id, data);
     }
 }

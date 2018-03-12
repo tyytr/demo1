@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import { Tabs, Select } from 'antd';
 import 'antd/dist/antd.css';
-import CartHandleGoods from "./cartHandleGoods";
+import CartHandleDeleteGoods from "./cartHandleDeleteGoods";
+import CartHandleBuyGoods from "./cartHandleBuyGoods";
 
 class Cart extends Component{
     constructor(props) {
@@ -25,7 +26,8 @@ class Cart extends Component{
                     </div>
                     <div className={"col-xs-12 g-pb-30"}>
                         <Tabs tabPosition={this.state.tabPosition}>
-                            <Tabs.TabPane tab="购物车" key="1"><CartHandleGoods/></Tabs.TabPane>
+                            <Tabs.TabPane tab="购物商品" key="1"><CartHandleBuyGoods/></Tabs.TabPane>
+                            <Tabs.TabPane tab="删除商品" key="2"><CartHandleDeleteGoods/></Tabs.TabPane>
                         </Tabs>
                     </div>
                 </div>

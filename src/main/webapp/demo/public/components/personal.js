@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 import PersonalAdvice from './personalAdvice';
 import PersonalNotice from './personalNotice';
 import PersonalGoods from "./personalGoods";
+import PersonalTransaction from "./personalTransaction";
 
 class Personal extends Component{
     constructor(props) {
@@ -28,7 +29,7 @@ class Personal extends Component{
                     <div className={"col-xs-12"}>
                         <Tabs tabPosition={this.state.tabPosition}>
                             <Tabs.TabPane tab="上架商品" key="1"><PersonalGoods/></Tabs.TabPane>
-                            <Tabs.TabPane tab="买卖订单" key="2">Content of Tab 2</Tabs.TabPane>
+                            <Tabs.TabPane tab="购买订单" key="2"><PersonalTransaction/></Tabs.TabPane>
                             <Tabs.TabPane tab="系统公告" key="3"><PersonalNotice/></Tabs.TabPane>
                             <Tabs.TabPane tab="反馈建议" key="4"><PersonalAdvice/></Tabs.TabPane>
                         </Tabs>

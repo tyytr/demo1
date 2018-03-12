@@ -120,7 +120,7 @@ public class ShopController {
     @GetMapping("/shopDetails")
     public @ResponseBody Rest<Goods> shopDetails(Goods goods){
         Goods allUser = shopService.selectDetailsGoods(goods);
-        System.out.println(allUser);
+//        System.out.println(allUser);
         return new Rest<Goods>(1, "查询商品详情信息成功", allUser);
     }
 

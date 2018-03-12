@@ -27,7 +27,7 @@ public interface TransactionMapper {
     @Select("select * from transaction where goods_id=#{goods_id}")
     Goods selectTransaction(@Param("goods_id") String goods_id);
 
-    @Insert("insert into goods(id, username, prop, color, originalPrice, price, title, goods_describe, agree, url, number, time, userId, transaction_number, goods_id) values(#{id}, #{username}, #{prop}, #{color}, #{originalPrice}, #{price}, #{title}, #{goods_describe}, #{agree}, #{url}, #{number}, #{time}, #{userId}, #{transaction_number}, #{goods_id})")
+    @Insert("insert into transaction(id, username, prop, color, originalPrice, price, title, goods_describe, url, number, time, userId, transaction_number, goods_id, agree) values(#{id}, #{username}, #{prop}, #{color}, #{originalPrice}, #{price}, #{title}, #{goods_describe}, #{url}, #{number}, #{time}, #{userId}, #{transaction_number}, #{goods_id}, #{agree})")
     boolean insertGoodsToTransaction(
             @Param("id") String id,
             @Param("username") String username,
@@ -42,11 +42,16 @@ public interface TransactionMapper {
             @Param("time") String time,
             @Param("userId") String userId,
             @Param("transaction_number") Integer transaction_number,
-            @Param("goods_id") String goods_id);
+            @Param("goods_id") String goods_id,
+            @Param("agree") String agree);
 
-    @Update("update transaction set transaction_number = #{data}")
-    boolean updateTransactionNumber(@Param("data") Integer data);
+    @Update("update transaction set transaction_number = #{data} where goods_id = #{goods_id}")
+    boolean updateTransactionNumber(
+            @Param("goods_id") String goods_id,
+            @Param("data") Integer data);
 
-    @Update("update goods set number = #{data}")
-    boolean updateGoodsNumber(@Param("data") Integer data);
+    @Update("update goods set number = #{data} where goods_id = #{goods_id}")
+    boolean updateGoodsNumber(
+            @Param("goods_id") String goods_id,
+            @Param("data") Integer data);
 }

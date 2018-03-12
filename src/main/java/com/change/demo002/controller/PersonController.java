@@ -50,6 +50,38 @@ public class PersonController {
         }
         return new Rest<List<String>>(1,"商品下架成功",goods.getData());
     }
+
+
+
+    /**
+     * @Author: lijun
+     * @Date: 2018/3/12 14:47
+    No such property: code for class: Script1
+     * @Description:普通用户个人中心：购买订单
+     *
+     */
+    //    购买订单
+    @GetMapping("/buyTransaction")
+    public @ResponseBody Rest<List<Goods>> buyTransaction(Goods goods){
+        List<Goods> allNotice = personService.buyTransaction(goods);
+        for (Goods goods1 : allNotice){
+            goods1.setKey(goods1.getGoods_id());
+        }
+//        System.out.println(allUser);
+        return new Rest<List<Goods>>(1, "查询用户所有购买订单成功", allNotice);
+    }
+    //    删除订单记录
+    @GetMapping("/deleteTransaction")
+    public @ResponseBody Rest<List<String>> deleteTransaction(Goods goods){
+//        System.out.println(admin.getData());
+        for (String result:goods.getData()) {
+            personService.deleteTransaction(result);
+//            System.out.println(result);
+        }
+        return new Rest<List<String>>(1,"删除订单记录成功",goods.getData());
+    }
+
+
     /**
      * @Author: lijun
      * @Date: 2018/2/7 18:10

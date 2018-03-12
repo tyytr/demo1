@@ -51,6 +51,7 @@ public class Goods {
         this.key = key;
         this.transaction_number = transaction_number;
         this.userId = userId;
+
     }
 
     public String getGoods_id() {

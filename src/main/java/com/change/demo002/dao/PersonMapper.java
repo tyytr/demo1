@@ -25,6 +25,19 @@ public interface PersonMapper {
     boolean personGoodsDisagree(@Param("data") String data);
     /**
      * @Author: lijun
+     * @Date: 2018/3/12 14:52
+    No such property: code for class: Script1
+     * @Description:普通用户个人中心：购买订单
+     *
+     */
+    //    显示购买订单
+    @Select("select * from transaction where userId = #{id} and agree = 'true'")
+    List<Goods> buyTransaction(@Param("id") String id);
+    //    删除订单记录
+    @Update("update transaction set agree = 'false' where goods_id = #{data}")
+    boolean deleteTransaction(@Param("data") String data);
+    /**
+     * @Author: lijun
      * @Date: 2018/2/7 18:20
     No such property: code for class: Script1
      * @Description:普通用户个人中心：系统公告

@@ -136,7 +136,7 @@ class ShopList extends Component{
         // this.setState({userId:localStorage.getItem("userId")});
         return (
             <div className={"container g-my-20"}>
-                <div className={"row"}>
+                <div className={"row g-mb-100"}>
                     <Tabs defaultActiveKey="0">
                         {/*{renderTabs.map(this.renderTags)}*/}
                         <Tabs.TabPane tab="手机" key="0"><Masonry>{this.state.mobile.map(this.renderRow)}</Masonry></Tabs.TabPane>

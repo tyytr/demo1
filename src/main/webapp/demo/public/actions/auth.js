@@ -275,7 +275,7 @@ export function adminDeleteNotice(data) {
 
 
 /**
- * 管理员个人中心：商品下架
+ * 普通用户个人中心：商品下架
  */
 export function personGoodsDisagree(data) {
     $.ajax({
@@ -289,6 +289,30 @@ export function personGoodsDisagree(data) {
             console.log(msg);
             if (msg.status === 1){
                 window.location.href = `${ROOT_URLF}/personal`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+/**
+ * 普通用户个人中心：订单删除
+ */
+export function deleteTransaction(data) {
+    $.ajax({
+        type : "GET",
+        url : `${ROOT_URL}/person/deleteTransaction`,
+        cache : false,
+        traditional: true,
+        data : {"data":data},
+        // dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === 1){
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/personal`;
             }
         },
         error : function (err) {
@@ -448,6 +472,39 @@ export function AddCart(data) {
     });
 }
 /**
+ * 普通用户商品：购买物品
+ */
+export function BuyGoods(data) {
+    console.log("1");
+    console.log(data);
+    $.ajax({
+        type : "POST",
+        url : `${ROOT_URL}/transaction/buyGoods`,
+        data : data,
+        // cache : false,
+        // traditional: true,
+        dataType : "json",
+        success : function (msg) {
+            console.log(msg);
+            if (msg.status === "1") {
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singin`;
+            }else{
+                alert(msg.message);
+                // window.location.href = `${ROOT_URLF}/singup`;
+            }
+        },
+        error : function (err) {
+            console.log(err);
+            alert("与后台交互走error");
+        }
+    });
+}
+
+
+
+
+/**
  * 购物车删除：删除商品
  */
 export function cartDeleteGoods(data) {
@@ -470,3 +527,7 @@ export function cartDeleteGoods(data) {
         }
     });
 }
+
+
+
+

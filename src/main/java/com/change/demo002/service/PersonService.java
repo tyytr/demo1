@@ -35,6 +35,26 @@ public class PersonService {
     }
     /**
      * @Author: lijun
+     * @Date: 2018/3/12 14:51
+    No such property: code for class: Script1
+     * @Description:普通用户个人中心：购买订单
+     *
+     */
+    //    查询购买订单
+    public List<Goods> buyTransaction(Goods goods) {
+        return personMapper.buyTransaction(goods.getId());
+    }
+    //    删除订单记录
+    public int deleteTransaction(String data){
+        boolean result = personMapper.deleteTransaction(data);
+        if (result){
+            return 1;
+        }else {
+            return -1;
+        }
+    }
+    /**
+     * @Author: lijun
      * @Date: 2018/2/7 18:19
     No such property: code for class: Script1
      * @Description:普通用户个人中心：系统公告方法
