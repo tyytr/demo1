@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Table, Button, Column, Modal} from 'antd';
+import {Input, Table, Button, Column, Modal} from 'antd';
 import { ColorPicker } from 'zent';
 import 'zent/css/index.css';
 import 'antd/dist/antd.css';
@@ -18,8 +18,8 @@ class PersonalGoods extends Component{
             loadingAgree: false,
             loadingDisagree: false,
 
-
             visible:false,
+            index:"",
         };
     }
     componentDidMount(){
@@ -88,11 +88,12 @@ class PersonalGoods extends Component{
             key : 'url',
             className : '',
             // render: (text, record) => (<img src={record.url} alt={record.key}/>),
-            render: (text, record) => (
+            render: (text, record, index) => (
                 <div style={{border:"1px solid #bbb"}}>
                     <img width={"50px"} onClick={() => {
                         this.setState({
                             visible: true,
+                            index: this.state.data[index].url,
                         });
                     }} src={`${ROOT_URL}`+record.url} alt={record.key}/>
                     <Modal visible={this.state.visible} footer={null} onCancel={(e) => {
@@ -102,7 +103,7 @@ class PersonalGoods extends Component{
                         });
                     }}>
                         {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
-                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+record.url} />
+                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+this.state.index} />
                     </Modal>
                 </div>
             ),
@@ -123,9 +124,10 @@ class PersonalGoods extends Component{
         };
         // console.log(selectedRowKeys);
         const hasSelected = selectedRowKeys.length > 0;
+        const _this = this;
         return (
-            <div>
-                <div style={{ marginBottom: 16 }}>
+            <div className={"col-sm-12"}>
+                <div className={"col-sm-6"} style={{ marginBottom: 16 }}>
                     <Button
                         type="primary"
                         onClick={() => {
@@ -148,7 +150,35 @@ class PersonalGoods extends Component{
                         {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={array}  style={{marginBottom:"100px"}}>
+                <div className={"col-sm-6"}>
+                    <Input.Search
+                        placeholder="请输入搜索内容"
+                        onSearch={value => {
+                            console.log(value);
+                            $.ajax({
+                                type : "POST",
+                                url : `${ROOT_URL}/search/searchGoods`,
+                                cache : false,
+                                traditional: true,
+                                data : {"search":value},
+                                // dataType : "json",
+                                success : function (msg) {
+                                    console.log(msg);
+                                    if (msg.status === 1){
+                                        _this.setState({data : msg.data});
+                                        // window.location.href = `${ROOT_URLF}/adminGoods`;
+                                    }
+                                },
+                                error : function (err) {
+                                    console.log(err);
+                                    alert("与后台交互走error");
+                                }
+                            });
+                        }}
+                        enterButton
+                    />
+                </div>
+                <Table className={"col-sm-12"} rowSelection={rowSelection} columns={columns} dataSource={array}  style={{marginBottom:"100px"}}>
                 </Table>
             </div>
         )

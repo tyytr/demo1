@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Table, Button, Column, Modal} from 'antd';
-import { ColorPicker } from 'zent';
+import {ColorPicker, previewImage} from 'zent';
 import 'zent/css/index.css';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";
@@ -21,6 +21,7 @@ class CartHandleBuyGoods extends Component{
             loadingDisagree: false,
 
             visible:false,
+            index : ""
         };
     }
     componentDidMount(){
@@ -35,10 +36,6 @@ class CartHandleBuyGoods extends Component{
                 alert(err);
             })
     }
-    // onRowClick(record, index){
-    //     console.log(record);
-    //     console.log(index);
-    // }
     render(){
         const columns = [{
             title : '用户名',
@@ -92,12 +89,14 @@ class CartHandleBuyGoods extends Component{
             key : 'url',
             className : '',
             // render: (text, record) => (<img src={record.url} alt={record.key}/>),
-            render: (text, record) => (
+            render: (text, record, index) => (
                 <div style={{border:"1px solid #bbb"}}>
-                    <img width={"50px"} onClick={() => {
+                    <img width={"50px"} onClick={(e) => {
                         this.setState({
                             visible: true,
+                            index:this.state.data[index].url,
                         });
+                        // console.log(this.state.data[index].url);
                     }} src={`${ROOT_URL}`+record.url} alt={record.key}/>
                     <Modal visible={this.state.visible} footer={null} onCancel={(e) => {
                         // console.log(e);
@@ -105,8 +104,11 @@ class CartHandleBuyGoods extends Component{
                             visible: false,
                         });
                     }}>
+                        {/*{console.log(text)}*/}
+                        {/*{console.log(record)}*/}
+                        {/*{console.log(this.state.data[index].url)}*/}
                         {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
-                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+record.url} />
+                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+this.state.index} />
                     </Modal>
                 </div>
             ),

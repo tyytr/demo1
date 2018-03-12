@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { Input ,Button ,Table, Divider} from 'antd';
+import { Input ,Button ,Table} from 'antd';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";
 import axios from 'axios';

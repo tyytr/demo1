@@ -18,8 +18,9 @@ class CartHandleDeleteGoods extends Component{
             loadingAgree: false,
             loadingDisagree: false,
 
-
             visible:false,
+
+            index:"",
         };
     }
     componentDidMount(){
@@ -88,11 +89,12 @@ class CartHandleDeleteGoods extends Component{
             key : 'url',
             className : '',
             // render: (text, record) => (<img src={record.url} alt={record.key}/>),
-            render: (text, record) => (
+            render: (text, record, index) => (
                 <div style={{border:"1px solid #bbb"}}>
                     <img width={"50px"} onClick={() => {
                         this.setState({
                             visible: true,
+                            index: this.state.data[index].url,
                         });
                     }} src={`${ROOT_URL}`+record.url} alt={record.key}/>
                     <Modal visible={this.state.visible} footer={null} onCancel={(e) => {
@@ -102,7 +104,7 @@ class CartHandleDeleteGoods extends Component{
                         });
                     }}>
                         {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
-                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+record.url} />
+                        <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+this.state.index} />
                     </Modal>
                 </div>
             ),

@@ -93,40 +93,38 @@ class PersonNotice extends Component{
         // };
         // console.log(selectedRowKeys);
         // const hasSelected = selectedRowKeys.length > 0;
+        const _this = this;
         return (
-            <div className={"col-xs-12"}>
-                {/*<Divider><h4>发布公告</h4></Divider>*/}
-                {/*<form action=""  style={{textAlign:"center"}}>*/}
-                    {/*<Input.TextArea placeholder="发布系统公告（100字以内）" autosize={{minRows: 4}} maxLength={"100"} onChange={this.handleAdvice.bind(this)}/>*/}
-                    {/*<Button type="primary" size={"large"} onClick={this.adminNotice.bind(this)} >发布公告</Button>*/}
-                {/*</form>*/}
-                {/*<Divider><h4>处理公告</h4></Divider>*/}
-                {/*<div style={{ marginBottom: 16 }}>*/}
-                    {/*<Button*/}
-                        {/*type="primary"*/}
-                        {/*onClick={() => {*/}
-                            {/*this.setState({ loadingAgree: true });*/}
-                            {/*// ajax request after empty completing*/}
-                            {/*// console.log(typeof (selectedRowKeys));*/}
-                            {/*adminDeleteNotice(selectedRowKeys);*/}
-                            {/*setTimeout(() => {*/}
-                                {/*this.setState({*/}
-                                    {/*selectedRowKeys: [],*/}
-                                    {/*loadingAgree: false,*/}
-                                {/*});*/}
-                            {/*}, 1000);*/}
-                        {/*}}*/}
-                        {/*disabled={!hasSelected}*/}
-                        {/*loading={loadingAgree}*/}
-                        {/*className={"g-mr-10"}*/}
-                    {/*>*/}
-                        {/*删除公告*/}
-                    {/*</Button>*/}
-                    {/*<span style={{ marginLeft: 8 }}>*/}
-                        {/*{hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}*/}
-                    {/*</span>*/}
-                {/*</div>*/}
-                <Table columns={columns} dataSource={array} />
+            <div>
+                <div className={"col-sm-6 col-sm-offset-6"} style={{ marginBottom: 16 }}>
+                    <Input.Search
+                        placeholder="请输入搜索内容"
+                        onSearch={value => {
+                            console.log(value);
+                            $.ajax({
+                                type : "POST",
+                                url : `${ROOT_URL}/search/searchNotice`,
+                                cache : false,
+                                traditional: true,
+                                data : {"search":value},
+                                // dataType : "json",
+                                success : function (msg) {
+                                    console.log(msg);
+                                    if (msg.status === 1){
+                                        _this.setState({data : msg.data});
+                                        // window.location.href = `${ROOT_URLF}/adminGoods`;
+                                    }
+                                },
+                                error : function (err) {
+                                    console.log(err);
+                                    alert("与后台交互走error");
+                                }
+                            });
+                        }}
+                        enterButton
+                    />
+                </div>
+                <Table className={"col-sm-12"} columns={columns} dataSource={array} />
             </div>
         )
     }
