@@ -13,7 +13,7 @@ class Cart extends Component{
     }
     render(){
         return (
-            <div className={"container g-mb-40"}>
+            <div className={"container g-mt-10 g-pb-100"}>
                 <div className={"row"}>
                     <div className={"col-xs-12 g-py-10"}>
                         购物车：

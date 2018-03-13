@@ -16,6 +16,7 @@ class Header extends Component{
         // console.log(loginStatus);
         return (
             <div>
+                {/*navbar-fixed-top*/}
                 <nav className="navbar navbar-default navbar-static-top header g-mb-0" role="navigation">
                     <div className="container g-pa-10">
                         <div className="navbar-header">
@@ -31,7 +32,7 @@ class Header extends Component{
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
                             <ul className={`nav navbar-nav navbar-right ${(loginStatus==="false"||loginStatus===null)?"":"hidden"}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                <li><a href="/shopList">商品</a></li>
+                                {/*<li><a href="/shopList">商品</a></li>*/}
                                 <li><a href="/publish">商品发布</a></li>
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
@@ -44,7 +45,7 @@ class Header extends Component{
                             </ul>
                             <ul className={`nav navbar-nav navbar-right ${(loginStatus==="true")&&(token==="1")?"":"hidden"}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                <li><a href="/shopList">商品</a></li>
+                                {/*<li><a href="/shopList">商品</a></li>*/}
                                 <li><a href="/publish">商品发布</a></li>
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>

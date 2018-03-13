@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {singupAction} from "../../../actions/auth";
+import {ROOT_URLF} from "../../../actions/type";
 // import Code from './code';
 class SingFormUp extends Component{
     constructor(props) {
@@ -158,7 +159,7 @@ class SingFormUp extends Component{
                             {/*</div>*/}
                             <div className="checkbox">
                                 <label>
-                                    <input type="checkbox" checked={this.state.isAgree} onClick={this.handleAgree.bind(this)} />我已阅读并同意 <a href="#">《易换网用户协议》</a>
+                                    <input type="checkbox" checked={this.state.isAgree} onClick={this.handleAgree.bind(this)} />我已阅读并同意 <a href={`${ROOT_URLF}/agreement.pdf`}>《易换网用户协议》</a>
                                 </label>
                             </div>
                             <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this,this.state)}>注册</button>

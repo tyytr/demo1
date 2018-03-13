@@ -1,11 +1,10 @@
 import React,{Component} from 'react';
-import {Table, Button, Column, Modal} from 'antd';
+import {Input, Table, Button, Column, Modal} from 'antd';
 import {ColorPicker, previewImage} from 'zent';
 import 'zent/css/index.css';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";
 import axios from 'axios';
-import {cartDeleteGoods} from "../actions/auth";
 import {Link} from "react-router-dom";
 
 class CartHandleBuyGoods extends Component{
@@ -104,10 +103,6 @@ class CartHandleBuyGoods extends Component{
                             visible: false,
                         });
                     }}>
-                        {/*{console.log(text)}*/}
-                        {/*{console.log(record)}*/}
-                        {/*{console.log(this.state.data[index].url)}*/}
-                        {/*<img width={"50px"} src="http://localhost:8080/ServiceImage/0/currencyTop_CN.png" alt={record.key}/>*/}
                         <img alt={record.key} style={{ width: '100%' }} src={`${ROOT_URL}`+this.state.index} />
                     </Modal>
                 </div>
@@ -130,25 +125,13 @@ class CartHandleBuyGoods extends Component{
         };
         // console.log(selectedRowKeys);
         const hasSelected = selectedRowKeys.length > 0;
+        const _this = this;
         return (
-            <div>
-                <div style={{ marginBottom: 16 }}>
+            <div className={"col-sm-12"}>
+                <div className={"col-sm-6"} style={{ marginBottom: 16 }}>
                     <Link to={`/shopDetails/${selectedRowKeys[0]}`}>
                     <Button
                         type="primary"
-                        // onClick={() => {
-                        //     this.setState({ loadingAgree: true });
-                        //     // ajax request after empty completing
-                        //     // console.log(typeof (selectedRowKeys));
-                        //     // window.location.href = `/shopDetails/${selectedRowKeys[0]}`;
-                        //     // goodsAgree(selectedRowKeys);
-                        //     setTimeout(() => {
-                        //         this.setState({
-                        //             selectedRowKeys: [],
-                        //             loadingAgree: false,
-                        //         });
-                        //     }, 1000);
-                        // }}
                         disabled={!hasSelected}
                         loading={loadingAgree}
                         className={"g-mr-10"}
@@ -160,7 +143,39 @@ class CartHandleBuyGoods extends Component{
                         {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={array}>
+                <div className={"col-sm-6"}>
+                    <Input.Search
+                        placeholder="请输入搜索内容"
+                        onSearch={value => {
+                            console.log(value);
+                            $.ajax({
+                                type : "POST",
+                                url : `${ROOT_URL}/search/searchCartGoods`,
+                                cache : false,
+                                traditional: true,
+                                data :
+                                    {
+                                        "search":value,
+                                        "userId":localStorage.getItem("userId"),
+                                    },
+                                // dataType : "json",
+                                success : function (msg) {
+                                    console.log(msg);
+                                    if (msg.status === 1){
+                                        _this.setState({data : msg.data});
+                                        // window.location.href = `${ROOT_URLF}/cart`;
+                                    }
+                                },
+                                error : function (err) {
+                                    console.log(err);
+                                    alert("与后台交互走error");
+                                }
+                            });
+                        }}
+                        enterButton
+                    />
+                </div>
+                <Table className={"col-sm-12"} rowSelection={rowSelection} columns={columns} dataSource={array} style={{marginBottom:"100px"}}>
                 </Table>
             </div>
         )

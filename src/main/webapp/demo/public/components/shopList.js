@@ -101,7 +101,11 @@ class ShopList extends Component{
     }
     onAddCart(src,event){
         console.log(src);
-        AddCart(src);
+        if (localStorage.getItem("user_id") === null || localStorage.getItem("user_id") === ""){
+            alert("请先登陆");
+        }else {
+            AddCart(src);
+        }
     }
 
     renderRow(src,index){
@@ -135,7 +139,7 @@ class ShopList extends Component{
     render(){
         // this.setState({userId:localStorage.getItem("userId")});
         return (
-            <div className={"container g-my-20"}>
+            <div className={"container g-mt-10 g-pb-100"}>
                 <div className={"row g-mb-100"}>
                     <Tabs defaultActiveKey="0">
                         {/*{renderTabs.map(this.renderTags)}*/}

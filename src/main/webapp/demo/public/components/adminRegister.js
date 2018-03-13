@@ -13,7 +13,7 @@ class AdminRegister extends Component{
     render(){
         return (
             <div className={"container g-mb-40"}>
-                <div className={"row"}>
+                <div className={"row"} style={{marginBottom:"100px"}} >
                     <div className={"col-xs-12 g-py-10"}>
                         注册认证：
                         <Select value={this.state.tabPosition} onChange={(tabPosition) => {this.setState({ tabPosition });}} dropdownMatchSelectWidth={false}>

@@ -312,7 +312,7 @@ export function deleteTransaction(data) {
             console.log(msg);
             if (msg.status === 1){
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/personal`;
+                window.location.href = `${ROOT_URLF}/personal`;
             }
         },
         error : function (err) {

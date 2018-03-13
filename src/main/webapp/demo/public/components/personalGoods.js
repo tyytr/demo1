@@ -157,10 +157,14 @@ class PersonalGoods extends Component{
                             console.log(value);
                             $.ajax({
                                 type : "POST",
-                                url : `${ROOT_URL}/search/searchGoods`,
+                                url : `${ROOT_URL}/search/personSearchGoods`,
                                 cache : false,
                                 traditional: true,
-                                data : {"search":value},
+                                data :
+                                    {
+                                        "search":value,
+                                        "username":localStorage.getItem("username"),
+                                    },
                                 // dataType : "json",
                                 success : function (msg) {
                                     console.log(msg);

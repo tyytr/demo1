@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
-import Left from './leftaffix';
 import CenterNews from './centerNews';
 import Publish from './commons/publish';
-import Detail from "./centerNewsDetail";
+import ShopList from "./shopList";
+import CenterNewsDetail from "./centerNewsDetail";
 
 class Home extends Component{
     constructor(props) {
@@ -11,12 +11,12 @@ class Home extends Component{
     }
     render(){
         return (
-            <div className={"container"}>
-                <div className={"row g-py-50"}>
+            <div className={"container g-mt-10 g-pb-100"}>
+                <div className={"row g-py-10"}>
                     <CenterNews/>
                     <Publish/>
-                    <Left/>
-                    <Detail/>
+                    {/*<ShopList/>*/}
+                    <CenterNewsDetail/>
                 </div>
             </div>
         )

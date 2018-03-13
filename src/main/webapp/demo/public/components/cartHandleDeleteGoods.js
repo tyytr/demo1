@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Table, Button, Column, Modal} from 'antd';
+import {Input, Table, Button, Column, Modal} from 'antd';
 import { ColorPicker } from 'zent';
 import 'zent/css/index.css';
 import 'antd/dist/antd.css';
@@ -125,9 +125,10 @@ class CartHandleDeleteGoods extends Component{
         };
         // console.log(selectedRowKeys);
         const hasSelected = selectedRowKeys.length > 0;
+        const _this = this;
         return (
-            <div>
-                <div style={{ marginBottom: 16 }}>
+            <div className={"col-sm-12"}>
+                <div className={"col-sm-6"} style={{ marginBottom: 16 }}>
                     <Button
                         type="primary"
                         onClick={() => {
@@ -150,7 +151,39 @@ class CartHandleDeleteGoods extends Component{
                         {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>
                 </div>
-                <Table rowSelection={rowSelection} columns={columns} dataSource={array} >
+                <div className={"col-sm-6"}>
+                    <Input.Search
+                        placeholder="请输入搜索内容"
+                        onSearch={value => {
+                            console.log(value);
+                            $.ajax({
+                                type : "POST",
+                                url : `${ROOT_URL}/search/searchCartGoods`,
+                                cache : false,
+                                traditional: true,
+                                data :
+                                    {
+                                        "search":value,
+                                        "userId":localStorage.getItem("userId"),
+                                    },
+                                // dataType : "json",
+                                success : function (msg) {
+                                    console.log(msg);
+                                    if (msg.status === 1){
+                                        _this.setState({data : msg.data});
+                                        // window.location.href = `${ROOT_URLF}/cart`;
+                                    }
+                                },
+                                error : function (err) {
+                                    console.log(err);
+                                    alert("与后台交互走error");
+                                }
+                            });
+                        }}
+                        enterButton
+                    />
+                </div>
+                <Table className={"col-sm-12"} rowSelection={rowSelection} columns={columns} dataSource={array} style={{marginBottom:"100px"}} >
                 </Table>
             </div>
         )
