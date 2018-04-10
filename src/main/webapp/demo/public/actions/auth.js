@@ -12,7 +12,7 @@ function setAuthToLocalStorage(data) {
     localStorage.setItem('password', data.data.password);//密码
     localStorage.setItem('admin', data.data.admin);//管理员
     localStorage.setItem('agree', data.data.agree);//同意协议
-    localStorage.setItem('loginStatus', false);//当前是否登陆
+    localStorage.setItem('loginStatus', false);//当前是否登录
     console.log(localStorage);
 }
 /**

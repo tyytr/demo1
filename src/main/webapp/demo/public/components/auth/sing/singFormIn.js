@@ -107,7 +107,7 @@ class SingFormIn extends React.Component{
                             {/*</Form.Item>*/}
                         {/*</Form>*/}
                         <form className={"col-md-6 col-md-offset-3"}>
-                            <h2 style={{textAlign:"center"}}>登陆</h2>
+                            <h2 style={{textAlign:"center"}}>登录</h2>
                             <div className="form-group">
                                 <label htmlFor="username">用户名</label>
                                 <input type="text" name="username" ref="username" className="form-control" placeholder="用户名" onChange={this.changeUsername.bind(this)} />
@@ -127,10 +127,10 @@ class SingFormIn extends React.Component{
                             {/*<div className="checkbox">*/}
                                 {/*<label>*/}
                                     {/*<input type="checkbox" checked={this.state.isAdmin} onClick={this.handleAdmin.bind(this)} />*/}
-                                    {/*<span>管理员登陆</span>*/}
+                                    {/*<span>管理员登录</span>*/}
                                 {/*</label>*/}
                             {/*</div>*/}
-                            <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this)}>登陆</button>
+                            <button type="button" className="btn btn-default" onClick={this.handleClick.bind(this)}>登录</button>
                         </form>
                     </div>
                 </div>

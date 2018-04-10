@@ -102,7 +102,7 @@ class ShopList extends Component{
     onAddCart(src,event){
         console.log(src);
         if (localStorage.getItem("user_id") === null || localStorage.getItem("user_id") === ""){
-            alert("请先登陆");
+            alert("请先登录");
         }else {
             AddCart(src);
         }

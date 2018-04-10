@@ -45,7 +45,7 @@ public class UserService {
      * @Author: lijun
      * @Date: 2018/2/5 11:52
     No such property: code for class: Script1
-     * @Description:用户：登陆
+     * @Description:用户：登录
      *
      */
     public int userSelect(User user){

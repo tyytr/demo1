@@ -47,7 +47,7 @@ public class UserController {
      * @Author: lijun
      * @Date: 2018/2/5 11:51
     No such property: code for class: Script1
-     * @Description:用户：登陆
+     * @Description:用户：登录
      *
      */
     @PostMapping("/login")
@@ -57,17 +57,17 @@ public class UserController {
 //        根据用户名查询用户所有信息
         User user1 = userService.selectUser(user);
         if ( userLoginStatus == -3){
-            return new Rest<User>(-3, "管理员正在认证注册信息，请稍后登陆",user1);
+            return new Rest<User>(-3, "管理员正在认证注册信息，请稍后登录",user1);
         }else if (userLoginStatus == -2){
-            return new Rest<User>(-2,"用户尚未注册，请先注册在登陆",user);
+            return new Rest<User>(-2,"用户尚未注册，请先注册在登录",user);
         }else if (userLoginStatus == -1) {
             return new Rest<User>(-1,"用户名或者密码错误",user1);
         }else if (userLoginStatus == 1) {
-            return new Rest<User>( 1,"普通用户登陆成功",user1);
+            return new Rest<User>( 1,"普通用户登录成功",user1);
         }else if (userLoginStatus == 2){
-            return new Rest<User>( 2,"管理员用户登陆成功",user1);
+            return new Rest<User>( 2,"管理员用户登录成功",user1);
         }else {
-            return new Rest<User>( 0, "未知原因登陆失败，稍后再试",user);
+            return new Rest<User>( 0, "未知原因登录失败，稍后再试",user);
         }
     }
 }

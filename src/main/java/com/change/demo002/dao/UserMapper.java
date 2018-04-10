@@ -34,7 +34,7 @@ public interface UserMapper {
      * @Author: lijun
      * @Date: 2018/2/5 11:54
     No such property: code for class: Script1
-     * @Description:用户：登陆方法
+     * @Description:用户：登录方法
      *
      */
     @Select("select * from register where username=#{username} and password=#{password} and admin=#{admin}")

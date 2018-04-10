@@ -92,7 +92,7 @@ class Publish extends Component{
                 goodsPublish(data);
             }
         }else {
-            alert("请您先登陆账号");
+            alert("请您先登录账号");
         }
     }
     render(){
