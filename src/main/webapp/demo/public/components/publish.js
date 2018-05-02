@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import { ColorPicker } from 'zent';
 import 'zent/css/index.css';
 import Left from './leftaffix';
 import 'antd/dist/antd.css';

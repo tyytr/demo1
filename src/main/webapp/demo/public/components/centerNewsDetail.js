@@ -100,7 +100,7 @@ class CenterNewsDetail extends Component{
     }
     onAddCart(src,event){
         console.log(src);
-        if (localStorage.getItem("user_id") === null || localStorage.getItem("user_id") === ""){
+        if (localStorage.getItem("userId") === null || localStorage.getItem("userId") === ""){
             alert("请先登录");
         }else {
             AddCart(src);
@@ -136,11 +136,9 @@ class CenterNewsDetail extends Component{
     }
 
     render(){
-        // this.setState({userId:localStorage.getItem("userId")});
         return (
             <div className={"col-sm-12"}>
                 <Tabs defaultActiveKey="0">
-                    {/*{renderTabs.map(this.renderTags)}*/}
                     <Tabs.TabPane tab="手机" key="0"><Masonry>{this.state.mobile.map(this.renderRow)}</Masonry></Tabs.TabPane>
                     <Tabs.TabPane tab="电脑" key="1"><Masonry>{this.state.desktop.map(this.renderRow)}</Masonry></Tabs.TabPane>
                     <Tabs.TabPane tab="书籍" key="2"><Masonry>{this.state.book.map(this.renderRow)}</Masonry></Tabs.TabPane>

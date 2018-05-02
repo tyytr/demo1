@@ -21,7 +21,6 @@ class ShopList extends Component{
             ellipsis : [],
         };
         this.renderRow = this.renderRow.bind(this);
-        // this.onAddCart = this.onAddCart.bind(this,src.goods_id);
     }
 
     componentWillMount(){
@@ -101,7 +100,7 @@ class ShopList extends Component{
     }
     onAddCart(src,event){
         console.log(src);
-        if (localStorage.getItem("user_id") === null || localStorage.getItem("user_id") === ""){
+        if (localStorage.getItem("userId") === null || localStorage.getItem("userId") === ""){
             alert("请先登录");
         }else {
             AddCart(src);
@@ -137,7 +136,6 @@ class ShopList extends Component{
     }
 
     render(){
-        // this.setState({userId:localStorage.getItem("userId")});
         return (
             <div className={"container g-mt-10 g-pb-100"}>
                 <div className={"row g-mb-100"}>

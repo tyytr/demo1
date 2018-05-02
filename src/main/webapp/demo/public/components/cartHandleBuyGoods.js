@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Input, Table, Button, Column, Modal} from 'antd';
-import {ColorPicker, previewImage} from 'zent';
+import {ColorPicker} from 'zent';
 import 'zent/css/index.css';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";

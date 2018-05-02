@@ -26,8 +26,9 @@ class AdminNotice extends Component{
                     </div>
                     <div className={"col-xs-12 g-pb-30"}>
                         <Tabs tabPosition={this.state.tabPosition}>
-                            <Tabs.TabPane tab="发布公告" key="1"><AdminHandleNoticePublish/></Tabs.TabPane>
-                            <Tabs.TabPane tab="删除公告" key="2"><AdminHandleNoticeDelete/></Tabs.TabPane>
+                            <Tabs.TabPane tab="删除公告" key="1"><AdminHandleNoticeDelete/></Tabs.TabPane>
+                            <Tabs.TabPane tab="发布公告" key="2"><AdminHandleNoticePublish/></Tabs.TabPane>
+
                         </Tabs>
                     </div>
                 </div>

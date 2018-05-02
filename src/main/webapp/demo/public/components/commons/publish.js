@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-// import Grounding from '../grounding';
 import {Icon, Card,Input,Button} from 'antd';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../../actions/type";
@@ -16,7 +15,7 @@ class Publish extends Component{
     }
     onAddCart(src,event){
         console.log(src);
-        if (localStorage.getItem("user_id") === null || localStorage.getItem("user_id") === ""){
+        if (localStorage.getItem("userId") === null || localStorage.getItem("userId") === ""){
             alert("请先登录");
         }else {
             AddCart(src);

@@ -28,10 +28,10 @@ export function singupAction(data) {
         success : function (msg) {
             setAuthToLocalStorage(msg);
             console.log(msg);
-            if (msg.status === "1") {
-                alert(localStorage.getItem('username')+"  的注册信息已经提交，等待管理员审核！");
-                // window.location.href = `${ROOT_URLF}/singin`;
-            }else if (msg.status === "-1"){
+            if (msg.status === 1) {
+                alert(msg.message);
+                window.location.href = `${ROOT_URLF}/singin`;
+            }else if (msg.status === -1){
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singup`;
             }else{
@@ -156,7 +156,8 @@ export function updatePerson(data) {
         success : function (msg) {
             console.log(msg);
             if (msg.status === 1){
-                window.location.href = `${ROOT_URLF}/admin`;
+                alert(msg.message);
+                window.location.href = `${ROOT_URLF}/adminAuthority`;
             }
         },
         error : function (err) {
@@ -231,10 +232,10 @@ export function adminNotice(data) {
         dataType : "json",
         success : function (msg) {
             console.log(msg);
-            if (msg.status === "1") {
+            if (msg.status === 1) {
                 alert(msg.message);
                 window.location.href = `${ROOT_URLF}/adminNotice`;
-            }else if (msg.status === "-1"){
+            }else if (msg.status === -1){
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/adminNotice`;
             }else{
@@ -333,15 +334,15 @@ export function personAdvice(data) {
         dataType : "json",
         success : function (msg) {
             console.log(msg);
-            if (msg.status === "1") {
+            if (msg.status === 1) {
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singin`;
-            }else if (msg.status === "-1"){
+                window.location.href = `${ROOT_URLF}/personal`;
+            }else if (msg.status === -1){
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singup`;
+                window.location.href = `${ROOT_URLF}/personal`;
             }else{
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singup`;
+                window.location.href = `${ROOT_URLF}/personal`;
             }
         },
         error : function (err) {
@@ -414,10 +415,10 @@ export function goodsPublish(data) {
         dataType : "json",
         success : function (msg) {
             console.log(msg);
-            if (msg.status === "1") {
+            if (msg.status === 1) {
                 alert(msg.message);
-                // window.location.href = `${ROOT_URLF}/singin`;
-            }else if (msg.status === "-1"){
+                window.location.href = `${ROOT_URLF}/home`;
+            }else if (msg.status === -1){
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singup`;
             }else{
@@ -454,10 +455,10 @@ export function AddCart(data) {
         dataType : "json",
         success : function (msg) {
             console.log(msg);
-            if (msg.status === "1") {
+            if (msg.status === 1) {
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singin`;
-            }else if (msg.status === "0"){
+            }else if (msg.status === 0){
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singup`;
             }else{
@@ -486,7 +487,7 @@ export function BuyGoods(data) {
         dataType : "json",
         success : function (msg) {
             console.log(msg);
-            if (msg.status === "1") {
+            if (msg.status === 1) {
                 alert(msg.message);
                 // window.location.href = `${ROOT_URLF}/singin`;
             }else{

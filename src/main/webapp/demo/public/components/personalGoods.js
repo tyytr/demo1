@@ -35,7 +35,6 @@ class PersonalGoods extends Component{
             })
     }
     render(){
-        const { visible } = this.state;
         const columns = [{
             title : '用户名',
             dataIndex : 'username',

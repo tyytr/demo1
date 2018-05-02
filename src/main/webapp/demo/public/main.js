@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux'
-import reduxThunk from 'redux-thunk';
-import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Home from './components/home';
 import Singin from './components/auth/singin';
 import Singup from './components/auth/singup';
@@ -21,17 +19,15 @@ import Cart from './components/cart';
 import Header from './components/commons/header';
 import Footer from './components/commons/footer';
 
-import reducers from './reducers';
 
 ReactDOM.render(
 
         <BrowserRouter>
             <div>
                 <Header />
-                {/*<Publish />*/}
                 <Switch>
-                    <Route path='/singin' component={Singin} />
                     <Route path='/singup' component={Singup} />
+                    <Route path='/singin' component={Singin} />
                     <Route path='/singout' component={Singout} />
                     <Route path='/shopList' component={ShopList} />
                     <Route path="/shopDetails/:id" component={ShopDetails} />

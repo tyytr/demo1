@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-// import Grounding from '../grounding';
 import 'antd/dist/antd.css';
 class Singout extends Component{
     constructor(props) {
@@ -15,4 +14,3 @@ class Singout extends Component{
     }
 }
 export default Singout;
-// module.exports = ProductBox;

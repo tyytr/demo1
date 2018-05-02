@@ -1,9 +1,7 @@
 import React,{Component} from 'react';
 import { Input ,Button ,Table, Divider} from 'antd';
 import 'antd/dist/antd.css';
-import {ROOT_URL} from "../actions/type";
-import axios from 'axios';
-import {adminDeleteNotice, adminNotice} from "../actions/auth";
+import { adminNotice} from "../actions/auth";
 
 class AdminHandleNoticePublish extends Component{
     constructor(props) {
@@ -41,7 +39,7 @@ class AdminHandleNoticePublish extends Component{
         return (
             <div className={"col-xs-12"}>
                 <form action=""  style={{textAlign:"center"}}>
-                    <Input.TextArea placeholder="发布系统公告（100字以内）" autosize={{minRows: 4}} maxLength={"100"} onChange={this.handleAdvice.bind(this)}/>
+                    <Input.TextArea placeholder="发布系统公告（40字以内）" autosize={{minRows: 4}} maxLength={"40"} onChange={this.handleAdvice.bind(this)}/>
                     <Button type="primary" size={"large"} onClick={this.adminNotice.bind(this)} >发布公告</Button>
                 </form>
             </div>

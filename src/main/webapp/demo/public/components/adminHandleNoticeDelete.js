@@ -3,13 +3,12 @@ import { Input ,Button ,Table} from 'antd';
 import 'antd/dist/antd.css';
 import {ROOT_URL} from "../actions/type";
 import axios from 'axios';
-import {adminDeleteNotice, adminNotice} from "../actions/auth";
+import {adminDeleteNotice} from "../actions/auth";
 
 class AdminHandleNoticeDelete extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            // status : "disabled",
             notice : "",
 
             data: {},
@@ -51,7 +50,7 @@ class AdminHandleNoticeDelete extends Component{
         // console.log(typeof(array));
         // console.log(array);
 
-        const { loadingAgree, loadingDisagree, selectedRowKeys } = this.state;
+        const { loadingAgree, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: (selectedRowKeys) => {
@@ -85,7 +84,6 @@ class AdminHandleNoticeDelete extends Component{
                     >
                         删除公告
                     </Button>
-                    {/*<Input.Search className={"pull-right"} style={{float:"right"}} placeholder="input search text" enterButton="Search" type="primary"/>*/}
                     <span style={{ marginLeft: 8 }}>
                         {hasSelected ? `选择 ${selectedRowKeys.length} 目标` : ''}
                     </span>

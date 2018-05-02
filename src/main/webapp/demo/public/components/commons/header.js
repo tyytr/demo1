@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import {Icon} from "antd";
 import 'antd/dist/antd.css';
-// import Home from  '../home';
 
 class Header extends Component{
     constructor(props) {
@@ -16,7 +15,6 @@ class Header extends Component{
         // console.log(loginStatus);
         return (
             <div>
-                {/*navbar-fixed-top*/}
                 <nav className="navbar navbar-default navbar-static-top header g-mb-0" role="navigation">
                     <div className="container g-pa-10">
                         <div className="navbar-header">
@@ -30,7 +28,7 @@ class Header extends Component{
                             <a className="g-pl-20" href="/home"><img style={{height:"43px"}} src="../../../public/style/image/logo.png" alt="1"/></a>
                         </div>
                         <div className="collapse navbar-collapse" id="example-navbar-collapse">
-                            <ul className={`nav navbar-nav navbar-right ${(loginStatus==="false"||loginStatus===null)?"":"hidden"}`}>
+                            <ul className={`nav navbar-nav navbar-right ${(loginStatus==="false"||loginStatus===null||loginStatus===undefined)?"":"hidden"}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
                                 {/*<li><a href="/shopList">商品</a></li>*/}
                                 <li><a href="/publish">商品发布</a></li>
@@ -45,7 +43,6 @@ class Header extends Component{
                             </ul>
                             <ul className={`nav navbar-nav navbar-right ${(loginStatus==="true")&&(token==="1")?"":"hidden"}`}>
                                 <li className=""><Link to="/home" >首页</Link></li>
-                                {/*<li><a href="/shopList">商品</a></li>*/}
                                 <li><a href="/publish">商品发布</a></li>
                                 <li><a href="/personal">个人中心</a></li>
                                 <li><a href="/cart"><Icon type="shopping-cart"/>购物车</a></li>
@@ -53,7 +50,6 @@ class Header extends Component{
                                     <Link to="" style={{color:"#1890ff"}} >{username}</Link>
                                 </li>
                                 <li>
-                                    {/*<button onClick={()=> {localStorage.clear();}}>退出</button>*/}
                                     <Link to="/" onClick={()=> {localStorage.clear();}} >退出</Link>
                                 </li>
                             </ul>
@@ -68,7 +64,6 @@ class Header extends Component{
                                     <Link to="" style={{color:"#1890ff"}} >{username}</Link>
                                 </li>
                                 <li>
-                                    {/*<button onClick={()=> {localStorage.clear();}}>退出</button>*/}
                                     <Link to="/" onClick={()=> {localStorage.clear();}} >退出</Link>
                                 </li>
                             </ul>
@@ -80,4 +75,3 @@ class Header extends Component{
     }
 }
 export default Header;
-// module.exports = ProductBox;

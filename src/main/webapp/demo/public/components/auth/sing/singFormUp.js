@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {singupAction} from "../../../actions/auth";
 import {ROOT_URLF} from "../../../actions/type";
-// import Code from './code';
+
 class SingFormUp extends Component{
     constructor(props) {
         super(props);
@@ -43,16 +43,6 @@ class SingFormUp extends Component{
         this.setState({rPassWord : rPassword });
         console.log(this.state.rPassWord);
     }
-    //isAdmin
-    handleAdmin(e){
-        let isChecked = e.target.checked;
-        if(isChecked){
-            this.setState({isAdmin: true});
-        }else {
-            this.setState({isAdmin: false});
-        }
-        console.log(this.state.isAdmin);
-    }
     //isAgree
     handleAgree(e){
         let isChecked = e.target.checked;
@@ -81,26 +71,18 @@ class SingFormUp extends Component{
                 this.setState({nameHelp:  "* 用户名不能为空"});
                 // alert(this.state.nameHelp);
             }else if(this.state.phone === ""||this.state.phone === null){
-                // let mPattern = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
+
                 this.setState({
                     nameHelp:  " ",
                     phoneHelp : "* 电话号码不能为空"
                 });
-                // if (mPattern.test(this.state.phone)){
-                // }else{
-                //     alert("请输入正确手机号");
-                // }
+
             }else if(this.state.passWord === ""||this.state.passWord === null){
-                // let pPattern = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
                 this.setState({
                     nameHelp:  "",
                     phoneHelp : "",
                     wordHelp : "* 密码不能为空"
                 });
-                // if (pPattern.test(this.state.passWord)){
-                // }else{
-                //     alert("最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符");
-                // }
             }else if(this.state.rPassWord === ""||this.state.passWord !== this.state.rPassWord){
                 this.setState({
                     nameHelp : "",
@@ -115,7 +97,15 @@ class SingFormUp extends Component{
                     wordHelp: "",
                     rWordHelp: ""
                 });
-                singupAction(data);
+                let mPattern = (/^1(3|4|5|7|8)\d{9}$/);
+                let pPattern = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
+                if (! mPattern.test(this.state.phone)){
+                    alert("请输入正确手机号");
+                }else if (! pPattern.test(this.state.passWord)){
+                    alert("密码最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符");
+                }else {
+                    singupAction(data);
+                }
             }
         }
     }
@@ -139,24 +129,13 @@ class SingFormUp extends Component{
                             <div className="form-group">
                                 <label className="exampleInputPassword1">密码</label>
                                 <input type="password" name="password" className="form-control" placeholder="密码" onChange={this.changePassword.bind(this)} />
-                                <span>{this.state.phoneHelp}</span>
+                                <span>{this.state.wordHelp}</span>
                             </div>
                             <div className="form-group">
                                 <label className="exampleInputPassword1">确认密码</label>
                                 <input type="password" name="rpassword" className="form-control" placeholder="确认密码" onChange={this.changeRPassword.bind(this)} />
                                 <span>{this.state.rWordHelp}</span>
                             </div>
-                            {/*<div className="form-group">*/}
-                                {/*<label className="exampleInputFile">File input</label>*/}
-                                {/*<input type="file" id="exampleInputFile" />*/}
-                                    {/*<p className="help-block">Example block-level help text here.</p>*/}
-                            {/*</div>*/}
-                            {/*<Code/>*/}
-                            {/*<div className="checkbox">*/}
-                                {/*<label>*/}
-                                    {/*<input type="checkbox" checked={this.state.isAdmin} onClick={this.handleAdmin.bind(this)} /><span>管理员注册</span>*/}
-                                {/*</label>*/}
-                            {/*</div>*/}
                             <div className="checkbox">
                                 <label>
                                     <input type="checkbox" checked={this.state.isAgree} onClick={this.handleAgree.bind(this)} />我已阅读并同意 <a href={`${ROOT_URLF}/agreement.pdf`}>《易换网用户协议》</a>

@@ -47,7 +47,7 @@ class AdminHandleAuthority extends Component{
         // console.log(typeof(array));
         // console.log(array);
 
-        const { loadingAgree, loadingDisagree, selectedRowKeys } = this.state;
+        const { loadingAgree, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: (selectedRowKeys) => {
@@ -122,4 +122,3 @@ class AdminHandleAuthority extends Component{
     }
 }
 export default AdminHandleAuthority;
-// module.exports = ProductBox;

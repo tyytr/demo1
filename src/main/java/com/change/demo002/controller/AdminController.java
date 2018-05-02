@@ -84,7 +84,7 @@ public class AdminController {
             adminService.updatePerson(result);
 //            System.out.println(result);
         }
-        return new Rest<>(1,"注册认证成功",admin.getData());
+        return new Rest<>(1,"权限升级成功",admin.getData());
     }
     /**
      * @Author: lijun

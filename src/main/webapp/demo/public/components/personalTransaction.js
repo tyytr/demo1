@@ -36,7 +36,6 @@ class PersonalTransaction extends Component{
             })
     }
     render(){
-        const { visible } = this.state;
         const columns = [{
             title : '卖方',
             dataIndex : 'username',
@@ -111,7 +110,7 @@ class PersonalTransaction extends Component{
         // console.log(typeof(array));
         console.log(array);
 
-        const { loadingAgree, loadingDisagree, selectedRowKeys } = this.state;
+        const {  loadingDisagree, selectedRowKeys } = this.state;
         const rowSelection = {
             selectedRowKeys,
             onChange: (selectedRowKeys) => {
